@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Service pour la base de données MySQL
+  database:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: bissasse # Remplacez par un mot de passe sécurisé
+      MYSQL_DATABASE: bd_gestion_labo
+      MYSQL_USER: root
+      MYSQL_PASSWORD: bissasse
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # Service pour le backend Spring Boot
+  backend:
+    build:
+      context: ./labo_service
+      dockerfile: Dockerfile
+    environment:
+      SPRING_APPLICATION_NAME: labo-service
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/bd_gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: bissasse
+    ports:
+      - "8083:8083"
+    depends_on:
+      - database
+
+# Volumes pour persistance des données MySQL
+volumes:
+  db_data:
