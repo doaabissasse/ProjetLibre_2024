@@ -1,0 +1,53 @@
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    height: 75vh; /* Maintient la hauteur de l'image d'arrière-plan */
+    position: relative;
+    margin: 0; /* Supprime les marges */
+    padding: 0; /* Supprime les espacements internes */
+    width: 100vw; /* Utilise toute la largeur de la fenêtre */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.82);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+.lead {
+    color: #ffffff;
+}
+
+.navbar {
+    margin: 0; /* Supprime les marges de la barre de navigation */
+    background-color: #d5deed;
+}
+
+.nav-link {
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(201, 201, 201, 0.913); /* Légère couleur sur hover pour une meilleure visibilité */
+}
+
+.card {
+    transition: transform 0.2s; /* Animation pour l'effet d'agrandissement */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Agrandissement au survol */
+}

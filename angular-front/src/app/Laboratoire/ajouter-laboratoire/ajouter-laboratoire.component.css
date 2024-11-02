@@ -1,0 +1,16 @@
+.container {
+  height: auto; /* ou un max-height raisonnable */
+  overflow: auto; /* Permettre le défilement */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Espacement entre les groupes de champs */
+}
+
+.btn {
+  margin-top: 10px; /* Espacement supérieur pour le bouton */
+}
+
+.form-spacing {
+  margin-top: 20px; /* Ajustez la valeur selon vos besoins */
+}
