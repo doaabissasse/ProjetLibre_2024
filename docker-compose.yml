@@ -1,34 +1,82 @@
-version: '3.8'
-
 services:
-  # Service pour la base de données MySQL
-  database:
-    image: mysql:8
+  db:
+    image: mysql:5.7
+    container_name: mysql-server
     environment:
-      MYSQL_ROOT_PASSWORD: bissasse # Remplacez par un mot de passe sécurisé
-      MYSQL_DATABASE: bd_gestion_labo
-      MYSQL_USER: root
-      MYSQL_PASSWORD: bissasse
+      MYSQL_ROOT_PASSWORD: rootpassword  # Assurez-vous de définir un mot de passe
+      MYSQL_DATABASE: gestion_labo
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
 
-  # Service pour le backend Spring Boot
-  backend:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: rootpassword  # Assurez-vous que cela correspond à MYSQL_ROOT_PASSWORD de `db`
+      PMA_ARBITRARY: 1
+    ports:
+      - "8082:80"
+    depends_on:
+      - db
+
+  # Service Eureka
+  eureka-server:
+    build:
+      context: ./discovery
+      dockerfile: Dockerfile  # Assurez-vous que votre Dockerfile Eureka est situé dans le bon répertoire
+    container_name: eureka-server
+    ports:
+      - "8761:8761"  # Le port de Eureka pour les autres services
+    restart: always
+
+
+  spring-app-labo:
     build:
       context: ./labo_service
       dockerfile: Dockerfile
+    container_name: spring-app-labo
     environment:
-      SPRING_APPLICATION_NAME: labo-service
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/bd_gestion_labo
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: bissasse
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
     ports:
       - "8083:8083"
     depends_on:
-      - database
+      - db
+    restart: on-failure
+
+  spring-app-contactes:
+    build:
+      context: ./contactes_service
+      dockerfile: Dockerfile
+    container_name: spring-app-contactes
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
+    ports:
+      - "8084:8084"
+    depends_on:
+      - db
+    restart: on-failure
+
+  angular-app:
+    build:
+      context: ./angular-front
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./angular-front:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 # Volumes pour persistance des données MySQL
 volumes:

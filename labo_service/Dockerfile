@@ -1,15 +1,17 @@
-# Utiliser une image OpenJDK
-FROM openjdk:17-jdk-slim
+# Use the official Maven image to build the project
+FROM maven:3.8.8-eclipse-temurin-17 AS build
 
-# Définir le répertoire de travail
+# Set the working directory
 WORKDIR /app
 
-# Copier le fichier JAR généré par votre application Spring Boot
-COPY target/labo_service-0.0.1-SNAPSHOT.jar app.jar
+# Copy the project files to the container
+COPY . .
 
+# Build the application
+RUN mvn clean install -DskipTests
 
-# Exposer le port utilisé par votre application
+# Run the application
+CMD ["mvn", "spring-boot:run"]
+
+# Expose the application's port
 EXPOSE 8083
-
-# Commande d'exécution
-ENTRYPOINT ["java", "-jar", "app.jar"]
