@@ -34,10 +34,20 @@ services:
       - "8761:8761"  # Le port de Eureka pour les autres services
     restart: always
 
+    # Service Gateway
+  gateway-server:
+      build:
+        context: ./gateway
+        dockerfile: Dockerfile  # Assurez-vous que votre Dockerfile Eureka est situé dans le bon répertoire
+      container_name: gateway-server
+      ports:
+        - "8222:8222"  # Le port de Eureka pour les autres services
+      restart: always
+
 
   spring-app-labo:
     build:
-      context: ./labo_service
+      context: ./Backend/labo_service
       dockerfile: Dockerfile
     container_name: spring-app-labo
     environment:
@@ -52,7 +62,7 @@ services:
 
   spring-app-contactes:
     build:
-      context: ./contactes_service
+      context: ./Backend/contactes_service
       dockerfile: Dockerfile
     container_name: spring-app-contactes
     environment:
@@ -64,6 +74,21 @@ services:
     depends_on:
       - db
     restart: on-failure
+
+  spring-app-utilisateurs:
+      build:
+        context: ./Backend/user_service
+        dockerfile: Dockerfile
+      container_name: spring-app-utilisateurs
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
+      ports:
+        - "8085:8085"
+      depends_on:
+        - db
+      restart: on-failure
 
   angular-app:
     build:

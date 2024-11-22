@@ -1,0 +1,30 @@
+eureka:
+  instance:
+    hostname: contactes-service
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+server:
+  port: 8084
+spring:
+  application:
+    name: contactes-service
+  config:
+    import: optional:configserver:http://eureka-server:8888
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db:3306/gestion_labo
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform:   org.hibernate.dialect.MySQL8Dialect
+
+
+
+
+
+
+

@@ -9,5 +9,8 @@ eureka:
 server:
   port: 8761
 spring:
+  application:
+    name: discovery
+
   config:
     import: optional:configserver:http://eureka-server:8888
