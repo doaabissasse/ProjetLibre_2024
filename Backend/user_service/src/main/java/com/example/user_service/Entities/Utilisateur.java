@@ -20,4 +20,7 @@ public class Utilisateur {
     private String signature;
     private String role;
     private long fkIdLaboratoire;
+
+    private String username;
+    private String password;
 }
