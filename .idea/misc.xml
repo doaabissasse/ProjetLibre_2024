@@ -12,6 +12,9 @@
         <option value="$PROJECT_DIR$/Backend/contactes_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/labo_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/user_service/pom.xml" />
+        <option value="$PROJECT_DIR$/../ProjetLibre_2024/dossier_service/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/dossier_service/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/dossiers_service/pom.xml" />
       </list>
     </option>
   </component>

@@ -24,9 +24,9 @@ public class UtilisateurService {
         return utilisateurRepository.findById(id).orElse(null);
     }
 
-    public Utilisateur saveUser(Utilisateur user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return utilisateurRepository.save(user);
+    public Utilisateur createUtilisateur(Utilisateur utilisateur) {
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+        return utilisateurRepository.save(utilisateur);
     }
 
     public List<Utilisateur> getAllUtilisateursByLabo(long laboId) {
