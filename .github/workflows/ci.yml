@@ -61,7 +61,7 @@ jobs:
 
       # Run tests for all modules
       - name: Run tests for Backend Services (excluding `dossiers`)
-        working-directory: ./backend
+        working-directory: ./Backend
         run: |
           for service in $(ls); do
             if [ -d "$service" ] && [ "$service" != "dossiers_service" ]; then
