@@ -81,7 +81,7 @@ class UtilisateurServiceTest {
         when(utilisateurRepository.save(user)).thenReturn(user);
 
         // Act
-        Utilisateur savedUser = utilisateurService.saveUser(user);
+        Utilisateur savedUser = utilisateurService.createUtilisateur(user);
 
         // Assert
         assertNotNull(savedUser);
