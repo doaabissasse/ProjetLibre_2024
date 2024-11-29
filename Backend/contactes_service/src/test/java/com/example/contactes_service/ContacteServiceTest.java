@@ -53,7 +53,7 @@ class ContacteServiceTest {
     }
 
     @Test
-    void findAll_ListOfContacts() {
+    void findAll_Contacts() {
         // Arrange
         contacte contacte1 = contacte.builder()
                 .id(1L)
