@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,10 +9,12 @@ import { AjouterLaboratoireComponent } from '../Laboratoire/ajouter-laboratoire/
 import { FormsModule } from '@angular/forms';
 import { AccueilComponent } from '../accueil/accueil.component';
 import {MenuComponent } from '../menu/menu.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../Laboratoire/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
+    MatDialogModule,
     AccueilComponent,
     AppComponent,
     BrowserModule,
@@ -21,8 +23,10 @@ import {MenuComponent } from '../menu/menu.component';
     LaboratoireListComponent,
     AjouterLaboratoireComponent ,
     FormsModule,
-    MenuComponent
+    MenuComponent,
+    ConfirmDialogComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   providers: [],
   bootstrap: [AppComponent]
 })

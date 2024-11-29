@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Laboratoire } from '../Entite_labo/laboratoire';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ServiceLaboratoireService } from '../service_labo/service-laboratoire.service';
 
 @Component({
@@ -13,7 +15,10 @@ import { ServiceLaboratoireService } from '../service_labo/service-laboratoire.s
 export class LaboratoireListComponent implements OnInit {
   laboratoires: Laboratoire[] = [];
 
-  constructor(private laboratoireService: ServiceLaboratoireService) {}
+  constructor(
+    private laboratoireService: ServiceLaboratoireService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getLaboratoires();
@@ -30,18 +35,34 @@ export class LaboratoireListComponent implements OnInit {
     });
   }
 
-  // Méthode pour modifier un laboratoire
   modifier(laboratoire: Laboratoire): void {
-    // Logique pour modifier le laboratoire (par exemple, ouvrir un formulaire de modification)
     console.log('Modifier', laboratoire);
-    // Vous pouvez ajouter votre logique ici pour naviguer vers un formulaire ou afficher un modal
+    // Ajoutez votre logique pour ouvrir un formulaire de modification ou autre
   }
 
-  // Méthode pour supprimer un laboratoire
   supprimer(laboratoire: Laboratoire): void {
-    // Logique pour supprimer le laboratoire
-    console.log('Supprimer', laboratoire);
-    // Vous pouvez ajouter la logique pour appeler un service qui supprimera le laboratoire
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { nom: laboratoire.nom }, // Transmettre le nom du laboratoire
+      width: '400px', // Largeur de la fenêtre modale
+      height: '250px', // Hauteur de la fenêtre modale
+      position: { top: '20px' }, // Optionnel: positionnement personnalisé
+      disableClose: true, // Désactive la fermeture en cliquant en dehors de la fenêtre
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Appeler la méthode pour supprimer le laboratoire après confirmation
+        this.laboratoireService.supprimerLaboratoire(laboratoire.id).subscribe({
+          next: () => {
+            console.log(`Laboratoire supprimé : ${laboratoire.nom}`);
+            // Mettre à jour la liste après suppression
+            this.laboratoires = this.laboratoires.filter(l => l.id !== laboratoire.id);
+          },
+          error: (err) => console.error('Erreur lors de la suppression du laboratoire :', err),
+        });
+      } else {
+        console.log('Suppression annulée');
+      }
+    });
   }
-  
 }

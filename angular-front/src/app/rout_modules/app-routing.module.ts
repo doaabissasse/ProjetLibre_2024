@@ -2,8 +2,8 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LaboratoireListComponent } from "../Laboratoire/laboratoire-list/laboratoire-list.component";
 import { AjouterLaboratoireComponent } from "../Laboratoire/ajouter-laboratoire/ajouter-laboratoire.component";
-import { AppComponent } from '../app_comp/app.component';
 import { AccueilComponent } from '../accueil/accueil.component';
+
 
 
 const routes: Routes = [

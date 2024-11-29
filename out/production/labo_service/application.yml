@@ -12,19 +12,20 @@ spring:
   config:
     import: optional:configserver:http://localhost:8888
 
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/gestion_labo
     username: root
     password:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform:   org.hibernate.dialect.MySQL8Dialect
+    jpa:
+      hibernate:
+        ddl-auto: update
+      database-platform: org.hibernate.dialect.MySQL8Dialect
 application:
-  config:
-    contacts-url: http://localhost:8084/contactes
-    user-url: http://localhost:8085/utilisateurs
+    config:
+      contacts-url: http://localhost:8084/contactes
+      user-url: http://localhost:8085/utilisateurs
+
+
 
 
