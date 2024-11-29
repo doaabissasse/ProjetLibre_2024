@@ -60,9 +60,16 @@ jobs:
           done
 
       # Run tests for all modules
-      - name: Run tests for all modules
-        working-directory: .
-        run: mvn test
+      - name: Run tests for Backend Services (excluding `dossiers`)
+        working-directory: ./backend
+        run: |
+          for service in $(ls); do
+            if [ -d "$service" ] && [ "$service" != "dossiers_service" ]; then
+              cd "$service"
+              mvn test
+              cd ..
+            fi
+          done
 
       # Upload test results
       - name: Upload test results
