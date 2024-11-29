@@ -29,7 +29,7 @@ class ContacteServiceTest {
     }
 
     @Test
-    void save_shouldReturnSavedContacte() {
+    void save_ReturnSavedContact() {
         // Arrange
         contacte mockContacte = contacte.builder()
                 .idLaboratoire(1L)
