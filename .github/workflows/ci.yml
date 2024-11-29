@@ -52,7 +52,7 @@ jobs:
         working-directory: ./Backend
         run: |
           for service in $(ls); do
-            if [ -d "$service" ] && [ "$service" != "dossiers" ]; then
+            if [ -d "$service" ] && [ "$service" != "dossiers_service" ]; then
               cd "$service"
               mvn clean install -DskipTests=false
               cd ..
