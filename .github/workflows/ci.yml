@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'Backend/**'
-      - 'config_server/**'
+      - 'backend/**'
+      - 'config/**'
       - 'discovery/**'
       - 'gateway/**'
 
