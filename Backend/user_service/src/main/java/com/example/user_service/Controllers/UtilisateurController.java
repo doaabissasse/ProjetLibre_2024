@@ -29,7 +29,7 @@ public class UtilisateurController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Utilisateur createUtilisateur(@RequestBody Utilisateur utilisateur) {
-        return utilisateurService.createUtilisateur(utilisateur);
+        return utilisateurService.saveUser(utilisateur);
     }
 
     @GetMapping("/laboratoire/{labo-id}")

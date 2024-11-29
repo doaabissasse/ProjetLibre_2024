@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Backend/dossier_service/dossier_service (1).iml" filepath="$PROJECT_DIR$/Backend/dossier_service/dossier_service (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/projet_libre.iml" filepath="$PROJECT_DIR$/projet_libre.iml" />
     </modules>
   </component>

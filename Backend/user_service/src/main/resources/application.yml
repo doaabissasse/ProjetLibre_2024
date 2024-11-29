@@ -25,5 +25,11 @@ spring:
 
 
 
+jwt:
+  secret: ensa1234
+  expiration: 86400000 # 24 heures (en millisecondes)
 
+logging:
+  level:
+    org.springframework: DEBUG
 
