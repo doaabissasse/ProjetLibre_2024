@@ -92,7 +92,7 @@ class ContacteServiceTest {
     }
 
     @Test
-    void findAlllbyaboratoire_ShouldReturnListOfContactesForGivenLabId() {
+    void findAlllbyaboratoire_ListOfContactesForGivenLabId() {
         // Arrange
         long labId = 1L;
         contacte contacte1 = contacte.builder()
