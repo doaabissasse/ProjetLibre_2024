@@ -35,7 +35,7 @@ class ContacteServiceTest {
                 .idLaboratoire(1L)
                 .tel("123456789")
                 .fax("987654321")
-                .email("salma@example.com")
+                .email("test@example.com")
                 .build();
 
         when(contacteRepository.save(mockContacte)).thenReturn(mockContacte);
