@@ -4,15 +4,11 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-  # Trigger only on changes to relevant directories
-  paths:
-    - 'backend/**'
-    - 'config/**'
-    - 'discovery/**'
-    - 'gateway/**'
+    paths:
+      - 'Backend/**'
+      - 'config_server/**'
+      - 'discovery/**'
+      - 'gateway/**'
 
 jobs:
   build:
