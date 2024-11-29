@@ -13,9 +13,15 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UtilisateurService {
+
     private final UtilisateurRepository utilisateurRepository;
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UtilisateurService(PasswordEncoder passwordEncoder, UtilisateurRepository utilisateurRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.utilisateurRepository = utilisateurRepository;
+    }
     public List<Utilisateur> getAllUtilisateurs() {
         return utilisateurRepository.findAll();
     }
