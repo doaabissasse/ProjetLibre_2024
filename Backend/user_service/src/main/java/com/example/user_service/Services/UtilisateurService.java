@@ -43,4 +43,7 @@ public class UtilisateurService {
         return utilisateurRepository.findByUsername(username);
     }
 
+    public Utilisateur saveUser(Utilisateur utilisateur) {
+        return utilisateurRepository.save(utilisateur);
+    }
 }
