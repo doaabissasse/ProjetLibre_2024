@@ -84,7 +84,7 @@ class LaboratoireServiceTest {
         long laboId = 1L;
         Laboratoire labo = Laboratoire.builder()
                 .id(laboId)
-                .nom("Labo 2")
+                .nom("Labo 1")
                 .logo("logo1.png")
                 .nrc("123")
                 .active(true)
@@ -109,6 +109,7 @@ class LaboratoireServiceTest {
         verify(laboratoireRepository, times(1)).findById(laboId);
         verify(contactClient, times(1)).findAllContratbyLabo(laboId);
     }
+
 
     @Test
     void testFindLabowithUsers() {
