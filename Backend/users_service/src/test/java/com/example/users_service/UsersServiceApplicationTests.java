@@ -123,7 +123,7 @@ class UsersServiceApplicationTests {
 
 			// Assert
 			assertTrue(foundUser.isPresent());
-			assertEquals("testuser", foundUser.get().getUsername());
+			assertEquals("testuser", foundUser.get().getEmail());
 			verify(utilisateurRepository, times(1)).findByEmail(username);
 		}
 	}
