@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Update npm to the latest version
+RUN npm install -g npm@10.9.1
+
 # Install application dependencies
 RUN npm install --legacy-peer-deps
 
