@@ -84,7 +84,7 @@ class LaboratoireServiceTest {
         long laboId = 1L;
         Laboratoire labo = Laboratoire.builder()
                 .id(laboId)
-                .nom("Labo 1")
+                .nom("Labo 2")
                 .logo("logo1.png")
                 .nrc("123")
                 .active(true)
