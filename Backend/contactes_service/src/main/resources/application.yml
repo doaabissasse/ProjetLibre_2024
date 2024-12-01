@@ -22,7 +22,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
 
-
+#modif
 
 
 
