@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: users-service
+  config:
+    import: optional:configserver:http://eureka-server:8888
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gestion_labo # Changez 'db' en 'localhost' si nécessaire
+    username: root
+    password: rootpassword # Assurez-vous de spécifier le mot de passe si nécessaire
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect # Utilisez MySQLDialect
+
+  mail:
+    host: localhost
+    port: 1025
+    username: siham
+    password: siham
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+application:
+  security:
+    jwt:
+      secret-key: '404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970'
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/active-account
+
+server:
+  servlet:
+    context-path: /api/v1/
+
+
+springdoc:
+  default-produces-media-type: application/json

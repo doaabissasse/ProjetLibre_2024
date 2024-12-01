@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name= "user-service", url="${application.config.user-url}")
+@FeignClient(name= "users-service", url="${application.config.user-url}")
 public interface UserClient {
     @GetMapping("/laboratoire/{labo_id}")
     List<user> findAllUSERSbyLabo(@PathVariable("labo_id") long laboID);

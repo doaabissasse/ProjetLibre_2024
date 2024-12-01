@@ -75,20 +75,28 @@ services:
       - db
     restart: on-failure
 
-  spring-app-utilisateurs:
-      build:
-        context: ./Backend/user_service
-        dockerfile: Dockerfile
-      container_name: spring-app-utilisateurs
-      environment:
-        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
-        SPRING_DATASOURCE_USERNAME: root
-        SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
-      ports:
-        - "8085:8085"
-      depends_on:
-        - db
-      restart: on-failure
+  #spring-app-utilisateurs:
+   #   build:
+    #    context: ./Backend/users_service
+     #   dockerfile: Dockerfile
+      #container_name: spring-app-utilisateurs
+      #environment:
+      #  SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      #  SPRING_DATASOURCE_USERNAME: root
+       # SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
+      #ports:
+      #  - "8085:8085"
+      #depends_on:
+     #   - db
+     # restart: on-failure
+
+
+  mail-drev:
+    container_name: mail-dev-bsn
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
 
   angular-app:
     build:
