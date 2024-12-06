@@ -113,7 +113,7 @@ class UsersServiceApplicationTests {
 		@Test
 		void testFindByUsername() {
 			// Arrange
-			String username = "testuser";
+			String username = "Test";
 			User user = User.builder().id(1).email(username).build();
 
 			when(utilisateurRepository.findByEmail(username)).thenReturn(Optional.of(user));
