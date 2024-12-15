@@ -48,17 +48,17 @@ jobs:
         working-directory: ./gateway
         run: mvn clean install -DskipTests=false
 
-      # Build and test all Backend Services explicitly
-      - name: Build and test all Backend Services
-        working-directory: ./Backend
+      - name: Build and test each Backend Service
         run: |
-          mvn clean install -DskipTests=false
-
-      # Run tests for all modules
-      - name: Run tests for all Backend Services
-        working-directory: ./Backend
-        run: |
-          mvn test
+          for service in ./Backend/*/; do
+            if [ -f "$service/pom.xml" ]; then
+              echo "Building $service"
+              cd "$service"
+              mvn clean install -DskipTests=false
+              mvn test
+              cd -
+            fi
+          done
 
       # Upload test results
       - name: Upload test results
