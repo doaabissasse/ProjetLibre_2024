@@ -48,24 +48,17 @@ jobs:
         working-directory: ./gateway
         run: mvn clean install -DskipTests=false
 
-      - name: Build and test Backend Services
+      # Build and test all Backend Services explicitly
+      - name: Build and test all Backend Services
         working-directory: ./Backend
         run: |
-          for service in $(ls); do
-            cd "$service"
-            mvn clean install -DskipTests=false
-            cd ..
-          done
+          mvn clean install -DskipTests=false
 
       # Run tests for all modules
-      - name: Run tests for Backend Services 
+      - name: Run tests for all Backend Services
         working-directory: ./Backend
         run: |
-          for service in $(ls); do
-            cd "$service"
-            mvn test
-            cd ..
-          done
+          mvn test
 
       # Upload test results
       - name: Upload test results
