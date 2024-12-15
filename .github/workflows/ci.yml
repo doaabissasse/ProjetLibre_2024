@@ -52,23 +52,19 @@ jobs:
         working-directory: ./Backend
         run: |
           for service in $(ls); do
-            if [ -d "$service" ] && [ "$service" != "dossiers_service" ] && [ "$service" != "users_service" ]; then
-              cd "$service"
-              mvn clean install -DskipTests=false
-              cd ..
-            fi
+            cd "$service"
+            mvn clean install -DskipTests=false
+            cd ..
           done
 
       # Run tests for all modules
-      - name: Run tests for Backend Services (excluding `dossiers` and `users_service`)
+      - name: Run tests for Backend Services 
         working-directory: ./Backend
         run: |
           for service in $(ls); do
-            if [ -d "$service" ] && [ "$service" != "dossiers_service" ] && [ "$service" != "users_service" ]; then
-              cd "$service"
-              mvn test
-              cd ..
-            fi
+            cd "$service"
+            mvn test
+            cd ..
           done
 
       # Upload test results
