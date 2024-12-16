@@ -57,20 +57,6 @@ public class Patient {
         this.visiblePour = visiblePour;
     }
 
-    // Constructeur sans l'ID, utile pour les nouvelles entités
-    public Patient(String nom, String prenom, LocalDate dateNaissance, String lieuDeNaissance, String sexe, String adresse, String email, String telephone, String typePieceIdentite, String numPieceIdentite, String visiblePour) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-        this.lieuDeNaissance = lieuDeNaissance;
-        this.sexe = sexe;
-        this.adresse = adresse;
-        this.email = email;
-        this.telephone = telephone;
-        this.typePieceIdentite = typePieceIdentite;
-        this.numPieceIdentite = numPieceIdentite;
-        this.visiblePour = visiblePour;
-    }
 
     // Getters et Setters
     public Long getId() {
