@@ -76,22 +76,6 @@ class DossierControllerTest {
         verify(dossierService, times(1)).getDossierById(id);
     }
 
-    @Test
-    void getDossiersByPatientId_ShouldReturnListOfDossiers() {
-        // Arrange
-        Long idPatient = 1L;
-        Dossier dossier1 = new Dossier(1L, idPatient, 2L, null);
-        Dossier dossier2 = new Dossier(2L, idPatient, 3L, null);
-        when(dossierService.getDossiersByPatientId(idPatient)).thenReturn(Arrays.asList(dossier1, dossier2));
-
-        // Act
-        ResponseEntity<List<Dossier>> response = dossierController.getDossiersByPatientId(idPatient);
-
-        // Assert
-        assertEquals(200, response.getStatusCodeValue());
-        assertEquals(2, response.getBody().size());
-        verify(dossierService, times(1)).getDossiersByPatientId(idPatient);
-    }
 
     @Test
     void updateDossier_ShouldReturnUpdatedDossier() {

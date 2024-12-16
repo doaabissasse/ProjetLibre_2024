@@ -1,7 +1,9 @@
 package com.example.labo_service.service;
 
+import com.example.labo_service.Client.AnalyseFeignClient;
 import com.example.labo_service.Client.ContactClient;
 import com.example.labo_service.Client.UserClient;
+import com.example.labo_service.Entite.Analyse;
 import com.example.labo_service.Entite.FullLaboratoireResponse;
 import com.example.labo_service.Entite.FullLaboratoirewithUSER;
 import com.example.labo_service.Entite.Laboratoire;
@@ -19,6 +21,8 @@ public class LaboratoireService {
     private final LaboratoireRepository laboratoireRepository;
     private final ContactClient client;
     private final UserClient userClient;
+    private final AnalyseFeignClient analyseFeignClient;
+
 
     //methode d'ajout un labo
     public Laboratoire save(Laboratoire laboratoire) {
@@ -104,7 +108,9 @@ public class LaboratoireService {
         return laboratoireRepository.findByNomContainingIgnoreCase(nom);
     }
 
-
+    public List<Analyse> getAnalysesByLaboratoireId(Long idLabo) {
+        return analyseFeignClient.getAnalysesByLaboratoireId(idLabo);
+    }
 
 
 }

@@ -72,7 +72,7 @@ class TestAnalyseServiceTest {
         List<TestAnalyse> testAnalyses = Arrays.asList(testAnalyse);
         when(testAnalyseRepository.findByIdAnalyse(101L)).thenReturn(testAnalyses);
 
-        List<TestAnalyse> result = testAnalyseService.getTestAnalysesByIdAnalyse(101L);
+        List<TestAnalyse> result = testAnalyseService.getTestsByIdAnalyse(101L);
 
         assertNotNull(result);
         assertEquals(1, result.size());

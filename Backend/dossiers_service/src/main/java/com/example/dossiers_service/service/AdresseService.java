@@ -1,8 +1,11 @@
 package com.example.dossiers_service.service;
 
 
+import com.example.dossiers_service.Client.ContactClient;
 import com.example.dossiers_service.Entite.Adresse;
+import com.example.dossiers_service.Entite.contacte;
 import com.example.dossiers_service.repository.AdresseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +15,13 @@ import java.util.Optional;
 public class AdresseService {
 
     private final AdresseRepository adresseRepository;
+    private final ContactClient contactFeignClient;
 
-    public AdresseService(AdresseRepository adresseRepository) {
+
+    @Autowired
+    public AdresseService(AdresseRepository adresseRepository, ContactClient contactFeignClient) {
         this.adresseRepository = adresseRepository;
+        this.contactFeignClient = contactFeignClient;
     }
 
     // Créer une nouvelle adresse
@@ -41,5 +48,10 @@ public class AdresseService {
     public void deleteAdresse(Long id) {
         adresseRepository.deleteById(id);
     }
+
+    public List<contacte> getContactByAdresseId(Long idAdresse) {
+        return contactFeignClient.findAllContratbyAdresse(idAdresse);
+    }
+
 }
 

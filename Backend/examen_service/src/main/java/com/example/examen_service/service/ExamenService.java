@@ -43,4 +43,15 @@ public class ExamenService {
     public void deleteExamen(Long id) {
         examenRepository.deleteById(id);
     }
+
+    public List<Examen> getExamensByIdDossier(Long idDossier) {
+        return examenRepository.findByIdDossier(idDossier);
+    }
+
+    public List<Examen> getExamensByIdEpreuve(Long idEpreuve) {
+        return examenRepository.findByIdEpreuve(idEpreuve);
+    }
+    public List<Examen> getExamensByIdTestAnalyse(Long idTestAnalyse) {
+        return examenRepository.findByIdTestAnalyse(idTestAnalyse);
+    }
 }

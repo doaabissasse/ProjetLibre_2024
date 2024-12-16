@@ -1,5 +1,7 @@
 package com.example.users_service.services;
 
+import com.example.users_service.Client.DossierFeignClient;
+import com.example.users_service.entities.DossierDTO;
 import com.example.users_service.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,6 +15,10 @@ public class UtilisateurService {
 
     @Autowired
     private com.example.users_service.repositories.UserRepository utilisateurRepository;
+
+    @Autowired
+    private DossierFeignClient dossierFeignClient;
+
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -37,6 +43,10 @@ public class UtilisateurService {
 
     public List<User> getAllUtilisateursByLabo(long fkIdLaboratoire) {
         return utilisateurRepository.findAllUtilisateursByFkIdLaboratoire(fkIdLaboratoire);
+    }
+
+    public List<DossierDTO> getDossiersByIdUtilisateur(Long idUtilisateur) {
+        return dossierFeignClient.getDossiersByIdUtilisateur(idUtilisateur);
     }
 
 

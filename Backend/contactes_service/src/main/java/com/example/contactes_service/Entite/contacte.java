@@ -18,6 +18,7 @@ public class contacte {
     private long id;
 
     private long idLaboratoire;
+    private long idAdresse;
     private String tel;
     private String fax;
     private String email;

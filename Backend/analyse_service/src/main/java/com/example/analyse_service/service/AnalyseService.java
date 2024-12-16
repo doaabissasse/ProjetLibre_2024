@@ -1,7 +1,11 @@
 package com.example.analyse_service.service;
 
 
+import com.example.analyse_service.Client.EpreuveFeignClient;
+import com.example.analyse_service.Client.TestAnalyseFeignClient;
 import com.example.analyse_service.entity.Analyse;
+import com.example.analyse_service.entity.TestAnalyse;
+import com.example.analyse_service.entity.epreuve;
 import com.example.analyse_service.repository.AnalyseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +18,15 @@ public class AnalyseService {
 
     @Autowired
     private AnalyseRepository analyseRepository;
+    private final EpreuveFeignClient epreuveFeignClient;
+    private final TestAnalyseFeignClient testAnalyseFeignClient;
+
+
+    public AnalyseService(EpreuveFeignClient epreuveFeignClient, TestAnalyseFeignClient testAnalyseFeignClient) {
+        this.epreuveFeignClient = epreuveFeignClient;
+        this.testAnalyseFeignClient = testAnalyseFeignClient;
+
+    }
 
     public List<Analyse> getAllAnalyses() {
         return analyseRepository.findAll();
@@ -44,5 +57,17 @@ public class AnalyseService {
 
     public void deleteAnalyse(Long id) {
         analyseRepository.deleteById(id);
+    }
+
+    public List<Analyse> getAnalysesByLaboratoireId(Long fkIdLaboratoire) {
+        return analyseRepository.findByFkIdLaboratoire(fkIdLaboratoire);
+    }
+
+    public List<epreuve> getEpreuvesByAnalyseId(Long idAnalyse) {
+        return epreuveFeignClient.getEpreuvesByAnalyseId(idAnalyse);
+    }
+
+    public List<TestAnalyse> getTestsByAnalyseId(Long idAnalyse) {
+        return testAnalyseFeignClient.getTestsByAnalyseId(idAnalyse);
     }
 }

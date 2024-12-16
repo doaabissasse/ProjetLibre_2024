@@ -1,5 +1,6 @@
 package com.example.test_analyse_service.controller;
 
+import com.example.test_analyse_service.entity.ExamenDTO;
 import com.example.test_analyse_service.entity.TestAnalyse;
 import com.example.test_analyse_service.service.TestAnalyseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,9 @@ public class TestAnalyseController {
         return ResponseEntity.ok(testAnalyses);
     }
 
-    // Endpoint pour récupérer les TestAnalyse par idAnalyse
-    @GetMapping("/by-id-analyse/{idAnalyse}")
-    public ResponseEntity<List<TestAnalyse>> getTestAnalysesByIdAnalyse(@PathVariable Long idAnalyse) {
-        List<TestAnalyse> testAnalyses = testAnalyseService.getTestAnalysesByIdAnalyse(idAnalyse);
-        return ResponseEntity.ok(testAnalyses);
+    @GetMapping("/by-analyse/{idAnalyse}")
+    public List<TestAnalyse> getTestsByAnalyseId(@PathVariable Long idAnalyse) {
+        return testAnalyseService.getTestsByIdAnalyse(idAnalyse);
     }
 
     // Endpoint pour mettre à jour un TestAnalyse
@@ -64,6 +63,11 @@ public class TestAnalyseController {
     public ResponseEntity<Void> deleteTestAnalyse(@PathVariable Long id) {
         testAnalyseService.deleteTestAnalyse(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/test-analyse/{idTestAnalyse}/examens")
+    public List<ExamenDTO> getExamensByTestAnalyse(@PathVariable Long idTestAnalyse) {
+        return testAnalyseService.getExamensByTestAnalyse(idTestAnalyse);
     }
 }
 

@@ -1,6 +1,8 @@
 package com.example.epreuve_service.service;
 
 
+import com.example.epreuve_service.Client.ExamenClient;
+import com.example.epreuve_service.entity.ExamenDTO;
 import com.example.epreuve_service.entity.epreuve;
 import com.example.epreuve_service.repository.EpreuveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,14 @@ import java.util.Optional;
 @Service
 public class EpreuveService {
 
-    @Autowired
-    private EpreuveRepository epreuveRepository;
+    private final EpreuveRepository epreuveRepository;
+    private final ExamenClient examenClient;
+
+    public EpreuveService(EpreuveRepository epreuveRepository, ExamenClient examenClient) {
+        this.epreuveRepository = epreuveRepository;
+        this.examenClient = examenClient;
+    }
+
 
     public List<epreuve> getAllEpreuves() {
         return epreuveRepository.findAll();
@@ -37,5 +45,13 @@ public class EpreuveService {
 
     public void deleteEpreuve(Long id) {
         epreuveRepository.deleteById(id);
+    }
+
+    public List<epreuve> getEpreuvesByIdAnalyse(Long idAnalyse) {
+        return epreuveRepository.findByIdAnalyse(idAnalyse);
+    }
+
+    public List<ExamenDTO> getExamensByEpreuveId(Long idEpreuve) {
+        return examenClient.getExamensByEpreuveId(idEpreuve);
     }
 }

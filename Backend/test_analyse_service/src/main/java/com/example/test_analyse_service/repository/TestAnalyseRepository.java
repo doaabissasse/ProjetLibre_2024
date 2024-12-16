@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TestAnalyseRepository extends JpaRepository<TestAnalyse, Long> {
-    List<TestAnalyse> findByIdAnalyse(Long idAnalyse); // Par exemple, pour rechercher tous les TestAnalyse par idAnalyse.
+    List<TestAnalyse> findByIdAnalyse(Long idAnalyse);
 }

@@ -1,5 +1,6 @@
 package com.example.labo_service.controlleur;
 
+import com.example.labo_service.Entite.Analyse;
 import com.example.labo_service.Entite.FullLaboratoireResponse;
 import com.example.labo_service.Entite.FullLaboratoirewithUSER;
 import com.example.labo_service.Entite.Laboratoire;
@@ -52,6 +53,11 @@ public class  LaboratoireController {
     @GetMapping("/users/{labo_id}")
     public FullLaboratoirewithUSER listLaboratoireUsers(@PathVariable("labo_id") long idLaboratoire) {
         return laboratoireService.findLabowithUsers(idLaboratoire);
+    }
+
+    @GetMapping("/{idLabo}/analyses")
+    public List<Analyse> getAnalysesByLaboratoireId(@PathVariable Long idLabo) {
+        return laboratoireService.getAnalysesByLaboratoireId(idLabo);
     }
 
     //chercher par id du labo

@@ -3,6 +3,7 @@ package com.example.dossiers_service;
 import com.example.dossiers_service.Entite.Adresse;
 import com.example.dossiers_service.service.AdresseService;
 import com.example.dossiers_service.repository.AdresseRepository;
+import com.example.dossiers_service.Client.ContactClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,11 +19,13 @@ public class AdresseServiceTest {
 
     private AdresseService adresseService;
     private AdresseRepository adresseRepository;
+    private ContactClient contactClient;
 
     @BeforeEach
     void setUp() {
         adresseRepository = Mockito.mock(AdresseRepository.class);
-        adresseService = new AdresseService(adresseRepository);
+        contactClient = Mockito.mock(ContactClient.class);
+        adresseService = new AdresseService(adresseRepository, contactClient);
     }
 
     @Test
@@ -85,4 +88,6 @@ public class AdresseServiceTest {
         adresseService.deleteAdresse(1L);
         verify(adresseRepository, times(1)).deleteById(1L);
     }
+
+
 }

@@ -40,6 +40,15 @@ public class contacteController {
         return contacteService.findAlllbyaboratoire(laboID);
     }
 
+    //afficher tous un contacte avec ses contactes
+    @GetMapping("/adresse/{adresse_id}")
+    public List<contacte> listcontactesAdresse(
+            @PathVariable("adresse_id") long adresseID
+    )
+    {
+        return contacteService.findAlllbyAdresse(adresseID);
+    }
+
     //modifier un contacte avec ce id
     @PutMapping("/{id}")
     public contacte updatecontacte(@PathVariable long id, @RequestBody contacte updatedcontacte) {

@@ -1,5 +1,7 @@
 package com.example.test_analyse_service.service;
 
+import com.example.test_analyse_service.Client.ExamenFeignClient;
+import com.example.test_analyse_service.entity.ExamenDTO;
 import com.example.test_analyse_service.entity.TestAnalyse;
 import com.example.test_analyse_service.repository.TestAnalyseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,13 @@ import java.util.Optional;
 public class TestAnalyseService {
 
     private final TestAnalyseRepository testAnalyseRepository;
+    private final ExamenFeignClient examenFeignClient;
+
 
     @Autowired
-    public TestAnalyseService(TestAnalyseRepository testAnalyseRepository) {
+    public TestAnalyseService(TestAnalyseRepository testAnalyseRepository, ExamenFeignClient examenFeignClient) {
         this.testAnalyseRepository = testAnalyseRepository;
+        this.examenFeignClient = examenFeignClient;
     }
 
     // Méthode pour sauvegarder un TestAnalyse
@@ -33,8 +38,7 @@ public class TestAnalyseService {
         return testAnalyseRepository.findAll();
     }
 
-    // Méthode pour récupérer les TestAnalyse par idAnalyse
-    public List<TestAnalyse> getTestAnalysesByIdAnalyse(Long idAnalyse) {
+    public List<TestAnalyse> getTestsByIdAnalyse(Long idAnalyse) {
         return testAnalyseRepository.findByIdAnalyse(idAnalyse);
     }
 
@@ -58,5 +62,9 @@ public class TestAnalyseService {
     // Méthode pour supprimer un TestAnalyse
     public void deleteTestAnalyse(Long id) {
         testAnalyseRepository.deleteById(id);
+    }
+
+    public List<ExamenDTO> getExamensByTestAnalyse(Long idTestAnalyse) {
+        return examenFeignClient.getExamensByIdTestAnalyse(idTestAnalyse);
     }
 }

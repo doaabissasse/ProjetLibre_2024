@@ -2,6 +2,8 @@ package com.example.analyse_service.controller;
 
 
 import com.example.analyse_service.entity.Analyse;
+import com.example.analyse_service.entity.TestAnalyse;
+import com.example.analyse_service.entity.epreuve;
 import com.example.analyse_service.service.AnalyseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +45,19 @@ public class AnalyseController {
     public ResponseEntity<Void> deleteAnalyse(@PathVariable Long id) {
         analyseService.deleteAnalyse(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/by-laboratoire/{idLabo}")
+    public List<Analyse> getAnalysesByLaboratoireId(@PathVariable Long idLabo) {
+        return analyseService.getAnalysesByLaboratoireId(idLabo);
+    }
+
+    @GetMapping("/{idAnalyse}/epreuves")
+    public List<epreuve> getEpreuvesByAnalyseId(@PathVariable Long idAnalyse) {
+        return analyseService.getEpreuvesByAnalyseId(idAnalyse);
+    }
+    @GetMapping("/{idAnalyse}/tests")
+    public List<TestAnalyse> getTestsByAnalyseId(@PathVariable Long idAnalyse) {
+        return analyseService.getTestsByAnalyseId(idAnalyse);
     }
 }

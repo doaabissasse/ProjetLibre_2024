@@ -12,4 +12,6 @@ public interface DossierRepository extends JpaRepository<Dossier, Long> {
     Optional<Dossier> findById(Long id);
 
     List<Dossier> findByIdPatient(Long idPatient);
+    List<Dossier> findByIdUtilisateur(Long idUtilisateur);
+
 }

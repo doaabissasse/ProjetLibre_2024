@@ -1,6 +1,7 @@
 package com.example.dossiersService.controller;
 
 import com.example.dossiersService.entity.Dossier;
+import com.example.dossiersService.entity.ExamenDTO;
 import com.example.dossiersService.service.DossierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,11 +33,6 @@ public class DossierController {
         return dossier.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/patient/{idPatient}")
-    public ResponseEntity<List<Dossier>> getDossiersByPatientId(@PathVariable Long idPatient) {
-        List<Dossier> dossiers = dossierService.getDossiersByPatientId(idPatient);
-        return ResponseEntity.ok(dossiers);
-    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Dossier> updateDossier(@PathVariable Long id, @RequestBody Dossier updatedDossier) {
@@ -48,5 +44,21 @@ public class DossierController {
     public ResponseEntity<Void> deleteDossier(@PathVariable Long id) {
         dossierService.deleteDossier(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/patient/{idPatient}")
+    public List<Dossier> getDossiersByPatientId(@PathVariable Long idPatient) {
+        return dossierService.getDossiersByPatientId(idPatient);
+    }
+
+    @GetMapping("/by-utilisateur/{idUtilisateur}")
+    public List<Dossier> getDossiersByIdUtilisateur(@PathVariable Long idUtilisateur) {
+        return dossierService.getDossiersByIdUtilisateur(idUtilisateur);
+    }
+
+    @GetMapping("/{id}/examens")
+    public ResponseEntity<List<ExamenDTO>> getExamensByDossierId(@PathVariable Long id) {
+        List<ExamenDTO> examens = dossierService.getExamensByDossierId(id);
+        return ResponseEntity.ok(examens);
     }
 }

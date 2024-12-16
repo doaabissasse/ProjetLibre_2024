@@ -1,6 +1,7 @@
 package com.example.epreuve_service.controller;
 
 
+import com.example.epreuve_service.entity.ExamenDTO;
 import com.example.epreuve_service.entity.epreuve;
 import com.example.epreuve_service.service.EpreuveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,17 @@ public class EpreuveController {
     public ResponseEntity<Void> deleteEpreuve(@PathVariable Long id) {
         epreuveService.deleteEpreuve(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/by-analyse/{idAnalyse}")
+    public List<epreuve> getEpreuvesByIdAnalyse(@PathVariable Long idAnalyse) {
+        return epreuveService.getEpreuvesByIdAnalyse(idAnalyse);
+    }
+
+    @GetMapping("/{id}/examens")
+    public ResponseEntity<List<ExamenDTO>> getExamensByEpreuveId(@PathVariable Long id) {
+        List<ExamenDTO> examens = epreuveService.getExamensByEpreuveId(id);
+        return ResponseEntity.ok(examens);
     }
 }
 

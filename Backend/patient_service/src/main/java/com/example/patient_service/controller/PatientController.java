@@ -1,5 +1,6 @@
 package com.example.patient_service.controller;
 
+import com.example.patient_service.entity.DossierDto;
 import com.example.patient_service.entity.Patient;
 import com.example.patient_service.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,10 @@ public class PatientController {
     public ResponseEntity<List<Patient>> getAllPatients() {
         List<Patient> patients = patientService.getAllPatients();
         return ResponseEntity.ok(patients);
+    }
+
+    @GetMapping("/{idPatient}/dossiers")
+    public List<DossierDto> getDossiersByPatient(@PathVariable Long idPatient) {
+        return patientService.getDossiersByPatientId(idPatient);
     }
 }

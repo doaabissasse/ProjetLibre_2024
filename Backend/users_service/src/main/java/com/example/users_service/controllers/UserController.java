@@ -1,5 +1,6 @@
 package com.example.users_service.controllers;
 
+import com.example.users_service.entities.DossierDTO;
 import com.example.users_service.entities.User;
 import com.example.users_service.services.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,10 @@ public class UserController {
         @GetMapping("/laboratoire/{labo-id}")
         public List<User> getAllUtilisateurs(@PathVariable("labo-id") long fkIdLaboratoire) {
             return utilisateurService.getAllUtilisateursByLabo(fkIdLaboratoire);
+        }
+
+        @GetMapping("/{idUtilisateur}/dossiers")
+        public List<DossierDTO> getDossiersByIdUtilisateur(@PathVariable Long idUtilisateur) {
+            return utilisateurService.getDossiersByIdUtilisateur(idUtilisateur);
         }
     }

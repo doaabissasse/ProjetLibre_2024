@@ -23,7 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dossier_service (1)" />
       </profile>
-      <profile name="Annotation profile for dossiersService" enabled="true">
+      <profile name="Annotation profile for test_analyse_service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

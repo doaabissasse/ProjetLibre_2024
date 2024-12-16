@@ -54,4 +54,19 @@ public class ExamenController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/by-test-analyse/{idTestAnalyse}")
+    public List<Examen> getExamensByIdTestAnalyse(@PathVariable Long idTestAnalyse) {
+        return examenService.getExamensByIdTestAnalyse(idTestAnalyse);
+    }
+
+    @GetMapping("/by-dossier/{idDossier}")
+    public List<Examen> getExamensByIdDossier(@PathVariable Long idDossier) {
+        return examenService.getExamensByIdDossier(idDossier);
+    }
+
+    @GetMapping("/by-epreuve/{idEpreuve}")
+    public List<Examen> getExamensByIdEpreuve(@PathVariable Long idEpreuve) {
+        return examenService.getExamensByIdEpreuve(idEpreuve);
+    }
+
 }

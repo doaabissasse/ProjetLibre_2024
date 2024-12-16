@@ -32,6 +32,11 @@ public class contacteService {
         return contacteRepository.findAllByIdLaboratoire(laboId);
     }
 
+    //methode d'afficher  contacte par id d'un labo
+    public List<contacte> findAlllbyAdresse(long adresseId) {
+        return contacteRepository.findAllByIdAdresse(adresseId);
+    }
+
     //methode de modifier un contacte exister
     public contacte updatecontacte(long id, contacte updatedcontacte) {
         return contacteRepository.findById(id)

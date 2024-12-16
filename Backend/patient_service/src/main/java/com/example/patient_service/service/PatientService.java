@@ -1,5 +1,7 @@
 package com.example.patient_service.service;
 
+import com.example.patient_service.Client.DossierFeignClient;
+import com.example.patient_service.entity.DossierDto;
 import com.example.patient_service.entity.Patient;
 import com.example.patient_service.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,13 @@ import java.util.List;
 public class PatientService {
 
     private final PatientRepository patientRepository;
+    private final DossierFeignClient dossierFeignClient;
+
 
     @Autowired
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, DossierFeignClient dossierFeignClient) {
         this.patientRepository = patientRepository;
+        this.dossierFeignClient = dossierFeignClient;
     }
 
     public Patient createPatient(Patient patient) {
@@ -50,4 +55,9 @@ public class PatientService {
     public List<Patient> getAllPatients() {
         return patientRepository.findAll();
     }
+
+    public List<DossierDto> getDossiersByPatientId(Long idPatient) {
+        return dossierFeignClient.getDossiersByPatientId(idPatient);
+    }
+
 }
