@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Patient {
 
@@ -36,10 +35,6 @@ public class Patient {
     private String numPieceIdentite; // Numéro associé au type de pièce d'identité.
 
     private String visiblePour; // Indique qui peut voir ce patient, par exemple "Admin", "Médecin", etc.
-
-    public Patient() {
-        super();
-    }
 
     // Constructeur avec tous les champs
     public Patient(Long id, String nom, String prenom, LocalDate dateNaissance, String lieuDeNaissance, String sexe, String adresse, String email, String telephone, String typePieceIdentite, String numPieceIdentite, String visiblePour) {
