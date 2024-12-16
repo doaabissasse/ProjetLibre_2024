@@ -17,14 +17,15 @@ import java.util.Optional;
 public class AnalyseService {
 
     @Autowired
-    private AnalyseRepository analyseRepository;
+    private final AnalyseRepository analyseRepository;
     private final EpreuveFeignClient epreuveFeignClient;
     private final TestAnalyseFeignClient testAnalyseFeignClient;
 
 
-    public AnalyseService(EpreuveFeignClient epreuveFeignClient, TestAnalyseFeignClient testAnalyseFeignClient) {
+    public AnalyseService(EpreuveFeignClient epreuveFeignClient, TestAnalyseFeignClient testAnalyseFeignClient,AnalyseRepository analyseRepository) {
         this.epreuveFeignClient = epreuveFeignClient;
         this.testAnalyseFeignClient = testAnalyseFeignClient;
+        this.analyseRepository = analyseRepository;
 
     }
 
