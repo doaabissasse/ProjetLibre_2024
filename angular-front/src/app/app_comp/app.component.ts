@@ -4,6 +4,7 @@ import { LaboratoireListComponent } from '../Laboratoire/laboratoire-list/labora
 import { AjouterLaboratoireComponent } from "../Laboratoire/ajouter-laboratoire/ajouter-laboratoire.component";
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   standalone: true,

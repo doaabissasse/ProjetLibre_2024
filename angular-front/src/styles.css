@@ -22,3 +22,5 @@
     max-height: 80vh; /* Limitez la hauteur à 80% de la hauteur de la fenêtre */
     overflow-y: auto; /* Active le défilement vertical */
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

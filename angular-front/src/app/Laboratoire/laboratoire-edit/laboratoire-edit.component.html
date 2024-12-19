@@ -1,0 +1,47 @@
+<div class="form-container">
+    <h2>Modifier le laboratoire</h2>
+    <form (ngSubmit)="onSave()" >
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input
+          type="text"
+          id="nom"
+          class="form-control"
+          name="nom"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="nrc">NRC:</label>
+        <input
+          type="text"
+          id="nrc"
+          class="form-control"
+          name="nrc"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="logo">Logo:</label>
+        <input
+          type="text"
+          id="logo"
+          class="form-control"
+          name="logo"
+        />
+      </div>
+      <div class="form-group">
+        <label for="active">Statut:</label>
+        <input
+          type="checkbox"
+          id="active"
+          name="active"
+        />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+      </div>
+    </form>
+  </div>
+  

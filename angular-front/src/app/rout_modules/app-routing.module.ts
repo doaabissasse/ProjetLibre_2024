@@ -7,10 +7,10 @@ import { AccueilComponent } from '../accueil/accueil.component';
 
 
 const routes: Routes = [
-  { path: 'accueil', component: AccueilComponent },
+    { path: 'accueil', component: AccueilComponent },
     { path: 'laboratoires', component: LaboratoireListComponent },
     { path: 'ajouter-laboratoire', component: AjouterLaboratoireComponent },
-
+    { path: '**', redirectTo: '', pathMatch: 'full' },
     { path: '', redirectTo: 'accueil', pathMatch: 'full' },  // Redirection par défaut
     { path: '**', redirectTo: 'accueil', pathMatch: 'full' }  // Wildcard route pour les chemins non trouvés
   ];

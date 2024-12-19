@@ -24,4 +24,19 @@ export class ServiceLaboratoireService {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.delete<void>(url);
   }
+
+  rechercherLaboratoires(nom: string): Observable<Laboratoire[]> {
+    const url = `${this.apiUrl}/search?nom=${nom}`;
+    return this.httpClient.get<Laboratoire[]>(url);
+  }
+
+  updateLaboratoire(laboratoire: Laboratoire): Observable<Laboratoire> {
+    return this.httpClient.put<Laboratoire>(`${this.apiUrl}/${laboratoire.id}`, laboratoire);
+  }
+  
+  getLaboratoireById(id: number): Observable<Laboratoire> {
+    return this.httpClient.get<Laboratoire>(`${this.apiUrl}/${id}`);
+  }
+  
+  
 }

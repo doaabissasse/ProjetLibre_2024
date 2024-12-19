@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { ServiceLaboratoireService } from '../service_labo/service-laboratoire.service';
 import { error } from 'console';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-laboratoire',
   standalone: true,
-  imports: [FormsModule , CommonModule],
+  imports: [FormsModule , CommonModule,HttpClientModule,RouterModule],
   templateUrl: './ajouter-laboratoire.component.html',
   styleUrls: ['./ajouter-laboratoire.component.css']
 })

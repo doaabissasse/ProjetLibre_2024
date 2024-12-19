@@ -2,37 +2,48 @@
   padding: 20px;
 }
 
-.laboratoire-list h2 {
-  color: #2a4963; /* Couleur de votre thème */
-  margin-bottom: 20px; /* Espacement en bas du titre */
+.laboratoire-list h3 {
+  color: #2a4963; /* Couleur principale */
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-bottom: 15px; /* Espacement en dessous de la barre de recherche */
+}
+
+.search-bar .form-control {
+  max-width: 400px; /* Limite la largeur de l'input */
+  display: inline-block;
+  margin-right: 10px; /* Espacement entre l'input et d'autres éléments */
 }
 
 .logo {
-  width: 50px; /* Largeur fixe pour les logos */
-  height: auto; /* Hauteur auto pour maintenir le ratio d'aspect */
-  border-radius: 5px; /* Arrondir les coins du logo si besoin */
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
 }
 
 .table {
-  font-size: 0.9rem; /* Réduction de la taille de texte du tableau */
+  font-size: 0.9rem;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(234, 236, 239, 0.5); /* Couleur de fond alternée */
+  background-color: rgba(234, 236, 239, 0.5);
 }
 
 .table-hover tbody tr:hover {
-  background-color: rgba(220, 220, 220, 0.5); /* Couleur de survol des lignes */
+  background-color: rgba(220, 220, 220, 0.5);
 }
 
-.table th, .table td {
-  vertical-align: middle; /* Aligner verticalement le contenu */
+.table th,
+.table td {
+  vertical-align: middle;
 }
 
 .btn {
-  margin-right: 5px; /* Espacement entre les boutons */
+  margin-right: 5px;
 }
 
 .btn i {
-  margin-right: 5px; /* Espacement entre l'icône et le texte */
+  margin-right: 5px;
 }

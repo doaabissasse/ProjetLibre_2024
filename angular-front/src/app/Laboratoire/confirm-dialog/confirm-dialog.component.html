@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Confirmation</h1>
+<div mat-dialog-content>
+  <p>Voulez-vous vraiment supprimer le laboratoire "{{ data.nom }}" ?</p>
+</div>
+<div mat-dialog-actions>
+  <!--button mat-button [mat-dialog-close]="false">Annuler</button-->
+  <button mat-button mat-dialog-close (click)="false">Annuler</button>
+  <button mat-button color="warn" mat-dialog-close (click)="true">Supprimer</button>
+</div>

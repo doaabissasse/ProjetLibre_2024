@@ -4,10 +4,12 @@ eureka:
 server:
   port: 8222
 spring:
+  cache:
+    type: caffeine
   application:
     name: gateway
   config:
-    import: optional:configserver:http://eureka-server:8888
+    import: optional:configserver:http://localhost:8888
   cloud:
     gateway:
       discovery:
@@ -26,5 +28,3 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/utilisateurs/**
-
-
