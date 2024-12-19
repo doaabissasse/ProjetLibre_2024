@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+
+# Angular build and cache
+.angular/
+dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs and temp files
+*.log
+.DS_Store

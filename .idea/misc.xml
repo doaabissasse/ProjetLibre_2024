@@ -12,7 +12,6 @@
         <option value="$PROJECT_DIR$/Backend/dossiers_service/pom.xml" />
         <option value="$PROJECT_DIR$/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/config_server/pom.xml" />
-        <option value="$PROJECT_DIR$/gateway/pom.xml" />
       </list>
     </option>
   </component>

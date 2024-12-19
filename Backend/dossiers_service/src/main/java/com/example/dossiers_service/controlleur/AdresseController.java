@@ -2,6 +2,7 @@ package com.example.dossiers_service.controlleur;
 
 
 import com.example.dossiers_service.Entite.Adresse;
+import com.example.dossiers_service.Entite.contacte;
 import com.example.dossiers_service.service.AdresseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +54,12 @@ public class AdresseController {
         adresseService.deleteAdresse(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{idAdresse}/contacts")
+    public List<contacte> getContactByIdAdresse(@PathVariable Long idAdresse) {
+        return adresseService.getContactByAdresseId(idAdresse);
+    }
+
+
 }
 

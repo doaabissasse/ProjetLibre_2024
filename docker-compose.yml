@@ -77,7 +77,7 @@ services:
 
   spring-app-utilisateurs:
       build:
-        context: ./Backend/user_service
+        context: ./Backend/users_service
         dockerfile: Dockerfile
       container_name: spring-app-utilisateurs
       environment:
@@ -89,6 +89,14 @@ services:
       depends_on:
         - db
       restart: on-failure
+
+
+  mail-drev:
+    container_name: mail-dev-bsn
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
 
   angular-app:
     build:

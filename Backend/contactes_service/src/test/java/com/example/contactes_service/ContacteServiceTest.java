@@ -29,7 +29,7 @@ class ContacteServiceTest {
     }
 
     @Test
-    void save_ShouldReturnSavedContacte() {
+    void save_ReturnSavedContact() {
         // Arrange
         contacte mockContacte = contacte.builder()
                 .idLaboratoire(1L)
@@ -53,7 +53,7 @@ class ContacteServiceTest {
     }
 
     @Test
-    void findAll_ShouldReturnListOfContactes() {
+    void findAllTest() {
         // Arrange
         contacte contacte1 = contacte.builder()
                 .id(1L)
@@ -92,7 +92,7 @@ class ContacteServiceTest {
     }
 
     @Test
-    void findAlllbyaboratoire_ShouldReturnListOfContactesForGivenLabId() {
+    void findAlllbyaboratoire_ListOfContactesForGivenLabId() {
         // Arrange
         long labId = 1L;
         contacte contacte1 = contacte.builder()

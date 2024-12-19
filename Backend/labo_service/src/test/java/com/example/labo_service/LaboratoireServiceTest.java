@@ -110,6 +110,7 @@ class LaboratoireServiceTest {
         verify(contactClient, times(1)).findAllContratbyLabo(laboId);
     }
 
+
     @Test
     void testFindLabowithUsers() {
         // Arrange
@@ -124,8 +125,8 @@ class LaboratoireServiceTest {
                 .build();
 
         List<user> users = Arrays.asList(
-                new user("user1@example.com", "User One", "Engineer", "123456789", "signature1", "Admin"),
-                new user("user2@example.com", "User Two", "Technician", "987654321", "signature2", "User")
+                new user("user1@example.com", "User One", "Engineer", "123456789", "signature1"),
+                new user("user2@example.com", "User Two", "Technician", "987654321", "signature2")
         );
 
         when(laboratoireRepository.findById(laboId)).thenReturn(Optional.of(labo));
