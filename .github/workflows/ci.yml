@@ -77,6 +77,7 @@ jobs:
               mvn sonar:sonar \
                 -Dsonar.host.url=http://localhost:9000 \
                 -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
+                -Dsonar.maven.plugins=org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121
               cd -
             fi
           done
