@@ -71,7 +71,7 @@ jobs:
               wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
               unzip apache-jmeter-5.4.3.zip
               if [ -f "apache-jmeter-5.4.3/bin/jmeter.sh" ]; then
-                bash apache-jmeter-5.4.3/bin/jmeter.sh -g ./jmeter-test-plan.jmx -l results.jtl
+                bash apache-jmeter-5.4.3/bin/jmeter.sh -t ./jmeter-test-plan.jmx -l results.jtl
               fi              
               cd - || exit
             fi
@@ -81,4 +81,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: jmeter-results
-          path: Backend/**/apache-jmeter-5.4.3/bin/results*.jtl
+          path: Backend/**/results*.jtl
