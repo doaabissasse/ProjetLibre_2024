@@ -9,24 +9,30 @@ on:
       - 'config_server/**'
       - 'discovery/**'
       - 'gateway/**'
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      sonarqube:
+        image: sonarqube:latest
+        ports:
+          - 9000:9000
+        options: --network=sonar_network
+        env:
+          SONARQUBE_JDBC_URL: jdbc:h2:./sonar;DB_CLOSE_DELAY=-1;DB_FAIL_WHEN_NO_DB=FALSE
+
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up JDK (choose your version, e.g., 11, 17, etc.)
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # Cache Maven dependencies
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
@@ -35,7 +41,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Build and test each module
       - name: Build and test Config Service
         working-directory: ./config_server
         run: mvn clean install -DskipTests=false
@@ -60,14 +65,12 @@ jobs:
             fi
           done
 
-      # Upload test results
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: '**/target/surefire-reports/*.xml'
 
-      # Run SonarQube Scanner for each service
       - name: Run SonarQube Scanner
         run: |
           for service in ./Backend/*/; do
@@ -75,23 +78,8 @@ jobs:
               echo "Running SonarQube for $service"
               cd "$service"
               mvn sonar:sonar \
-                -Dsonar.host.url=http://172.24.0.1:9000 \
+                -Dsonar.host.url=http://sonarqube:9000 \
                 -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
               cd -
             fi
           done
-
-      - name: Debug SonarQube Scanner
-        run: |
-          set -x
-          mvn sonar:sonar -Dsonar.host.url=http://172.24.0.1:9000 -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
-
-      # Upload SonarQube analysis results
-      - name: Upload SonarQube Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: sonar-report
-          path: '**/target/site/sonar-report.html'
-
-
-
