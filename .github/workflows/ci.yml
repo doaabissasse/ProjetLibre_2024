@@ -71,7 +71,7 @@ jobs:
               wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
               unzip apache-jmeter-5.4.3.zip
               if [ -f "apache-jmeter-5.4.3/bin/jmeter.sh" ]; then
-                bash apache-jmeter-5.4.3/bin/jmeter.sh -n -t ./jmeter-test-plan.jmx -l results.jtl
+                bash apache-jmeter-5.4.3/bin/jmeter.sh -g ./jmeter-test-plan.jmx -l results.jtl
               fi              
               cd - || exit
             fi
