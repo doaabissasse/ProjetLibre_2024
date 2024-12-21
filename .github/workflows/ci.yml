@@ -15,13 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create Docker network
-        run: docker network create sonar_network || true
-
-      - name: Start SonarQube service
-        run: |
-          docker run -d --name sonarqube --network sonar_network -p 9000:9000 -e "SONARQUBE_JDBC_URL=jdbc:h2:./sonar;DB_CLOSE_DELAY=-1;DB_FAIL_WHEN_NO_DB=FALSE" sonarqube:latest
-
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -69,15 +62,3 @@ jobs:
           name: test-results
           path: '**/target/surefire-reports/*.xml'
 
-      - name: Run SonarQube Scanner
-        run: |
-          for service in ./Backend/*/; do
-            if [ -f "$service/pom.xml" ]; then
-              echo "Running SonarQube for $service"
-              cd "$service"
-              mvn sonar:sonar \
-                -Dsonar.host.url=http://localhost:9000 \
-                -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
-              cd - || exit
-            fi
-          done
