@@ -20,7 +20,7 @@ jobs:
 
       - name: Start SonarQube service
         run: |
-          docker run -d --name sonarqube --network sonar_network -p 9000:9000 -e SONARQUBE_JDBC_URL=jdbc:h2:./sonar;DB_CLOSE_DELAY=-1;DB_FAIL_WHEN_NO_DB=FALSE sonarqube:latest
+          docker run -d --name sonarqube --network sonar_network -p 9000:9000 -e "SONARQUBE_JDBC_URL=jdbc:h2:./sonar;DB_CLOSE_DELAY=-1;DB_FAIL_WHEN_NO_DB=FALSE" sonarqube:latest
 
       - name: Wait for SonarQube to be ready
         run: |
