@@ -67,11 +67,26 @@ jobs:
           name: test-results
           path: '**/target/surefire-reports/*.xml'
 
+      # Run SonarQube Scanner for each service
       - name: Run SonarQube Scanner
         run: |
-          mvn sonar:sonar \
-            -Dsonar.host.url=http://localhost:9000 \
-            -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
+          for service in ./Backend/*/; do
+            if [ -f "$service/pom.xml" ]; then
+              echo "Running SonarQube for $service"
+              cd "$service"
+              mvn sonar:sonar \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
+              cd -
+            fi
+          done
+
+      # Upload SonarQube analysis results
+      - name: Upload SonarQube Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: sonar-report
+          path: '**/target/site/sonar-report.html'
 
 
 
