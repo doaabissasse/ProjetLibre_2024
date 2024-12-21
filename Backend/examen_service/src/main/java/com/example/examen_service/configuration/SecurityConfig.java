@@ -1,4 +1,4 @@
-package com.example.dossiers_service.configuration;
+package com.example.examen_service.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // Désactive la protection CSRF
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/contactes/**", "/api/adresses/**").permitAll()  // Permits all access
+                        .requestMatchers("/api/examens/**").permitAll()  // Permits all access
                         .anyRequest().authenticated()  // Toutes les autres routes nécessitent une authentification
                 );
         return http.build();
