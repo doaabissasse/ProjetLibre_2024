@@ -75,9 +75,8 @@ jobs:
               echo "Running SonarQube for $service"
               cd "$service"
               mvn sonar:sonar \
-                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.host.url=http://172.24.0.1:9000 \
                 -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
-                -Dsonar.maven.plugins=org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121
               cd -
             fi
           done
@@ -85,7 +84,7 @@ jobs:
       - name: Debug SonarQube Scanner
         run: |
           set -x
-          mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
+          mvn sonar:sonar -Dsonar.host.url=http://172.24.0.1:9000 -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
 
       # Upload SonarQube analysis results
       - name: Upload SonarQube Report
