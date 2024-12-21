@@ -65,15 +65,14 @@ jobs:
       - name: Run JMeter Tests for each Backend Microservice
         run: |
           for service in ./Backend/*/; do
-          if [ -f "$service/jmeter-test-plan.jmx" ]; then
-            echo "Running JMeter for $service"
-            cd "$service"
-            wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
-            unzip apache-jmeter-5.4.3.zip
-            cd apache-jmeter-5.4.3/bin
-            ./jmeter -n -t ./jmeter-test-plan.jmx -l results.jtl
-            cd - || exit
-          fi
+            if [ -f "$service/jmeter-test-plan.jmx" ]; then
+              echo "Running JMeter for $service"
+              cd "$service"
+              wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
+              unzip apache-jmeter-5.4.3.zip
+              java -jar apache-jmeter-5.4.3/bin/jmeter.jar -n -t ./jmeter-test-plan.jmx -l results.jtl
+              cd - || exit
+            fi
           done
 
       - name: Upload JMeter Results
@@ -81,4 +80,3 @@ jobs:
         with:
           name: jmeter-results
           path: Backend/**/apache-jmeter-5.4.3/bin/results*.jtl
-
