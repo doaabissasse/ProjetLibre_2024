@@ -67,5 +67,11 @@ jobs:
           name: test-results
           path: '**/target/surefire-reports/*.xml'
 
+      - name: Run SonarQube Scanner
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.host.url=http://localhost:9000 \
+            -Dsonar.login=sqa_d2db41815bda6347d40fa7036f75b879da1891c3
+
 
 
