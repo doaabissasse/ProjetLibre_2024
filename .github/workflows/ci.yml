@@ -22,13 +22,6 @@ jobs:
         run: |
           docker run -d --name sonarqube --network sonar_network -p 9000:9000 -e "SONARQUBE_JDBC_URL=jdbc:h2:./sonar;DB_CLOSE_DELAY=-1;DB_FAIL_WHEN_NO_DB=FALSE" sonarqube:latest
 
-      - name: Wait for SonarQube to be ready
-        run: |
-          echo "Waiting for SonarQube to be ready..."
-          until curl -s http://localhost:9000 | grep "SonarQube is up"; do
-            sleep 5
-          done
-
       - name: Checkout code
         uses: actions/checkout@v3
 
