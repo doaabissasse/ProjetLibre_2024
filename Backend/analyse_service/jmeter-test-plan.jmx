@@ -12,7 +12,7 @@
             <boolProp name="ThreadGroup.delay_thread_on_shutdown">false</boolProp>
 
             <!-- HTTP Request Defaults -->
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
                 <stringProp name="HTTPSampler.domain">localhost</stringProp>
                 <stringProp name="HTTPSampler.port">8087</stringProp>
                 <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -27,12 +27,13 @@
                 <stringProp name="HTTPSampler.follow_redirects">true</stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Get Single Analyse by ID" enabled="true">
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Single Analyse by ID" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses/1</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Create New Analyse" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Create New Analyse" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <stringProp name="HTTPSampler.postBody">
@@ -44,7 +45,7 @@
                 </stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Update Analyse" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Update Analyse" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses/1</stringProp>
                 <stringProp name="HTTPSampler.method">PUT</stringProp>
                 <stringProp name="HTTPSampler.postBody">
@@ -56,22 +57,22 @@
                 </stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Delete Analyse" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Delete Analyse" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses/1</stringProp>
                 <stringProp name="HTTPSampler.method">DELETE</stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Get Analyses by Laboratoire ID" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Analyses by Laboratoire ID" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses/by-laboratoire/1</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Get Epreuves by Analyse ID" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Epreuves by Analyse ID" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses/1/epreuves</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
             </HTTPSamplerProxy>
 
-            <HTTPSamplerProxy guiclass="HTTPSamplerProxy" testclass="HTTPSamplerProxy" testname="Get Tests by Analyse ID" enabled="true">
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Tests by Analyse ID" enabled="true">
                 <stringProp name="HTTPSampler.path">/api/analyses/1/tests</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
             </HTTPSamplerProxy>
