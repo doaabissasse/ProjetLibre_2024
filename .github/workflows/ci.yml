@@ -24,6 +24,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Install JMeter
+        run: |
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.tgz
+          tar -xzf apache-jmeter-5.4.1.tgz
+          mv apache-jmeter-5.4.1 /opt/jmeter
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
@@ -56,29 +62,19 @@ jobs:
             fi
           done
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: '**/target/surefire-reports/*.xml'
-
-      - name: Run JMeter Tests for each Backend Microservice
+      - name: Run JMeter Performance Tests
         run: |
           for service in ./Backend/*/; do
-            if [ -f "$service/jmeter-test-plan.jmx" ]; then
-              echo "Running JMeter for $service"
-              cd "$service"
-              wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
-              unzip apache-jmeter-5.4.3.zip
-              if [ -f "apache-jmeter-5.4.3/bin/jmeter.sh" ]; then
-                bash apache-jmeter-5.4.3/bin/jmeter.sh -n -t ./jmeter-test-plan.jmx -l results.jtl
-              fi              
+            if [ -d "$service/src/test/java" ]; then
+              echo "Running JMeter tests for $service"
+              cd "$service/src/test/java"
+              /opt/jmeter/apache-jmeter-5.4.1/bin/jmeter -n -t ../resources/jmeter.properties -l jmeter-results.csv
               cd - || exit
             fi
           done
 
-      - name: Upload JMeter Results
+      - name: Upload JMeter results
         uses: actions/upload-artifact@v3
         with:
           name: jmeter-results
-          path: Backend/**/results*.jtl
+          path: '**/jmeter-results.csv'
