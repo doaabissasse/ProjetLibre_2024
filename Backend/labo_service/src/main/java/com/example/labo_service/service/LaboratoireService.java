@@ -1,18 +1,19 @@
 package com.example.labo_service.service;
 
+import com.example.labo_service.Client.AdresseClient;
 import com.example.labo_service.Client.AnalyseFeignClient;
 import com.example.labo_service.Client.ContactClient;
 import com.example.labo_service.Client.UserClient;
-import com.example.labo_service.Entite.Analyse;
-import com.example.labo_service.Entite.FullLaboratoireResponse;
-import com.example.labo_service.Entite.FullLaboratoirewithUSER;
-import com.example.labo_service.Entite.Laboratoire;
+import com.example.labo_service.Entite.*;
 import com.example.labo_service.repository.LaboratoireRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +23,7 @@ public class LaboratoireService {
     private final ContactClient client;
     private final UserClient userClient;
     private final AnalyseFeignClient analyseFeignClient;
-
+    private final AdresseClient adresseClient;
 
     //methode d'ajout un labo
     public Laboratoire save(Laboratoire laboratoire) {
@@ -53,10 +54,26 @@ public class LaboratoireService {
     //methode de supprimer  un labo exister
     public void deleteLaboratoire(long id) {
         if (laboratoireRepository.existsById(id)) {
+            // Supprimer les contacts associés au laboratoire
+            try {
+                client.deleteAllContactsByLaboratoireId(id);
+            } catch (Exception e) {
+                throw new RuntimeException("Erreur lors de la suppression des contacts pour le laboratoire avec ID " + id, e);
+            }
+            // Supprimer le laboratoire
             laboratoireRepository.deleteById(id);
         } else {
             throw new RuntimeException("Laboratoire avec ID " + id + " introuvable.");
         }
+    }
+
+    public List<contacte> findContactesByLaboratoireId(long idLaboratoire) {
+        // Vérifiez si le laboratoire existe pour éviter des erreurs.
+        if (!laboratoireRepository.existsById(idLaboratoire)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Laboratoire non trouvé");
+        }
+        // Récupérez les contacts directement.
+        return client.findAllContratbyLabo(idLaboratoire);
     }
 
     // methode afficher un labo avec ses contactes
@@ -111,6 +128,26 @@ public class LaboratoireService {
     public List<Analyse> getAnalysesByLaboratoireId(Long idLabo) {
         return analyseFeignClient.getAnalysesByLaboratoireId(idLabo);
     }
+
+
+    public List<Adresse> findAdressesByLaboratoireId(long idLaboratoire) {
+        // Vérifiez si le laboratoire existe pour éviter des erreurs
+        if (!laboratoireRepository.existsById(idLaboratoire)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Laboratoire non trouvé");
+        }
+
+        // Récupérez les contacts liés au laboratoire
+        List<contacte> contacts = client.findAllContratbyLabo(idLaboratoire);
+
+        // Récupérez les ids des adresses à partir des contacts
+        List<Long> adresseIds = contacts.stream()
+                .map(contacte::getIdAdresse)  // Extraire les IDs des adresses
+                .collect(Collectors.toList());
+
+        // Utilisez ces ids pour récupérer les adresses
+        return adresseClient.findByIds(adresseIds); // Vous allez devoir définir un FeignClient pour l'Adresse
+    }
+
 
 
 }

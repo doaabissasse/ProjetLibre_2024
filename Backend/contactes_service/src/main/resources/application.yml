@@ -20,9 +20,9 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
-
-
-#modif
+application:
+  config:
+    adresse-url: http://localhost:8093/adresses
 
 
 
