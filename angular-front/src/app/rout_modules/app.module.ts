@@ -26,8 +26,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
-import { MatMenuModule } from '@angular/material/menu';
-
 
 
 @NgModule({
@@ -63,8 +61,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSelectModule,
-    MatMenuModule ,
+    MatSelectModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Facultatif si vous utilisez des éléments personnalisés
   providers: [

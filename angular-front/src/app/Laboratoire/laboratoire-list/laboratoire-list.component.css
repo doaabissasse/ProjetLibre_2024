@@ -1,0 +1,49 @@
+.laboratoire-list {
+  padding: 20px;
+}
+
+.laboratoire-list h3 {
+  color: #2a4963; /* Couleur principale */
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-bottom: 15px; /* Espacement en dessous de la barre de recherche */
+}
+
+.search-bar .form-control {
+  max-width: 400px; /* Limite la largeur de l'input */
+  display: inline-block;
+  margin-right: 10px; /* Espacement entre l'input et d'autres éléments */
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.table {
+  font-size: 0.9rem;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(234, 236, 239, 0.5);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(220, 220, 220, 0.5);
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.btn i {
+  margin-right: 5px;
+}
