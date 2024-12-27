@@ -72,6 +72,7 @@ public class contacteService {
             contacteRepository.deleteById(id);
 
             // Supprimer l'adresse via le client adresse
+            // Supprimer l'adresse via le client adresse
             adresseClient.deleteAdresse(adresseId);
         } else {
             throw new RuntimeException("Contacte avec ID " + id + " introuvable.");
