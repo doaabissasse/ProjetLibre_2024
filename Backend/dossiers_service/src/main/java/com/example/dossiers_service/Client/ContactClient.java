@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name= "contactes-service" , url="${application.config.contacts-url}")
+@FeignClient(name= "contactes-service" , url="http://localhost:8084/contactes")
 public interface ContactClient {
     @GetMapping("/adresse/{adresse_id}")
     List<contacte> findAllContratbyAdresse(@PathVariable("adresse_id") long adresseId);

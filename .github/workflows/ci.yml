@@ -9,24 +9,27 @@ on:
       - 'config_server/**'
       - 'discovery/**'
       - 'gateway/**'
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up JDK (choose your version, e.g., 11, 17, etc.)
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # Cache Maven dependencies
+      - name: Install JMeter
+        run: |
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.tgz
+          tar -xzf apache-jmeter-5.4.1.tgz
+          mv apache-jmeter-5.4.1 /opt/jmeter
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
@@ -35,7 +38,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Build and test each module
       - name: Build and test Config Service
         working-directory: ./config_server
         run: mvn clean install -DskipTests=false
@@ -56,16 +58,23 @@ jobs:
               cd "$service"
               mvn clean install -DskipTests=false
               mvn test
-              cd -
+              cd - || exit
             fi
           done
 
-      # Upload test results
-      - name: Upload test results
+      - name: Run JMeter Performance Tests
+        run: |
+          for service in ./Backend/*/; do
+            if [ -d "$service/src/test/java" ]; then
+              echo "Running JMeter tests for $service"
+              cd "$service/src/test/java"
+              /opt/jmeter/apache-jmeter-5.4.1/bin/jmeter -n -t ../resources/jmeter.properties -l jmeter-results.csv
+              cd - || exit
+            fi
+          done
+
+      - name: Upload JMeter results
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
-          path: '**/target/surefire-reports/*.xml'
-
-
-
+          name: jmeter-results
+          path: '**/jmeter-results.csv'

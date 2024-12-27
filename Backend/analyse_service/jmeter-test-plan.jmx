@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jmeterTestPlan version="1.2" properties="5.0" default="true" jmeter="5.4.3">
+    <hashTree>
+
+        <!-- Thread Group -->
+        <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+            <stringProp name="ThreadGroup.main_on_sample_error">continue</stringProp>
+            <stringProp name="ThreadGroup.num_threads">50</stringProp>
+            <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+            <stringProp name="ThreadGroup.duration">300</stringProp>
+            <boolProp name="ThreadGroup.delay_thread_on_shutdown">false</boolProp>
+
+            <!-- HTTP Request Defaults -->
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+                <stringProp name="HTTPSampler.domain">localhost</stringProp>
+                <stringProp name="HTTPSampler.port">8087</stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.path">/api/analyses</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <stringProp name="HTTPSampler.concurrent_reuse">true</stringProp>
+                <stringProp name="HTTPSampler.cookies">false</stringProp>
+                <stringProp name="HTTPSampler.auto_redirects">true</stringProp>
+                <stringProp name="HTTPSampler.embedded_url_re">.*</stringProp>
+                <stringProp name="HTTPSampler.postBodyEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.use_keepalive">true</stringProp>
+                <stringProp name="HTTPSampler.follow_redirects">true</stringProp>
+            </HTTPSamplerProxy>
+
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Single Analyse by ID" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses/1</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+            </HTTPSamplerProxy>
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Create New Analyse" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <stringProp name="HTTPSampler.postBody">
+                    {
+                        "nom": "Test Analyse",
+                        "description": "Test description",
+                        "result": "Pending"
+                    }
+                </stringProp>
+            </HTTPSamplerProxy>
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Update Analyse" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses/1</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <stringProp name="HTTPSampler.postBody">
+                    {
+                        "nom": "Updated Test Analyse",
+                        "description": "Updated description",
+                        "result": "Completed"
+                    }
+                </stringProp>
+            </HTTPSamplerProxy>
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Delete Analyse" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses/1</stringProp>
+                <stringProp name="HTTPSampler.method">DELETE</stringProp>
+            </HTTPSamplerProxy>
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Analyses by Laboratoire ID" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses/by-laboratoire/1</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+            </HTTPSamplerProxy>
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Epreuves by Analyse ID" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses/1/epreuves</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+            </HTTPSamplerProxy>
+
+            <HTTPSamplerProxy guiclass="HTTPSamplerProxyGui" testclass="HTTPSamplerProxy" testname="Get Tests by Analyse ID" enabled="true">
+                <stringProp name="HTTPSampler.path">/api/analyses/1/tests</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+            </HTTPSamplerProxy>
+
+            <!-- View Results Tree -->
+            <ResultCollector guiclass="ResultCollectorGui" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+                <stringProp name="filename">results.jtl</stringProp>
+                <boolProp name="ResultCollector.use_multipart">true</boolProp>
+            </ResultCollector>
+
+        </ThreadGroup>
+
+    </hashTree>
+</jmeterTestPlan>
