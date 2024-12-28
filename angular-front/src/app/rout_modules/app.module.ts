@@ -27,8 +27,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
-import { AjoutAnalysesComponent } from '../Analyses/ajout-analyses/ajout-analyses.component';
-
+import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-analyse-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,7 @@ import { AjoutAnalysesComponent } from '../Analyses/ajout-analyses/ajout-analyse
     AjouterContactDialogComponent,
     ConfirmationDialogComponent,
     AnalysesDialogComponent,
-    AjoutAnalysesComponent ,
+    AddAnalyseDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,14 +12,13 @@ export class AnalyseService {
  
   constructor(private http: HttpClient) {}
  
-  ajouterAnalyse(analyse: Analyse): Observable<Analyse> {
-    console.log('Envoi de l\'analyse :', analyse); // Vérifiez les données envoyées
-    return this.http.post<Analyse>('http://localhost:8087/api/analyses', analyse);
-  }
 
   supprimerAnalyse(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
  
-  
+  // Method to add a new analyse
+  addAnalyse(analyse: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, analyse);
+  }
 }

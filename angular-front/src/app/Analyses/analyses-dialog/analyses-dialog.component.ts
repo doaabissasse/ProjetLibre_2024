@@ -3,49 +3,44 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceLaboratoireService } from '../../Laboratoire/service_labo/service-laboratoire.service';
 import { Laboratoire } from '../../Laboratoire/Entite_labo/laboratoire'; 
 import { MatDialog } from '@angular/material/dialog';
-import { AjoutAnalysesComponent } from '../../Analyses/ajout-analyses/ajout-analyses.component'
 import { ConfirmationDialogComponent } from '../../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalyseService } from '../services/analyse.service';
-
+import { AddAnalyseDialogComponent } from '../add-analyse-dialog/add-analyse-dialog.component';
 
 @Component({
   selector: 'app-analyses-dialog',
   standalone: false,
-  
   templateUrl: './analyses-dialog.component.html',
-  styleUrl: './analyses-dialog.component.css'
+  styleUrls: ['./analyses-dialog.component.css']
 })
-export class AnalysesDialogComponent  implements OnInit {
-  laboratoireId: number = 0;  // Initialiser avec une valeur par défaut
+export class AnalysesDialogComponent implements OnInit {
+  laboratoireId: number = 0;
   laboratoire: Laboratoire | undefined;
   analyses: any[] = [];
-  adresseExistante: number | undefined; // ID de l'adresse existante
-  adressesExistantes: any[] = []; // Liste des adresses existantes
-  adresseOption: string = 'nouvelleAdresse'; // Option sélectionnée par défaut
 
   constructor(
     private route: ActivatedRoute,
     private laboratoireService: ServiceLaboratoireService,
-    private router: Router , // Injecter Router pour la navigation
+    private router: Router,
     private dialog: MatDialog,
     private analyseService: AnalyseService,
   ) {}
 
   ngOnInit(): void {
-    this.laboratoireId = +this.route.snapshot.paramMap.get('id')!; // Récupérer l'ID depuis l'URL
-    console.log('Laboratoire ID:', this.laboratoireId); // Vérifiez si l'ID est bien récupéré
-    this.getLaboratoireDetails();  // Récupérer les détails du laboratoire
-    this.getAnalyses();  // Récupérer les contacts associés
+    this.laboratoireId = +this.route.snapshot.paramMap.get('id')!;
+    console.log('laboratoireId récupéré:', this.laboratoireId);  // Log du laboratoireId
+    this.getLaboratoireDetails();
+    this.getAnalyses();
   }
 
   private getLaboratoireDetails() {
     this.laboratoireService.getLaboratoireById(this.laboratoireId).subscribe(
       data => {
         this.laboratoire = data;
-        console.log('Laboratoire details:', this.laboratoire); // Vérifiez les détails du laboratoire
+        console.log('Détails du laboratoire récupérés:', this.laboratoire);  // Log des détails du laboratoire
       },
       error => {
-        console.error('Error fetching laboratoire details:', error);
+        console.error('Erreur lors de la récupération des détails du laboratoire:', error);
       }
     );
   }
@@ -54,7 +49,7 @@ export class AnalysesDialogComponent  implements OnInit {
     this.laboratoireService.getAnalysesByLaboratoire(this.laboratoireId).subscribe(
       data => {
         this.analyses = data;
-        console.log('analyses récupérés:', this.analyses);  // Vérifiez si chaque contact a un ID
+        console.log('Analyses récupérées:', this.analyses);  // Log des analyses récupérées
       },
       error => {
         console.error('Erreur lors de la récupération des analyses:', error);
@@ -62,22 +57,27 @@ export class AnalysesDialogComponent  implements OnInit {
     );
   }
 
-   // Méthode pour revenir à la liste des laboratoires
-   retourLaboratoires() {
-    this.router.navigate(['/laboratoires']);  // Naviguer vers la liste des laboratoires
-  }
-
-  ouvrirDialogueAjoutAnalyses() {
-    const dialogRef = this.dialog.open(AjoutAnalysesComponent, {
-      width: '500px',
-      data: { idLaboratoire: this.laboratoire?.id }
+  // Méthode pour ouvrir le dialogue "Ajouter une analyse"
+  openAddAnalyseDialog(): void {
+    console.log('Ouverture du dialogue avec laboratoireId:', this.laboratoireId);  // Log avant ouverture du dialogue
+    const dialogRef = this.dialog.open(AddAnalyseDialogComponent, {
+      width: '400px',
+      data: { laboratoireId: this.laboratoireId }  // Assurez-vous que laboratoireId est bien transmis
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.getAnalyses(); // Recharge la liste après ajout
+      if (result) { 
+        console.log('Le dialogue a été fermé avec succès, recharge des analyses');
+        this.getAnalyses();  // Rechargez les analyses après l'ajout d'une nouvelle
+      } else {
+        console.log('Le dialogue a été fermé sans modifications');
       }
     });
+  }
+
+  // Méthode pour revenir à la liste des laboratoires
+  retourLaboratoires() {
+    this.router.navigate(['/laboratoires']);
   }
 
   // Méthode pour supprimer une analyse
@@ -88,15 +88,17 @@ export class AnalysesDialogComponent  implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) { // Si l'utilisateur confirme la suppression
+      if (result) {
+        console.log('Suppression de l\'analyse avec id:', id);  // Log avant suppression
         this.analyseService.supprimerAnalyse(id).subscribe(() => {
-          this.getAnalyses();  // Recharger la liste des analyses après la suppression
+          console.log('Analyse supprimée avec succès');
+          this.getAnalyses();  // Rechargez les analyses après la suppression
         }, error => {
-          console.error('Erreur lors de la suppression de l\'analyse:', error);
+          console.error('Erreur lors de la suppression de l\'analyse:', error);  // Log d'erreur
         });
+      } else {
+        console.log('Suppression annulée');
       }
     });
   }
-  
-
 }
