@@ -56,6 +56,7 @@ public class  LaboratoireController {
     }
 
     //afficher tous les users de labo avec id_labo
+    //afficher tous les users de labo avec id_labo
     @GetMapping("/users/{labo_id}")
     public FullLaboratoirewithUSER listLaboratoireUsers(@PathVariable("labo_id") long idLaboratoire) {
         return laboratoireService.findLabowithUsers(idLaboratoire);
