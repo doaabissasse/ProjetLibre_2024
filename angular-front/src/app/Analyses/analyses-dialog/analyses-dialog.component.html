@@ -27,26 +27,32 @@
       <i class="fas fa-plus"></i> Ajouter une analyse
     </button>
 
-  <!-- Liste des analyses -->
-  <div *ngIf="analyses.length > 0" class="analyses-table">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let analyse of analyses">
-          <td>{{ analyse.nom }}</td>
-          <td>{{ analyse.description }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+ <!-- Liste des analyses -->
+ <div *ngIf="analyses.length > 0" class="analyses-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let analyse of analyses">
+        <td>{{ analyse.nom }}</td>
+        <td>{{ analyse.description }}</td>
+        <td>
+          <button mat-button color="warn" (click)="supprimerAnalyse(analyse.id)">
+            <i class="fas fa-trash-alt"></i> 
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <!-- Message si aucune analyse n'est disponible -->
-  <div *ngIf="analyses.length === 0" class="no-analyses">
-    <p>Aucune analyse disponible.</p>
-  </div>
+<!-- Message si aucune analyse n'est disponible -->
+<div *ngIf="analyses.length === 0" class="no-analyses">
+  <p>Aucune analyse disponible.</p>
+</div>
 </div>

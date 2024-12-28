@@ -38,7 +38,8 @@ public class AnalyseService {
                 .orElseThrow(() -> new RuntimeException("Analyse not found with id: " + id));
     }
 
-    public Analyse createAnalyse(Analyse analyse) {
+    public Analyse save(Analyse analyse) {
+
         return analyseRepository.save(analyse);
     }
 

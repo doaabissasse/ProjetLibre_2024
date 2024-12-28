@@ -10,11 +10,15 @@ export class AnalyseService {
 
   private apiUrl = 'http://localhost:8087/api/analyses';
  
-   constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
  
-   ajouterAnalyse(analyse: Analyse): Observable<Analyse> {
+  ajouterAnalyse(analyse: Analyse): Observable<Analyse> {
     console.log('Envoi de l\'analyse :', analyse); // Vérifiez les données envoyées
-    return this.http.post<Analyse>(`${this.apiUrl}`, analyse);
+    return this.http.post<Analyse>('http://localhost:8087/api/analyses', analyse);
+  }
+
+  supprimerAnalyse(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
  
   

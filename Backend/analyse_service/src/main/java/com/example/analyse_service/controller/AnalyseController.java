@@ -34,7 +34,7 @@ public class AnalyseController {
 
     @PostMapping
     public Analyse createAnalyse(@RequestBody Analyse analyse) {
-        return analyseService.createAnalyse(analyse);
+        return analyseService.save(analyse);
     }
 
 

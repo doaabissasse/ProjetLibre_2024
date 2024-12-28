@@ -79,6 +79,24 @@ export class AnalysesDialogComponent  implements OnInit {
       }
     });
   }
+
+  // Méthode pour supprimer une analyse
+  supprimerAnalyse(id: number): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '400px',
+      data: { message: 'Êtes-vous sûr de vouloir supprimer cette analyse ?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { // Si l'utilisateur confirme la suppression
+        this.analyseService.supprimerAnalyse(id).subscribe(() => {
+          this.getAnalyses();  // Recharger la liste des analyses après la suppression
+        }, error => {
+          console.error('Erreur lors de la suppression de l\'analyse:', error);
+        });
+      }
+    });
+  }
   
 
 }
