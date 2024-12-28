@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceLaboratoireService } from '../../Laboratoire/service_labo/service-laboratoire.service';
 import { Laboratoire } from '../../Laboratoire/Entite_labo/laboratoire'; 
 import { MatDialog } from '@angular/material/dialog';
-import { AjouterContactDialogComponent } from '../../Contactes/ajouter-contact-dialog/ajouter-contact-dialog.component'
+import { AjoutAnalysesComponent } from '../../Analyses/ajout-analyses/ajout-analyses.component'
 import { ConfirmationDialogComponent } from '../../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalyseService } from '../services/analyse.service';
 
@@ -66,5 +66,19 @@ export class AnalysesDialogComponent  implements OnInit {
    retourLaboratoires() {
     this.router.navigate(['/laboratoires']);  // Naviguer vers la liste des laboratoires
   }
+
+  ouvrirDialogueAjoutAnalyses() {
+    const dialogRef = this.dialog.open(AjoutAnalysesComponent, {
+      width: '500px',
+      data: { idLaboratoire: this.laboratoire?.id }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAnalyses(); // Recharge la liste après ajout
+      }
+    });
+  }
+  
 
 }

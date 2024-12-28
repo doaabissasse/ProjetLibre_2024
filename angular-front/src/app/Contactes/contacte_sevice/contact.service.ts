@@ -13,6 +13,7 @@ export class ContactService {
   constructor(private http: HttpClient) {}
 
   ajouterContact(contact: Contacte): Observable<Contacte> {
+    console.log('Envoi de l\'analyse :', contact);
     return this.http.post<Contacte>(`${this.apiUrl}`, contact);
   }
 

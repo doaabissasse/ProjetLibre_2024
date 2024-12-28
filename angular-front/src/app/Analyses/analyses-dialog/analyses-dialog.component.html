@@ -22,6 +22,11 @@
     </div>
   </div>
 
+    <!-- Bouton pour ajouter un contact -->
+    <button mat-button (click)="ouvrirDialogueAjoutAnalyses()" class="add-contact-button">
+      <i class="fas fa-plus"></i> Ajouter une analyse
+    </button>
+
   <!-- Liste des analyses -->
   <div *ngIf="analyses.length > 0" class="analyses-table">
     <table class="table">
