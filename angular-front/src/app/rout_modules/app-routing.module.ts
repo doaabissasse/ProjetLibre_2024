@@ -4,7 +4,7 @@ import { LaboratoireListComponent } from "../Laboratoire/laboratoire-list/labora
 import { AjouterLaboratoireComponent } from "../Laboratoire/ajouter-laboratoire/ajouter-laboratoire.component";
 import { AccueilComponent } from '../accueil/accueil.component';
 import { ContactsDialogComponent } from '../Contactes/contacts-dialog/contacts-dialog.component';
-
+import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
 
 
 const routes: Routes = [
@@ -12,6 +12,7 @@ const routes: Routes = [
     { path: 'laboratoires', component: LaboratoireListComponent },
     { path: 'ajouter-laboratoire', component: AjouterLaboratoireComponent },
     { path: 'contacts-laboratoire/:id', component: ContactsDialogComponent }, 
+    { path: 'analyses-laboratoire/:id', component: AnalysesDialogComponent }, 
     { path: '', redirectTo: 'accueil', pathMatch: 'full' },  // Redirection par défaut
     { path: '**', redirectTo: 'accueil', pathMatch: 'full' }  // Wildcard route pour les chemins non trouvés
   ];

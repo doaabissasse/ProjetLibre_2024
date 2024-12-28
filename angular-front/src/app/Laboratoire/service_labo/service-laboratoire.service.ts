@@ -40,6 +40,11 @@ export class ServiceLaboratoireService {
   getLaboratoireById(id: number): Observable<Laboratoire> {
     return this.httpClient.get<Laboratoire>(`${this.apiUrl}/${id}`);
   }
+
+  getAnalysesByLaboratoire(idLabo: number): Observable<any> {
+    const url = `${this.apiUrl}/${idLabo}/analyses`;
+    return this.httpClient.get<any>(url);
+  }
   
   
 }

@@ -5,22 +5,24 @@
 
 .laboratoire-details .card {
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: linear-gradient(135deg, #4a90e2, #6dd5fa);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
 
-.laboratoire-card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px;
-  background-color: #ffffff;
-}
+
+
 
 .laboratoire-name {
+  font-size: 1.8rem;
   font-weight: bold;
-  font-size: 1.5rem;
-  color: #004186; /* Couleur bleue pour le nom du laboratoire */
+  margin-bottom: 10px;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .card-header {
@@ -44,14 +46,11 @@
   margin-left: 20px;
 }
 
-.laboratoire-info .card-title {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
+
 
 .laboratoire-info p {
-  font-size: 16px;
-  color: #555;
+  margin: 5px 0;
+  font-size: 1rem;
 }
 
 

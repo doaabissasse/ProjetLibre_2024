@@ -26,6 +26,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
+import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/con
     ContactsDialogComponent,
     AjouterContactDialogComponent,
     ConfirmationDialogComponent,
+    AnalysesDialogComponent,
   ],
   imports: [
     BrowserModule,

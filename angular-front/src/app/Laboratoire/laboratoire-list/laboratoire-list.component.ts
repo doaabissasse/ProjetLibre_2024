@@ -139,6 +139,8 @@ export class LaboratoireListComponent implements OnInit {
     this.router.navigate(['/contacts-laboratoire', laboratoireId]); // Route vers la page des contacts
   }
 
-  
+  afficherAnalyses(laboratoireId: number): void {
+    this.router.navigate(['/analyses-laboratoire', laboratoireId]); // Route vers la page des contacts
+  }
   
 }
