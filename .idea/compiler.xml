@@ -24,6 +24,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dossier_service (1)" />
       </profile>
+      <profile name="Annotation profile for test_analyse_service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="test_analyse_service" />
+        <module name="epreuve_service" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="user_service" target="17" />
@@ -39,8 +49,10 @@
       <module name="dossier_service" options="-parameters" />
       <module name="dossier_service (1)" options="-parameters" />
       <module name="dossiers_service" options="-parameters" />
+      <module name="epreuve_service" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="labo_service" options="-parameters" />
+      <module name="test_analyse_service" options="-parameters" />
       <module name="user_service" options="-parameters -Xlint:deprecation" />
     </option>
   </component>
