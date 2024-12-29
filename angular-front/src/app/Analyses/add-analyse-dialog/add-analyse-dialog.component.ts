@@ -33,6 +33,7 @@ export class AddAnalyseDialogComponent {
   }
 
   // Méthode pour annuler le dialogue
+  // Méthode pour annuler le dialogue
   onCancel(): void {
     this.dialogRef.close(false);  // Fermer le dialogue sans changement
   }
