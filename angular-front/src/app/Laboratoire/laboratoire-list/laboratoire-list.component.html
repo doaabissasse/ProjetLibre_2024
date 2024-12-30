@@ -1,3 +1,27 @@
+<nav class="navbar navbar-expand-lg  shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <!-- Logo -->
+      <img src="assets/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/accueil" routerLinkActive="active">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajouter un Laboratoire</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="laboratoire-list container mt-4">
     <h3>Liste des Laboratoires</h3>
     <div class="form-group search-bar">
@@ -23,7 +47,7 @@
           <tbody>
             <tr *ngFor="let laboratoire of filteredLaboratoires">
                   <td><img [src]="laboratoire.logo" alt="{{ laboratoire.nom }} Logo" class="logo" /></td>
-                  <td>{{ laboratoire.nom }}</td> 
+                  <td>{{ laboratoire.nom }}</td>
                   <td>{{ laboratoire.nrc }}</td>
                   <td>{{ laboratoire.active ? 'Active' : 'Inactive' }}</td>
                   <td>{{ laboratoire.dateActivation | date:'dd/MM/yyyy' }}</td>

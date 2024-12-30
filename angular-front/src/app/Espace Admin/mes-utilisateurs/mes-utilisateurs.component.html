@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/mes-utilisateurs.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="logo">Espace Admin</div>
+
+  <nav>
+    <ul>
+      <li><a href="/accueil">Gestion Laboratoires</a></li>
+      <li><a href="/MesUtilisateurs">Gestion Utilisateurs</a></li>
+      <li><a href="#">Messages</a></li>
+      <li class="profile-menu">
+        <a routerLink="/user-profile">Mon Profil</a>
+        <ul class="dropdown">
+          <li><a href="/user-profile">Mes informations</a></li>
+          <li><a href="#">Se Déconnecter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<h2>Gestion des Utilisateurs</h2>
+<!-- Bouton pour ajouter un nouvel utilisateur -->
+<div class="actions">
+
+    <a href="/add-user">Ajouter Utiisateur</a>
+
+</div>
+  <!-- Message d'erreur en cas de problème -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Table des utilisateurs -->
+  <div class="user-list">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Identifiant</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Numero de Téléphone</th>
+          <th>Profession</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user?.id || 'Non disponible'}}</td>
+          <td>{{ user?.nomComplet || 'Non disponible'}}</td>
+          <td>{{ user?.email || 'Non disponible'}}</td>
+          <td>{{ user?.numTel || 'Non disponible'  }}</td>
+          <td>{{ user?.profession || 'Non disponible'  }}</td>
+          <td>{{ user?.roles[0]?.name || 'Non disponible'  }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" [routerLink]="['/modifier-utilisateur', user.id]">
+              Modifier
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteUser(user)">
+              Supprimer
+            </button>
+            <button class="btn btn-info btn-sm" (click)="showLabDetails(user.fkIdLaboratoire)">
+              Détails
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Affichage si aucun utilisateur trouvé -->
+  <div *ngIf="users.length === 0 && !errorMessage" class="no-users">
+    <p>Aucun utilisateur trouvé.</p>
+  </div>
+
+</body>
+</html>

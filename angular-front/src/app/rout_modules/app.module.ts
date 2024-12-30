@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; 
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,6 +28,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
 import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-analyse-dialog.component';
+import {AccueilLaboratoireComponent} from '../Acceuil General/accueil-laboratoire/accueil-laboratoire.component';
+import {LoginModalComponent} from '../Acceuil General/login-modal/login-modal.component';
+import {AdminDashboardComponent} from '../Espace Admin/admin-dashboard/admin-dashboard.component';
+import {MesUtilisateursComponent} from '../Espace Admin/mes-utilisateurs/mes-utilisateurs.component';
+import {ModifierUtilisateurComponent} from '../Espace Admin/modifier-utilisateur/modifier-utilisateur.component';
+import {AddUserComponent} from '../Espace Admin/add-user/add-user.component';
+import {MotPassModalComponent} from '../Acceuil General/mot-pass-modal/mot-pass-modal.component';
+import {UserProfileComponent} from '../Espace Admin/user-profile/user-profile.component';
+import {UserDashboardComponent} from '../EspaceUser/user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +52,16 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
     ConfirmationDialogComponent,
     AnalysesDialogComponent,
     AddAnalyseDialogComponent,
+    AccueilLaboratoireComponent,
+    LoginModalComponent,
+    AdminDashboardComponent,
+    MesUtilisateursComponent,
+    ModifierUtilisateurComponent,
+    AddUserComponent,
+    MotPassModalComponent,
+    UserProfileComponent,
+    UserDashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -58,13 +77,14 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
     MatButtonModule,
     BrowserAnimationsModule, // Obligatoire pour Angular Material
     FormsModule, // Pour [(ngModel)]
-    ReactiveFormsModule ,// Pour les formulaires réactifs
+    ReactiveFormsModule,// Pour les formulaires réactifs
     CommonModule,
-    RouterModule, 
+    RouterModule,
     MatFormFieldModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Facultatif si vous utilisez des éléments personnalisés
   providers: [

@@ -102,4 +102,13 @@ public class User implements UserDetails, Principal {
     private String fullName(){
         return nomComplet;
     }
+
+
+    public  Integer getId(){
+        return id;
+    }
+    public void setId(Integer id){
+        this.id=id;
+
+    }
 }

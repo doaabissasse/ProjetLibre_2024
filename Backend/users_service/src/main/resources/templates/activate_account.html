@@ -44,9 +44,11 @@
     <h1>Account Activation</h1>
     <p class="greeting" th:text="'Hello ' + ${username} + ','"></p>
     <p>conglatulations ! you become a memeber of our labo. Please use the following activation code to activate your account:</p>
+    <p class="greeting" th:text="'votre mot de pass ' + ${password} + ','"></p>
     <div class="activation-code"><span th:text="${activationCode}"></span></div>
     <div class="activation-link">
         <a th:href="${confirmationUrl}" target="_blank">Activate your account</a>
+
     </div>
 </div>
 </body>

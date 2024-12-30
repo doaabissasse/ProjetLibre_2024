@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./user-profile.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="logo">Admin Dashboard</div>
+  <nav>
+    <ul>
+      <li><a href="/accueil">Gestion Laboratoires</a></li>
+      <li><a href="#">Gestion Utilisateurs</a></li>
+      <li><a href="#">Messages</a></li>
+      <li class="profile-menu">
+        <a routerLink="/user-profile">Mon Profil</a>
+        <ul class="dropdown">
+          <li><a href="/user-profile">Mes informatrions</a></li>
+          <li><a href="/login">Se Déconnecter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div class="profile-container">
+    <h2>Mon Profil</h2>
+    <div class="profile-card">
+      <p><strong>Nom :</strong> {{ user?.nomComplet || 'Non disponible' }}</p>
+      <p><strong>Email :</strong> {{ user?.email || 'Non disponible' }}</p>
+      <p><strong>Rôle :</strong> {{ user?.roles[0]?.name || 'Non disponible' }}</p>
+      <p><strong>Téléphone :</strong> {{ user?.numTel || 'Non disponible' }}</p>
+      <p><strong>Profession :</strong> {{ user?.profession || 'Non disponible' }}</p>
+      <p><strong>signature :</strong> {{ user?.signature || 'Non disponible' }}</p>
+    </div>
+  </div>
+
+</body>
+</html>
+

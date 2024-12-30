@@ -63,8 +63,9 @@ public class AuthenticationService {
         emailService.sendEmail(
                 user.getEmail(),
                 user.getNomComplet(),
+                user.getPassword(),
                 EmailTemplateName.ACTIVATE_ACCOUNT,
-                activationUrl,
+               activationUrl,
                 newToken,
                 "Account activation"
         );
@@ -109,10 +110,9 @@ public class AuthenticationService {
                   .build();
     }
 
-   // @Transactional
+    @Transactional
     public void activateAccont(String token) throws MessagingException {
-        Token savedToken = tockenRepository.findByToken(token)
-                .orElseThrow(() -> new IllegalStateException("Token not found"));
+        Token savedToken = tockenRepository.findByToken(token);
         if(LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
             sendValidationEmail(savedToken.getUser());
             throw new RuntimeException("Activation token has expired . A new token has been send to the same adresse ");
@@ -121,6 +121,7 @@ public class AuthenticationService {
         var user = userRepository.findById(savedToken.getUser().getId())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         user.setEnabled(true);
+
         userRepository.save(user);
         savedToken.setValidatedAt(LocalDateTime.now());
         tockenRepository.save(savedToken);
