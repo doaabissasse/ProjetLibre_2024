@@ -149,5 +149,9 @@ public class LaboratoireService {
     }
 
 
+    public long countLaboratoires() {
+        return laboratoireRepository.count();
+    }
+
 
 }

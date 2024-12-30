@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/gestion_labo # Changez 'db' en 'localhost' si nécessaire
     username: root
-    password: rootpassword
+    password:
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,5 +1,6 @@
 package com.example.users_service.controllers;
 
+import com.example.users_service.entities.DossierDTO;
 import com.example.users_service.entities.User;
 import com.example.users_service.services.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,11 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();  // Si l'utilisateur n'est pas trouvé
         }
+    }
+
+    @GetMapping("/{idUtilisateur}/dossiers")
+    public List<DossierDTO> getDossiersByIdUtilisateur(@PathVariable Long idUtilisateur) {
+        return utilisateurService.getDossiersByIdUtilisateur(idUtilisateur);
     }
 
 }

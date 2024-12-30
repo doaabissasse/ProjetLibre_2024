@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="users_service" />
         <module name="user_service" />
         <module name="dossiers_service" />
         <module name="discovery" />
@@ -24,14 +25,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dossier_service (1)" />
       </profile>
-      <profile name="Annotation profile for test_analyse_service" enabled="true">
+      <profile name="Annotation profile for examen_service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
+        <module name="patient_service" />
         <module name="test_analyse_service" />
+        <module name="examen_service" />
         <module name="epreuve_service" />
       </profile>
     </annotationProcessing>
@@ -50,10 +53,13 @@
       <module name="dossier_service (1)" options="-parameters" />
       <module name="dossiers_service" options="-parameters" />
       <module name="epreuve_service" options="-parameters" />
+      <module name="examen_service" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="labo_service" options="-parameters" />
+      <module name="patient_service" options="-parameters" />
       <module name="test_analyse_service" options="-parameters" />
       <module name="user_service" options="-parameters -Xlint:deprecation" />
+      <module name="users_service" options="-parameters" />
     </option>
   </component>
 </project>

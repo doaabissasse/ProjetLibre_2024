@@ -1,5 +1,7 @@
 package com.example.users_service.services;
 
+import com.example.users_service.Client.DossierFeignClient;
+import com.example.users_service.entities.DossierDTO;
 import com.example.users_service.entities.User;
 import com.example.users_service.tockenRepositories.TockenRepository;
 import com.example.users_service.tockens.Token;
@@ -23,6 +25,9 @@ public class UtilisateurService {
     private TockenRepository tockenRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private DossierFeignClient dossierFeignClient;
 
     public Optional<User> findByUsername(String email) {
         return utilisateurRepository.findByEmail(email);
@@ -88,6 +93,10 @@ public class UtilisateurService {
 
         // Sauvegarder l'utilisateur mis à jour
         return utilisateurRepository.save(user);
+    }
+
+    public List<DossierDTO> getDossiersByIdUtilisateur(Long idUtilisateur) {
+        return dossierFeignClient.getDossiersByIdUtilisateur(idUtilisateur);
     }
 
 }

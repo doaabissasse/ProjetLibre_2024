@@ -16,4 +16,7 @@ public class contacte {
     private String tel;
     private String fax;
     private String email;
+
+    public contacte(String number, String fax1, String mail) {
+    }
 }
