@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./accueil-laboratoire.component.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <title>MedLab - Accueil</title>
+</head>
+<body>
+<header>
+  <a href="#" class="logo"><span>Med</span>Lab</a>
+  <div class="menutoggle" onclick="toggleMenu();"></div>
+  <ul class="navbar">
+    <li><a href="#banniere" onclick="toggleMenu();"><strong>Accueil</strong></a></li>
+    <li><a href="#apropos" onclick="toggleMenu();"><strong>A propos</strong></a></li>
+    <li><a href="#services" onclick="toggleMenu();"><strong>Nos Services</strong></a></li>
+    <li><a href="#contact" onclick="toggleMenu();"><strong>Contact</strong></a></li>
+    <!-- Lien de connexion -->
+    <button routerLink="/login" routerLinkActive="active" >Se connecter</button>
+
+  </ul>
+</header>
+<!-- Modale de connexion -->
+<app-login-modal
+  *ngIf="isLoginModalVisible"
+  (closeModal)="closeLoginModal()">
+</app-login-modal>
+
+<section class="banniere" id="banniere">
+  <div class="contenu">
+    <h2>Bienvenue chez MedLab</h2>
+    <p><strong>Le laboratoire médical de confiance pour des diagnostics rapides et fiables.</strong></p>
+    <p>Découvrez notre approche innovante et nos équipements de pointe pour une santé optimale.</p>
+    <p>Que vous soyez un patient ou un professionnel de santé, MedLab vous propose une large gamme de services adaptés à vos besoins.</p>
+    <p>Votre bien-être est notre priorité, avec des résultats précis, rapides et sécurisés.</p>
+    <a href="#services" class="btn1">Découvrez Nos Services</a>
+    <a href="#contact" class="btn2">Contactez-nous</a>
+  </div>
+</section>
+
+<section class="apropos" id="apropos">
+  <div class="row">
+    <div class="col50">
+      <h2 class="titre-texte"><span>A </span>Propos De MedLab</h2>
+      <p>MedLab est un laboratoire médical moderne, dédié à offrir des services de haute qualité pour vos besoins en analyses et diagnostics. Grâce à nos équipements dernier cri et à une équipe de professionnels qualifiés, nous assurons la rapidité et la précision de tous vos résultats.</p>
+      <p>Nous mettons à votre disposition des tests médicaux fiables, tout en garantissant une prise en charge complète, de l’échantillon au rapport final. Chez MedLab, nous croyons qu'un diagnostic rapide et fiable est essentiel pour une prise en charge efficace de votre santé.</p>
+    </div>
+    <div class="col50">
+      <div>
+        <img src="./assets/images/lab.jpg" alt="Image du laboratoire MedLab" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="row">
+    <div class="col50">
+      <h2 class="titre-texte"><span>N</span>os Services</h2>
+      <p>Chez MedLab, nous proposons une gamme étendue de services médicaux adaptés à vos besoins:</p>
+      <ul>
+        <li><strong>Analyses médicales</strong> - Tests sanguins, analyses urinaires, tests de grossesse et bien plus.</li>
+        <li><strong>Diagnostic rapide</strong> - Résultats en moins de 24 heures pour une prise en charge immédiate.</li>
+        <li><strong>Vérification de la santé préventive</strong> - Bilan de santé complet pour vous aider à anticiper les risques.</li>
+        <li><strong>Test de dépistage COVID-19</strong> - Disponible sur place pour votre sécurité.</li>
+      </ul>
+      <p>Nos services sont conçus pour vous offrir un suivi personnalisé et des résultats fiables, tout en vous assurant une totale confidentialité.</p>
+    </div>
+    <div class="col50">
+      <div>
+        <img src="./assets/images/labotest.jpg" alt="Services de MedLab" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="titre noir">
+    <h2 class="titre-texte">Contactez MedLab</h2>
+  </div>
+  <div class="contactform">
+    <h3>Envoyez-nous un message</h3>
+    <div class="inputboite">
+      <input type="text" placeholder="Votre Nom" />
+    </div>
+    <div class="inputboite">
+      <input type="email" placeholder="Votre Email" />
+    </div>
+    <div class="inputboite">
+      <textarea placeholder="Votre Message"></textarea>
+    </div>
+    <div class="inputboite">
+      <input type="submit" value="Envoyer" />
+    </div>
+  </div>
+</section>
+
+<div class="copyright">
+  <p>&copy; 2024 MedLab. Tous droits réservés.</p>
+</div>
+
+<script type="text/javascript">
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    header.classList.toggle("sticky", window.scrollY > 0);
+  });
+
+  function toggleMenu() {
+    const menutoggle = document.querySelector('.menutoggle');
+    const navbar = document.querySelector('.navbar');
+    menutoggle.classList.toggle('active');
+    navbar.classList.toggle('active');
+  }
+</script>
+</body>
+</html>

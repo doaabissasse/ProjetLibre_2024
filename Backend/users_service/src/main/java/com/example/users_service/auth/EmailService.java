@@ -28,6 +28,7 @@ public class EmailService {
     public  void sendEmail(
             String to,
             String username,
+            String password,
             EmailTemplateName emailTemplate,
             String confirmationUrl,
             String activationCode,
@@ -48,6 +49,7 @@ public class EmailService {
         );
         Map<String, Object> properties = new HashMap<>();
         properties.put("username", username);
+        properties.put("password", password);
         properties.put("activationCode", activationCode);
         properties.put("confirmationUrl", confirmationUrl);
 

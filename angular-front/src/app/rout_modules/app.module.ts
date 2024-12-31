@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; 
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,13 +28,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
 import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-analyse-dialog.component';
-import { TestsComponent } from '../tests/tests/tests.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { AjouterTestDialogComponent } from '../tests/ajouter-test-dialog/ajouter-test-dialog.component';
-import { AjouterEpreuveDialogComponent } from '../epreuves/ajouter-epreuve-dialog/ajouter-epreuve-dialog.component';
-
-
 
 @NgModule({
   declarations: [
@@ -50,9 +43,6 @@ import { AjouterEpreuveDialogComponent } from '../epreuves/ajouter-epreuve-dialo
     ConfirmationDialogComponent,
     AnalysesDialogComponent,
     AddAnalyseDialogComponent,
-    TestsComponent,
-    AjouterTestDialogComponent,
-    AjouterEpreuveDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,19 +54,17 @@ import { AjouterEpreuveDialogComponent } from '../epreuves/ajouter-epreuve-dialo
       progressAnimation: 'increasing'
     }),
     MatInputModule,
-    MatCardModule ,
     MatDialogModule,
     MatButtonModule,
     BrowserAnimationsModule, // Obligatoire pour Angular Material
     FormsModule, // Pour [(ngModel)]
     ReactiveFormsModule ,// Pour les formulaires réactifs
     CommonModule,
-    RouterModule, 
+    RouterModule,
     MatFormFieldModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSelectModule,
-    MatTableModule
+    MatSelectModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Facultatif si vous utilisez des éléments personnalisés
   providers: [

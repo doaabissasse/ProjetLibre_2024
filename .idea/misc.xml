@@ -17,7 +17,6 @@
         <option value="$PROJECT_DIR$/Backend/analyse_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/epreuve_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/test_analyse_service/pom.xml" />
-        <option value="$PROJECT_DIR$/Backend/users_service/pom.xml" />
       </list>
     </option>
   </component>

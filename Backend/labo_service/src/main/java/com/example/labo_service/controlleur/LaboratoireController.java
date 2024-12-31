@@ -79,4 +79,9 @@ public class  LaboratoireController {
         return laboratoireService.findByNom(nom);
     }
 
+    @GetMapping("/count")
+    public long countLaboratoires() {
+        return laboratoireService.countLaboratoires();
+    }
+
 }

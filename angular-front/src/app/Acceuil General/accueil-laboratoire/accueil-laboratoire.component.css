@@ -1,0 +1,414 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  scroll-behavior: smooth;
+}
+
+p {
+  font-weight: 300;
+  color: #333; /* Darker shade for better visibility */
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 10px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: 0.5s;
+  background-color: #fff; /* Ajoutez cette ligne pour le fond blanc */
+}
+section {
+  padding: 100px; /* Votre padding existant */
+  scroll-margin-top: 80px; /* Ajustez cette valeur selon la hauteur de votre header */
+}
+header.sticky {
+  background-color: #fff; /* Assurez-vous que le fond reste blanc lorsque le header est sticky */
+  padding: 10px 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+header .navbar li a {
+  color: #000; /* Changez la couleur du texte pour qu'il soit lisible sur fond blanc */
+}
+
+header.sticky .navbar li a {
+  color: #000; /* Assurez-vous que le texte reste noir lorsque le header est sticky */
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 10px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+.logo span {
+  color: rgb(195, 55, 55);
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+}
+
+.navbar li {
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  margin-left: 30px;
+  font-weight: 700;
+}
+
+.btn-login {
+  padding: 10px 20px;
+  background: rgb(195, 55, 55);
+  margin-top: -10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.btn-login:hover {
+  background: rgb(160, 45, 45);
+  transition: ease-out;
+}
+
+header .navbar li a:hover {
+  color: indianred;
+  border-bottom: 2px solid indianred;
+}
+
+.banniere {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../../assets/images/lab.jpg); /* Image de fond */
+  background-size: cover;
+}
+
+.banniere .contenu {
+  max-width: 70%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8); /* Fond blanc avec transparence pour le texte */
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.banniere .contenu h2 {
+  color: rgb(195, 55, 55);  /* Titre rouge */
+  font-size: 3em;
+  text-transform: capitalize;
+}
+
+.banniere p {
+  color: #111;  /* Texte sombre */
+  font-size: 1.2em;
+}
+
+.btn1, .btn2 {
+  font-size: 1em;
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+  margin-left: 10px;
+}
+
+.btn1 {
+  background: indianred;
+}
+
+.btn2 {
+  background: #2a4963;
+}
+
+.btn1:hover, .btn2:hover {
+  letter-spacing: 4px;
+}
+
+section {
+  padding: 100px;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row .col50 {
+  position: relative;
+  width: 48%;
+  justify-content: center;
+  align-items: center;
+}
+
+.row .col50 h2 {
+  margin-bottom: 20px;
+}
+
+.titre-texte {
+  color: #000;
+  font-size: 2em;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.titre-texte span {
+  color: indianred;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.row .col50 img {
+  height: 300px;
+  width: 500px;
+  position: relative;
+}
+
+/* Contact */
+.contact {
+  background-color: #333;
+  color: #fff;
+  padding: 50px 0;
+}
+
+.contact .titre {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact .titre h2 {
+  font-size: 2.5em;
+  color: #fff;
+}
+
+.contact .titre h2 span {
+  color: rgb(160, 45, 45);
+}
+
+.contact .contactform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact .contactform h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.contact .contactform .inputboite {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.contact .contactform .inputboite input,
+.contact .contactform .inputboite textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.contact .contactform .inputboite input[type="submit"] {
+  background-color: rgb(160, 45, 45);
+  color: #fff;
+  cursor: pointer;
+}
+
+.contact .contactform .inputboite input[type="submit"]:hover {
+  background-color: #b23b3b;
+}
+
+/* Footer */
+.copyright {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.copyright p {
+  margin: 0;
+  color: #fff;
+}
+/* Styles de la modale */
+.modal {
+  display: none; /* Modale masquée par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+/* Appliquer le flou à la page sous-jacente lorsqu'on ouvre la modale */
+.blur {
+  filter: blur(5px);
+}
+
+/* Styles pour les champs du formulaire */
+.inputboite input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.inputboite input[type="submit"] {
+  background-color: rgb(195, 55, 55);
+  color: white;
+  cursor: pointer;
+}
+
+.inputboite input[type="submit"]:hover {
+  background-color: rgb(160, 45, 45);
+}
+
+header.sticky {
+  background-color: #fff;
+  padding: 10px 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+header.sticky .logo {
+  color: #000;
+}
+
+header.sticky .navbar li a {
+  color: #000;
+}
+
+header.sticky li a:hover {
+  color: indianred;
+  border-bottom: 2px solid indianred;
+}
+
+@media (max-width: 991px) {
+  header,
+  header.sticky {
+    padding: 10px 20px;
+  }
+
+  header .navbar li {
+    margin-left: 0px;
+  }
+
+  header .navbar li a {
+    text-decoration: none;
+    color: #111;
+    font-size: 1.6em;
+    font-weight: 300;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  .menutoggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .menutoggle.active {
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-origin: center;
+  }
+
+  header.sticky .menutoggle {
+    filter: invert(1);
+  }
+
+  .banniere .contenu h2 {
+    font-size: 2em;
+  }
+
+  .contenu p:nth-child(2) {
+    font-size: 2em;
+  }
+
+  .apropos {
+    margin-top: 0px;
+  }
+
+  .concept {
+    margin-top: 0px;
+  }
+
+  .contactform {
+    margin-left: 10%;
+  }
+
+  .row .col50 {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
