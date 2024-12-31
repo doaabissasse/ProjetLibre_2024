@@ -1,0 +1,92 @@
+<div class="tests-container">
+  <!-- Bouton de retour -->
+  <button mat-button color="primary" (click)="retourAnalyses()" class="mt-4">
+    <i class="fas fa-arrow-left"></i> Retour aux analyses
+  </button>
+
+  <h2 class="title">
+    Tests et Épreuves pour l'Analyse :
+    <span class="analyse-name">{{ analyse?.nom }}</span>
+  </h2>
+
+  <!-- Section pour les tests -->
+  <div class="add-test-container">
+    <button mat-raised-button color="accent" (click)="ajouterTest()">
+      <i class="fas fa-plus"></i> Ajouter un Test
+    </button>
+  </div>
+
+  <!-- Table des tests -->
+  <div class="table-wrapper">
+    <h3>Tests associés</h3>
+    <table mat-table [dataSource]="tests" class="mat-elevation-z8">
+      <ng-container matColumnDef="nomTest">
+        <th mat-header-cell *matHeaderCellDef>Nom du Test</th>
+        <td mat-cell *matCellDef="let test">{{ test.nomTest }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sousEpreuve">
+        <th mat-header-cell *matHeaderCellDef>Sous-Épreuve</th>
+        <td mat-cell *matCellDef="let test">{{ test.sousEpreuve }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="intervalle">
+        <th mat-header-cell *matHeaderCellDef>Intervalle de Référence</th>
+        <td mat-cell *matCellDef="let test">
+          {{ test.intervalMinDeReference }} - {{ test.intervalMaxDeReference }} {{ test.uniteDeReference }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef>Détails</th>
+        <td mat-cell *matCellDef="let test">{{ test.details }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let test">
+          <button mat-icon-button color="warn" (click)="supprimerTest(test.id)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Table Header -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- Table Rows -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+   <!-- Section pour les tests -->
+   <div class="add-test-container">
+    <button mat-raised-button color="accent" (click)="ajouterEpreuve()">
+      <i class="fas fa-plus"></i> Ajouter un epreuve
+    </button>
+  </div>
+
+  <!-- Table des épreuves -->
+  <div class="table-wrapper mt-4">
+    <h3>Épreuves associées</h3>
+    <table mat-table [dataSource]="epreuves" class="mat-elevation-z8">
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef>Nom de l'Épreuve</th>
+        <td mat-cell *matCellDef="let epreuve">{{ epreuve.nom }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let epreuve">
+          <button mat-icon-button color="warn" (click)="supprimerEpreuve(epreuve.id)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Table Header -->
+      <tr mat-header-row *matHeaderRowDef="displayedEpreuveColumns"></tr>
+      <!-- Table Rows -->
+      <tr mat-row *matRowDef="let row; columns: displayedEpreuveColumns;"></tr>
+    </table>
+  </div>
+</div>

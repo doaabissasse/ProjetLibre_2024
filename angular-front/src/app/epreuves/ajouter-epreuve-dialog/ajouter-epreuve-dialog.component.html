@@ -1,0 +1,21 @@
+<mat-dialog-content>
+    <form [formGroup]="epreuvForm" (ngSubmit)="addEpreuve()">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Nom du Epreuve</mat-label>
+        <input matInput formControlName="nom">
+        <mat-error *ngIf="epreuvForm.get('nom')?.invalid">
+          Le nom du Epreuve est requis.
+        </mat-error>
+      </mat-form-field>
+  
+      
+  
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-button (click)="onCancel()">Annuler</button>
+        <button mat-button [disabled]="epreuvForm.invalid" type="submit">
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+  

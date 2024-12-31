@@ -101,4 +101,9 @@ export class AnalysesDialogComponent implements OnInit {
       }
     });
   }
+
+  visualiserTests(analyseId: number): void {
+    this.router.navigate(['/tests-analyse', analyseId]); // Route vers la page des contacts
+  }
+
 }

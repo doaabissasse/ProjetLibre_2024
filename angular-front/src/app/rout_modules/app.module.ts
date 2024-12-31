@@ -28,6 +28,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
 import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-analyse-dialog.component';
+import { TestsComponent } from '../tests/tests/tests.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { AjouterTestDialogComponent } from '../tests/ajouter-test-dialog/ajouter-test-dialog.component';
+import { AjouterEpreuveDialogComponent } from '../epreuves/ajouter-epreuve-dialog/ajouter-epreuve-dialog.component';
+
+
 
 @NgModule({
   declarations: [
@@ -43,6 +50,9 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
     ConfirmationDialogComponent,
     AnalysesDialogComponent,
     AddAnalyseDialogComponent,
+    TestsComponent,
+    AjouterTestDialogComponent,
+    AjouterEpreuveDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +64,7 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
       progressAnimation: 'increasing'
     }),
     MatInputModule,
+    MatCardModule ,
     MatDialogModule,
     MatButtonModule,
     BrowserAnimationsModule, // Obligatoire pour Angular Material
@@ -64,7 +75,8 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
     MatFormFieldModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Facultatif si vous utilisez des éléments personnalisés
   providers: [
