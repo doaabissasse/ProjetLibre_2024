@@ -7,7 +7,7 @@ import { Epreuve } from './Epreuve';
   providedIn: 'root'
 })
 export class EpreuveService {
-  private apiUrl = 'http://localhost:8088/api/epreuves'; // Remplacez par votre URL backend
+  private apiUrl = 'http://localhost:8094/api/epreuves'; // Remplacez par votre URL backend
 
   constructor(private http: HttpClient) {}
 
