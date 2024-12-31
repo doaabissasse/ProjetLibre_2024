@@ -28,6 +28,22 @@ import { MatSelectModule } from '@angular/material/select';
 import { ConfirmationDialogComponent } from '../Adresses/confirmation-dialog/confirmation-dialog.component';
 import { AnalysesDialogComponent } from '../Analyses/analyses-dialog/analyses-dialog.component';
 import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-analyse-dialog.component';
+import {AccueilLaboratoireComponent} from '../Acceuil General/accueil-laboratoire/accueil-laboratoire.component';
+import {LoginModalComponent} from '../Acceuil General/login-modal/login-modal.component';
+import {AdminDashboardComponent} from '../Espace Admin/admin-dashboard/admin-dashboard.component';
+import {MesUtilisateursComponent} from '../Espace Admin/mes-utilisateurs/mes-utilisateurs.component';
+import {ModifierUtilisateurComponent} from '../Espace Admin/modifier-utilisateur/modifier-utilisateur.component';
+import {AddUserComponent} from '../Espace Admin/add-user/add-user.component';
+import {MotPassModalComponent} from '../Acceuil General/mot-pass-modal/mot-pass-modal.component';
+import {UserProfileComponent} from '../Espace Admin/user-profile/user-profile.component';
+import {UserDashboardComponent} from '../EspaceUser/user-dashboard/user-dashboard.component';
+import {TestsComponent} from '../tests/tests/tests.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import {AjouterTestDialogComponent} from '../tests/ajouter-test-dialog/ajouter-test-dialog.component';
+import {AjouterEpreuveDialogComponent} from '../epreuves/ajouter-epreuve-dialog/ajouter-epreuve-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +59,18 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
     ConfirmationDialogComponent,
     AnalysesDialogComponent,
     AddAnalyseDialogComponent,
+    AccueilLaboratoireComponent,
+    LoginModalComponent,
+    AdminDashboardComponent,
+    MesUtilisateursComponent,
+    ModifierUtilisateurComponent,
+    AddUserComponent,
+    MotPassModalComponent,
+    UserProfileComponent,
+    UserDashboardComponent,
+    AjouterEpreuveDialogComponent,
+    AjouterTestDialogComponent,
+    TestsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,13 +86,18 @@ import { AddAnalyseDialogComponent } from '../Analyses/add-analyse-dialog/add-an
     MatButtonModule,
     BrowserAnimationsModule, // Obligatoire pour Angular Material
     FormsModule, // Pour [(ngModel)]
-    ReactiveFormsModule ,// Pour les formulaires réactifs
+    ReactiveFormsModule,// Pour les formulaires réactifs
     CommonModule,
     RouterModule,
     MatFormFieldModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule, // Si nécessaire
+    MatSortModule ,
+    MatTableModule,
+    MatIconModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Facultatif si vous utilisez des éléments personnalisés
   providers: [
