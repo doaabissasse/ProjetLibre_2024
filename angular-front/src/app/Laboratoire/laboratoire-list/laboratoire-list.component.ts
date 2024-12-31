@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LaboratoireEditComponent } from '../laboratoire-edit/laboratoire-edit.component';
 import { ContactsDialogComponent } from '../../Contactes/contacts-dialog/contacts-dialog.component';
+import {User} from '../../Acceuil General/models/user';
+import {UserService} from '../../Acceuil General/services/user.service';
 
 
 
@@ -15,18 +17,22 @@ import { ContactsDialogComponent } from '../../Contactes/contacts-dialog/contact
   standalone: false,
   templateUrl: './laboratoire-list.component.html',
   styleUrls: ['./laboratoire-list.component.css'],
-  
+
 })
 export class LaboratoireListComponent implements OnInit {
   laboratoires: Laboratoire[] = [];
   filteredLaboratoires: Laboratoire[] = [];
   nomRecherche: string = '';
 
+  // user
+  utilisateurs: User[] = [];
+
   constructor(
     private laboratoireService: ServiceLaboratoireService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +85,7 @@ export class LaboratoireListComponent implements OnInit {
       width: '400px',
       data: { nom: laboratoire.nom }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) { // Vérifiez explicitement si le résultat est `true`
         this.laboratoireService.supprimerLaboratoire(laboratoire.id).subscribe({
@@ -87,7 +93,7 @@ export class LaboratoireListComponent implements OnInit {
             // Supprimez le laboratoire des deux listes : laboratoires et filteredLaboratoires
             this.laboratoires = this.laboratoires.filter(l => l.id !== laboratoire.id);
             this.filteredLaboratoires = this.filteredLaboratoires.filter(l => l.id !== laboratoire.id);
-            
+
             // Affichez une notification de succès
             this.snackBar.open(
               `Laboratoire "${laboratoire.nom}" supprimé avec succès.`,
@@ -124,7 +130,7 @@ export class LaboratoireListComponent implements OnInit {
       this.getLaboratoires(); // Recharge la liste complète si le champ est vide
       return;
     }
-  
+
     this.laboratoireService.rechercherLaboratoires(this.nomRecherche).subscribe({
       next: (data) => {
         this.laboratoires = data;
@@ -134,7 +140,7 @@ export class LaboratoireListComponent implements OnInit {
       }
     });
   }
-  
+
   afficherContacts(laboratoireId: number): void {
     this.router.navigate(['/contacts-laboratoire', laboratoireId]); // Route vers la page des contacts
   }
@@ -142,5 +148,12 @@ export class LaboratoireListComponent implements OnInit {
   afficherAnalyses(laboratoireId: number): void {
     this.router.navigate(['/analyses-laboratoire', laboratoireId]); // Route vers la page des contacts
   }
-  
+
+
+
+  afficherUtilisateurs(laboratoireId: number): void {
+    this.router.navigate(['/utilisateurs', laboratoireId]);
+  }
+
+
 }
