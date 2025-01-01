@@ -33,30 +33,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Build and test Config Service
-        working-directory: ./config_server
-        run: mvn clean install -DskipTests=false
-
-      - name: Build and test Discovery Service
-        working-directory: ./discovery
-        run: mvn clean install -DskipTests=false
-
-      - name: Build and test Gateway Service
-        working-directory: ./gateway
-        run: mvn clean install -DskipTests=false
-
-      - name: Build and test each Backend Service
-        run: |
-          for service in ./Backend/*/; do
-            if [ -f "$service/pom.xml" ]; then
-              echo "Building $service"
-              cd "$service"
-              mvn clean install -DskipTests=false
-              mvn test
-              cd - || exit
-            fi
-          done
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -85,6 +61,32 @@ jobs:
         with:
           name: angular-test-coverage
           path: angular-front/coverage/**
+
+      - name: Build and test Config Service
+        working-directory: ./config_server
+        run: mvn clean install -DskipTests=false
+
+      - name: Build and test Discovery Service
+        working-directory: ./discovery
+        run: mvn clean install -DskipTests=false
+
+      - name: Build and test Gateway Service
+        working-directory: ./gateway
+        run: mvn clean install -DskipTests=false
+
+      - name: Build and test each Backend Service
+        run: |
+          for service in ./Backend/*/; do
+            if [ -f "$service/pom.xml" ]; then
+              echo "Building $service"
+              cd "$service"
+              mvn clean install -DskipTests=false
+              mvn test
+              cd - || exit
+            fi
+          done
+
+      
 
       - name: Run JMeter Tests for each Backend Microservice
         run: |
