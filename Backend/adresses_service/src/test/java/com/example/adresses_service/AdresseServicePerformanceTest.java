@@ -1,12 +1,12 @@
-package com.example.dossiers_service;
+package com.example.adresses_service;
 
 import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.protocol.http.control.Header;
 import org.apache.jmeter.protocol.http.control.HeaderManager;
 import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy;
-import org.apache.jmeter.threads.ThreadGroup;
 import org.apache.jmeter.testelement.TestPlan;
+import org.apache.jmeter.threads.ThreadGroup;
 import org.apache.jmeter.util.JMeterUtils;
 import org.apache.jorphan.collections.HashTree;
 import org.junit.jupiter.api.Test;
@@ -86,7 +86,7 @@ public class AdresseServicePerformanceTest {
     private HTTPSamplerProxy createHttpSampler(String method, String path, String payload) {
         HTTPSamplerProxy sampler = new HTTPSamplerProxy();
         sampler.setDomain("localhost"); // Remplacez par votre domaine de service
-        sampler.setPort(8086); // Remplacez par le port utilisé par votre Spring Boot application
+        sampler.setPort(8093); // Remplacez par le port utilisé par votre Spring Boot application
         sampler.setPath(path);
         sampler.setMethod(method);
         sampler.setName("HTTP Request - " + method + " " + path);

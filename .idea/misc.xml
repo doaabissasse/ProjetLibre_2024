@@ -7,7 +7,7 @@
         <option value="$PROJECT_DIR$/Backend/contactes_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/labo_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/user_service/pom.xml" />
-        <option value="$PROJECT_DIR$/../ProjetLibre_2024/dossier_service/pom.xml" />
+        <option value="$PROJECT_DIR$/dossier_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/dossier_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/dossiers_service/pom.xml" />
         <option value="$PROJECT_DIR$/discovery/pom.xml" />
@@ -20,7 +20,13 @@
         <option value="$PROJECT_DIR$/Backend/users_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/dossiersService/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/patient_service/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/examen_service/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Backend/dossiers_service/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">

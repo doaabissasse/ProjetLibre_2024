@@ -9,6 +9,7 @@ on:
       - 'config_server/**'
       - 'discovery/**'
       - 'gateway/**'
+      - 'angular-front/**'
 
 jobs:
   build:
@@ -56,9 +57,52 @@ jobs:
             fi
           done
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - name: Upload test results
+      - name: Install Angular dependencies
+        working-directory: ./angular-front
+        run: npm install
+
+      - name: Build Angular application
+        working-directory: ./angular-front
+        run: npm run build --prod
+
+      - name: Upload Angular Build Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
-          path: '**/target/surefire-reports/*.xml'
+          name: angular-build
+          path: angular-front/dist/**
+
+      - name: Run tests for Angular application
+        working-directory: ./angular-front
+        run: npm test -- --coverage
+
+      - name: Upload Angular test coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: angular-test-coverage
+          path: angular-front/coverage/**
+
+      - name: Run JMeter Tests for each Backend Microservice
+        run: |
+          for service in ./Backend/*/; do
+            if [ -f "$service/jmeter-test-plan.jmx" ]; then
+              echo "Running JMeter for $service"
+              cd "$service"
+              wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
+              unzip apache-jmeter-5.4.3.zip
+              if [ -f "apache-jmeter-5.4.3/bin/jmeter.sh" ]; then
+                bash apache-jmeter-5.4.3/bin/jmeter.sh -g ./jmeter-test-plan.jmx -l results.jtl
+              fi              
+              cd - || exit
+            fi
+          done
+
+      - name: Upload JMeter Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-results
+          path: Backend/**/apache-jmeter-5.4.3/bin/results*.jtl
