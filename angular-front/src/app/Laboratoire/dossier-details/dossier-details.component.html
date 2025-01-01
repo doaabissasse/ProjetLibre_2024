@@ -1,0 +1,33 @@
+<div class="dossier-details-container">
+  <h1 class="page-title">Détails du Dossier</h1>
+
+  <div class="section">
+    <h2 class="section-title">Utilisateur</h2>
+    <div class="details-card">
+      <p><strong>Nom :</strong> {{ user.nomComplet }}</p>
+      <p><strong>Email :</strong> {{ user.email }}</p>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Patient</h2>
+    <div class="details-card">
+      <p><strong>Nom :</strong> {{ patient.nom }} {{ patient.prenom }}</p>
+      <p><strong>Date de Naissance :</strong> {{ patient.dateNaissance }}</p>
+      <p><strong>Adresse :</strong> {{ patient.adresse }}</p>
+      <p><strong>Telephone :</strong> {{ patient.telephone }}</p>
+      <p><strong>Lieu Naissance :</strong> {{ patient.lieuDeNaissance }}</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Dossier</h2>
+    <div class="details-card">
+      <p><strong>Identifiant :</strong> {{ dossier.id }}</p>
+      <p><strong>Date :</strong> {{ dossier.date }}</p>
+    </div>
+  </div>
+
+  <button class="btn-download" (click)="generatePDF()">Télécharger PDF</button>
+</div>

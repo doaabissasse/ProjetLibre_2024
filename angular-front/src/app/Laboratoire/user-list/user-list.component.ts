@@ -38,6 +38,6 @@ export class UserListComponent implements OnInit{
 
 
   AfficherDossierParUser(UserId: number): void {
-    this.router.navigate(['/dossiersparUser', UserId]);
+    this.router.navigate(['/dossiers', UserId]);
   }
 }

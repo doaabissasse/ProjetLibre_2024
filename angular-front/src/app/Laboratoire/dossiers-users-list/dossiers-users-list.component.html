@@ -1,7 +1,6 @@
-<nav class="navbar navbar-expand-lg  shadow">
+<nav class="navbar navbar-expand-lg shadow">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <!-- Logo -->
       <img src="assets/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,32 +21,20 @@
     </div>
   </div>
 </nav>
+
 <div class="container mt-4">
-  <h3>Utilisateurs du Laboratoire {{ laboratoireId }}</h3>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Email</th>
-      <th>Rôle</th>
-      <th>Profession</th>
-      <th>Signature</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.nomComplet }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.numTel }}</td>
-      <td>{{ user.profession }}</td>
-      <td>{{ user.signature }}</td>
-      <td>
-      <button class="btn btn-sm btn-primary" (click)="AfficherDossierParUser(user.id)">
-        Voir les dossiers
-      </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <h3 class="mb-4">Dossiers traités par l'utilisateur</h3>
+  <div class="row">
+    <div *ngFor="let dossier of dossiers" class="col-md-4">
+      <div class="card dossier-card shadow">
+        <div class="card-body">
+          <h5 class="card-title">Dossier ID: {{ dossier.id }}</h5>
+          <p class="card-text"><strong>ID Patient:</strong> {{ dossier.idPatient }}</p>
+          <p class="card-text"><strong>Date:</strong> {{ dossier.date | date:'dd/MM/yyyy' }}</p>
+          <button class="btn btn-primary btn-sm" (click)="viewDossier(dossier.id,dossier.idUtilisateur,dossier.idPatient)">Voir Plus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
