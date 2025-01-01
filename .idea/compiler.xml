@@ -25,16 +25,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dossier_service (1)" />
       </profile>
-      <profile name="Annotation profile for test_analyse_service" enabled="true">
+      <profile name="Annotation profile for patient_service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
+        <module name="dossiersService" />
         <module name="patient_service" />
         <module name="test_analyse_service" />
-        <module name="examen_service" />
         <module name="epreuve_service" />
       </profile>
     </annotationProcessing>
@@ -51,6 +51,7 @@
       <module name="discovery" options="-parameters" />
       <module name="dossier_service" options="-parameters" />
       <module name="dossier_service (1)" options="-parameters" />
+      <module name="dossiersService" options="-parameters" />
       <module name="dossiers_service" options="-parameters" />
       <module name="epreuve_service" options="-parameters" />
       <module name="examen_service" options="-parameters" />

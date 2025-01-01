@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./admin-dashboard.component.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 <!-- Header -->
 <header>
@@ -31,24 +33,25 @@
 <main>
   <!-- Section Stats -->
   <section class="stats">
-    <div class="card">
+    <div class="card" [attr.data-value]="laboratoiresCount" id="laboratoiresCount">
       <h3>Laboratoires</h3>
       <p>{{ laboratoiresCount }} actifs</p>
     </div>
-    <div class="card">
+    <div class="card" [attr.data-value]="usersCount - 1" id="usersCount">
       <h3>Utilisateurs</h3>
-      <p>{{ usersCount }} inscrits</p>
+      <p>{{ usersCount - 1 }} inscrits</p>
+    </div>
+    <div class="card" [attr.data-value]="patientsClientCount" id="patientsClientCount">
+      <h3>Patients</h3>
+      <p>{{ patientsClientCount }} clients</p>
     </div>
   </section>
-  
 
   <!-- Graphique Exemple -->
   <section class="graph">
     <h2>Statistiques Générales</h2>
-    <div class="graph-placeholder">
-      <!-- Un graphique dynamique pourrait être intégré ici avec Chart.js -->
-      <p>Graphique des activités</p>
-    </div>
+    <!-- Élément canvas pour le graphique -->
+    <canvas #myChart width="150" height="150"></canvas>
   </section>
 
   <!-- Section Premium -->
@@ -60,5 +63,8 @@
     </div>
   </section>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Inclure Chart.js -->
 </body>
+
 </html>

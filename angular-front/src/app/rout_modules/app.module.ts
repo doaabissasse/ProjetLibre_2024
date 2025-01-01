@@ -44,6 +44,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import {AjouterTestDialogComponent} from '../tests/ajouter-test-dialog/ajouter-test-dialog.component';
 import {AjouterEpreuveDialogComponent} from '../epreuves/ajouter-epreuve-dialog/ajouter-epreuve-dialog.component';
+import {UserListComponent} from '../Laboratoire/user-list/user-list.component';
+import {DossiersListComponent} from '../Laboratoire/dossiers-users-list/dossiers-users-list.component';
+import {DossierDetailsComponent} from '../Laboratoire/dossier-details/dossier-details.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,9 @@ import {AjouterEpreuveDialogComponent} from '../epreuves/ajouter-epreuve-dialog/
     AjouterEpreuveDialogComponent,
     AjouterTestDialogComponent,
     TestsComponent,
+    UserListComponent,
+    DossiersListComponent,
+    DossierDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -48,9 +48,13 @@ public class PatientService {
     }
 
     public Patient getPatientById(Long id) {
+        if (id <= 0) {
+            throw new RuntimeException("Invalid patient ID: " + id);
+        }
         return patientRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Patient non trouvé avec id : " + id));
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
     }
+
 
     public List<Patient> getAllPatients() {
         return patientRepository.findAll();
@@ -60,4 +64,7 @@ public class PatientService {
         return dossierFeignClient.getDossiersByPatientId(idPatient);
     }
 
+    public long countAllPatients() {
+        return patientRepository.count();
+    }
 }

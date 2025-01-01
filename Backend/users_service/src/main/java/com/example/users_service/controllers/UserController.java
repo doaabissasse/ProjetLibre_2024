@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/utilisateurs")
@@ -18,7 +19,11 @@ public class UserController {
 
         @GetMapping
         public List<User> getAllUtilisateurs() {
-            return utilisateurService.getAllUtilisateurs();
+
+            return utilisateurService.getAllUtilisateurs()
+                    .stream()
+                    .filter(user -> user.getId() != 1) // Exclure l'utilisateur avec l'ID 1
+                    .collect(Collectors.toList());
         }
 
         @GetMapping("/{id}")
@@ -28,10 +33,14 @@ public class UserController {
 
 
 
-        @GetMapping("/laboratoire/{labo-id}")
-        public List<User> getAllUtilisateurs(@PathVariable("labo-id") long fkIdLaboratoire) {
-            return utilisateurService.getAllUtilisateursByLabo(fkIdLaboratoire);
-        }
+    @GetMapping("/laboratoire/{labo-id}")
+    public List<User> getAllUtilisateurs(@PathVariable("labo-id") long fkIdLaboratoire) {
+        return utilisateurService.getAllUtilisateursByLabo(fkIdLaboratoire)
+                .stream()
+                .filter(user -> user.getId() != 1) // Exclure l'utilisateur avec l'ID 1
+                .collect(Collectors.toList());
+    }
+
 
     @GetMapping("/count")
     public long countUtilisateurs() {
