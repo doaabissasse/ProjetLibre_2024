@@ -1,8 +1,8 @@
 package com.example.contactes_service;
 
 import com.example.contactes_service.Entite.contacte;
-import com.example.contactes_service.service.contacteService;
 import com.example.contactes_service.repository.ContacteRepository;
+import com.example.contactes_service.service.contacteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

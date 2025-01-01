@@ -13,13 +13,15 @@ import java.util.Optional;
 
 
 @Service
-@RequiredArgsConstructor
 public class contacteService {
 
-    @Autowired
-    private ContacteRepository contacteRepository;
+    private final ContacteRepository contacteRepository;
     private final AdresseClient adresseClient;
 
+    public contacteService(ContacteRepository contacteRepository, AdresseClient adresseClient) {
+        this.contacteRepository = contacteRepository;
+        this.adresseClient = adresseClient;
+    }
 
 
     //methode d'ajout un contacte
