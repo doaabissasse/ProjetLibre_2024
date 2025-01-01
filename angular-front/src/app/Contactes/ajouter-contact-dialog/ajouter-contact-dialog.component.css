@@ -1,0 +1,97 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  height: 450px; /* Permet à la hauteur de s'adapter au contenu */
+  max-height: 80vh; /* Limite la hauteur à 80% de la hauteur de la fenêtre */
+  padding: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  gap: 15px; /* Espacement entre les champs */
+}
+
+.compact {
+  width: 100%; /* Utilise toute la largeur disponible dans la colonne */
+}
+
+h4 {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.actions button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.actions button[type="submit"]:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.actions button[type="button"] {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.actions button[type="button"]:hover {
+  background-color: #e53935;
+  transform: scale(1.05);
+}
+
+
+
+
+/* Style pour la section adresse */
+h4 {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Conteneur pour les options radio */
+.adresse-options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Conteneur des boutons radio */
+.radio-button-container mat-radio-button {
+  margin-bottom: 10px;
+}
+
+/* Sections de saisie pour les adresses */
+.nouvelle-adresse, .adresse-existante {
+  margin-top: 20px;
+}
+
+/* Formulaire compact */
+.mat-form-field.compact {
+  width: 100%;
+  margin-bottom: 15px;
+}
+

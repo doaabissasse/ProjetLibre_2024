@@ -1,0 +1,71 @@
+<form (ngSubmit)="ajouterContactAvecAdresse()" class="form-container">
+  <!-- Section Contact -->
+  <h4>Contact</h4>
+  <div class="form-grid">
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>ID Laboratoire</mat-label>
+        <input matInput type="number" [(ngModel)]="contact.idLaboratoire" name="idLaboratoire" required disabled>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Téléphone</mat-label>
+        <input matInput type="text" [(ngModel)]="contact.tel" name="tel" required>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Fax</mat-label>
+        <input matInput type="text" [(ngModel)]="contact.fax" name="fax" required>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="contact.email" name="email" required>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Section Adresse -->
+  <h4>Adresse</h4>
+  <div class="form-grid">
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Numéro de voie</mat-label>
+        <input matInput type="text" [(ngModel)]="adresse.numVoie" name="numVoie" required>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Nom de voie</mat-label>
+        <input matInput type="text" [(ngModel)]="adresse.nomVoie" name="nomVoie" required>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Code postal</mat-label>
+        <input matInput type="text" [(ngModel)]="adresse.codePostal" name="codePostal" required>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Ville</mat-label>
+        <input matInput type="text" [(ngModel)]="adresse.ville" name="ville" required>
+      </mat-form-field>
+    </div>
+    <div class="form-column">
+      <mat-form-field class="compact">
+        <mat-label>Commune</mat-label>
+        <input matInput type="text" [(ngModel)]="adresse.commune" name="commune" required>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Boutons d'action -->
+  <div class="actions">
+    <button mat-button type="submit">Ajouter</button>
+    <button mat-button type="button" (click)="fermerDialogue()">Annuler</button>
+  </div>
+</form>

@@ -1,0 +1,61 @@
+<div class="adresses-container">
+  <h3>Liste des analyses</h3>
+  
+  <!-- Bouton de retour -->
+  <button mat-button color="primary" (click)="retourLaboratoires()" class="mt-4">
+    <i class="fas fa-arrow-left"></i> Retour aux laboratoires
+  </button>
+
+  <!-- Informations du laboratoire -->
+  <div class="laboratoire-details mb-4">
+    <div class="card laboratoire-card">
+      <div class="card-header">
+        <div class="laboratoire-logo">
+          <img [src]="laboratoire?.logo" alt="{{ laboratoire?.nom }} logo" class="logo">
+        </div>
+        <div class="laboratoire-info">
+          <h5 class="laboratoire-name">{{ laboratoire?.nom }}</h5>
+          <p><strong>NRC:</strong> {{ laboratoire?.nrc }}</p>
+          <p><strong>Date d'activation:</strong> {{ laboratoire?.dateActivation | date:'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button to add a new analysis -->
+<button mat-button color="primary" (click)="openAddAnalyseDialog()" class="mt-4">
+  <i class="fas fa-plus"></i> Ajouter une analyse
+</button>
+
+ <!-- Liste des analyses -->
+ <div *ngIf="analyses.length > 0" class="analyses-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let analyse of analyses">
+        <td>{{ analyse.nom }}</td>
+        <td>{{ analyse.description }}</td>
+        <td>
+          <button mat-button color="primary" (click)="visualiserTests(analyse.id)">
+            <i class="fas fa-eye"></i>  tests & epreuve
+          </button>
+          <button mat-button color="warn" (click)="supprimerAnalyse(analyse.id)">
+            <i class="fas fa-trash-alt"></i> 
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Message si aucune analyse n'est disponible -->
+<div *ngIf="analyses.length === 0" class="no-analyses">
+  <p>Aucune analyse disponible.</p>
+</div>
+</div>

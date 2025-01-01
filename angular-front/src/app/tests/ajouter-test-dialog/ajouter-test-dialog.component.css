@@ -1,0 +1,19 @@
+.full-width {
+  width: 100%; /* Largeur complète du conteneur */
+  margin-bottom: 16px;
+}
+
+mat-form-field {
+  width: 100%; /* Appliquer une largeur complète aux champs de formulaire */
+  margin-bottom: 16px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+button {
+  margin-left: 8px;
+}

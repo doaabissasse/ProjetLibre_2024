@@ -1,16 +1,60 @@
-::ng-deep .mat-dialog-container {
-  width: 400px; /* Ajustez la largeur si nécessaire */
-  padding: 20px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+/* Styles généraux pour la boîte de dialogue */
+.mat-dialog-container {
+    font-family: 'Roboto', Arial, sans-serif;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  }
   
-  /* Centrage parfait */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  /* Titre de la boîte de dialogue */
+  h1[mat-dialog-title] {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Contenu de la boîte de dialogue */
+  .mat-dialog-content {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  
+  /* Actions dans la boîte de dialogue */
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  
+  /* Boutons dans la boîte de dialogue */
+  button[mat-button] {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+  
+  /* Bouton Annuler */
+  button[mat-button][mat-dialog-close="false"] {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s;
+  }
+  
+  button[mat-button][mat-dialog-close="false"]:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Bouton Supprimer */
+  button[mat-button][color="warn"] {
+    background-color: #f44336;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  button[mat-button][color="warn"]:hover {
+    background-color: #d32f2f;
+  }

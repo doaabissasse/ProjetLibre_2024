@@ -1,0 +1,82 @@
+/* Réinitialisation des styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Header Navigation */
+header {
+  background-color: #0046e4;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: 20px;
+  position: relative;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ffdd57;
+}
+
+/* Dropdown */
+header nav ul li.profile-menu .dropdown {
+  display: none;
+  position: absolute;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+}
+
+header nav ul li.profile-menu:hover .dropdown {
+  display: block;
+}
+
+header nav ul li.profile-menu .dropdown li a {
+  color: #333;
+  padding: 10px 15px;
+  display: block;
+  white-space: nowrap;
+}
+
+header nav ul li.profile-menu .dropdown li a:hover {
+  background-color: #f4f4f4;
+}
+
+/* Main Content */
+main {
+  padding: 20px;
+}

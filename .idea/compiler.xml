@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="users_service" />
+        <module name="user_service" />
         <module name="dossiers_service" />
-        <module name="discovery" />
         <module name="config_server" />
+        <module name="discovery" />
         <module name="analyse_service" />
         <module name="dossier_service" />
+        <module name="adresses_service" />
         <module name="labo_service" />
         <module name="gateway" />
         <module name="contactes_service" />
@@ -23,7 +25,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dossier_service (1)" />
       </profile>
-      <profile name="Annotation profile for test_analyse_service" enabled="true">
+      <profile name="Annotation profile for patient_service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -33,7 +35,6 @@
         <module name="dossiersService" />
         <module name="patient_service" />
         <module name="test_analyse_service" />
-        <module name="examen_service" />
         <module name="epreuve_service" />
       </profile>
     </annotationProcessing>
@@ -43,6 +44,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="adresses_service" options="-parameters" />
       <module name="analyse_service" options="-parameters" />
       <module name="config_server" options="-parameters" />
       <module name="contactes_service" options="-parameters" />

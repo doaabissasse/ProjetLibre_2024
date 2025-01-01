@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg  shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <!-- Logo -->
+      <img src="assets/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/accueil" routerLinkActive="active">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajouter un Laboratoire</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+  <h3>Utilisateurs du Laboratoire {{ laboratoireId }}</h3>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Rôle</th>
+      <th>Profession</th>
+      <th>Signature</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.nomComplet }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.numTel }}</td>
+      <td>{{ user.profession }}</td>
+      <td>{{ user.signature }}</td>
+      <td>
+      <button class="btn btn-sm btn-primary" (click)="AfficherDossierParUser(user.id)">
+        Voir les dossiers
+      </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

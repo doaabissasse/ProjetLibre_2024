@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./admin-dashboard.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<!-- Header -->
+<header>
+  <div class="logo">Admin Dashboard</div>
+  <nav>
+    <ul>
+      <li><a routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a></li>
+      <li><a routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajout Laboratoire</a></li>
+      <li><a href="/MesUtilisateurs">Gestion Utilisateurs</a></li>
+      <li><a href="#">Messages</a></li>
+      <li class="profile-menu">
+        <a routerLink="/user-profile">Mon Profil</a>
+        <ul class="dropdown">
+          <li><a href="/user-profile">Paramètres</a></li>
+          <li><a href="#">Se Déconnecter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+  <!-- Section Stats -->
+  <section class="stats">
+    <div class="card" [attr.data-value]="laboratoiresCount" id="laboratoiresCount">
+      <h3>Laboratoires</h3>
+      <p>{{ laboratoiresCount }} actifs</p>
+    </div>
+    <div class="card" [attr.data-value]="usersCount - 1" id="usersCount">
+      <h3>Utilisateurs</h3>
+      <p>{{ usersCount - 1 }} inscrits</p>
+    </div>
+    <div class="card" [attr.data-value]="patientsClientCount" id="patientsClientCount">
+      <h3>Patients</h3>
+      <p>{{ patientsClientCount }} clients</p>
+    </div>
+  </section>
+
+  <!-- Graphique Exemple -->
+  <section class="graph">
+    <h2>Statistiques Générales</h2>
+    <!-- Élément canvas pour le graphique -->
+    <canvas #myChart width="150" height="150"></canvas>
+  </section>
+
+  <!-- Section Premium -->
+  <section class="premium">
+    <div class="premium-box">
+      <h3>Obtenez un compte premium !</h3>
+      <p>Profitez des fonctionnalités avancées pour mieux gérer vos données.</p>
+      <button>Passer en Premium</button>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Inclure Chart.js -->
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 package com.example.contactes_service.controlleur;
 
+import com.example.contactes_service.Entite.Adresse;
 import com.example.contactes_service.Entite.contacte;
 import com.example.contactes_service.service.contacteService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,12 @@ public class contacteController {
 
     @Autowired
     private contacteService contacteService;
+
+
+    @GetMapping("/{contacteId}/adresse")
+    public Adresse getAdresseByContacteId(@PathVariable long contacteId) {
+        return contacteService.getAdresseByContacteId(contacteId);
+    }
 
     //ajouter una contacte
     @PostMapping
@@ -68,6 +75,8 @@ public class contacteController {
     }
 
 
-
-
+    @DeleteMapping("/laboratoire/{labo_id}")
+    public void deleteAllContactsByLaboratoireId(@PathVariable("labo_id") long laboId) {
+        contacteService.deleteAllContactsByLaboratoireId(laboId);
+    }
 }

@@ -1,0 +1,11 @@
+/* Conteneur principal */
+.form-container {
+    margin: 10px ; /* Centrer horizontalement */
+    padding: 10px;
+    border: 1px solid #ccc; /* Bordure autour du formulaire */
+    border-radius: 1px; /* Coins arrondis */
+    background-color: #f9f9f9; /* Fond clair pour un contraste doux */
+    font-family: Arial, sans-serif; /* Police simple et claire */
+  }
+  
+  

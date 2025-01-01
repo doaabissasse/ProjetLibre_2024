@@ -7,19 +7,19 @@
         <option value="$PROJECT_DIR$/Backend/contactes_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/labo_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/user_service/pom.xml" />
-        <option value="$PROJECT_DIR$/dossier_service/pom.xml" />
+        <option value="$PROJECT_DIR$/../ProjetLibre_2024/dossier_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/dossier_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/dossiers_service/pom.xml" />
         <option value="$PROJECT_DIR$/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/config_server/pom.xml" />
-        <option value="$PROJECT_DIR$/Backend/users_service/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/adresses_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/analyse_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/epreuve_service/pom.xml" />
-        <option value="$PROJECT_DIR$/Backend/patient_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/test_analyse_service/pom.xml" />
-        <option value="$PROJECT_DIR$/Backend/examen_service/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/users_service/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/dossiersService/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/patient_service/pom.xml" />
       </list>
     </option>
   </component>

@@ -53,4 +53,11 @@ public class PatientController {
     public List<DossierDto> getDossiersByPatient(@PathVariable Long idPatient) {
         return patientService.getDossiersByPatientId(idPatient);
     }
+
+
+    @GetMapping("/count")
+    public long countPatients() {
+        return patientService.countAllPatients();
+    }
+
 }

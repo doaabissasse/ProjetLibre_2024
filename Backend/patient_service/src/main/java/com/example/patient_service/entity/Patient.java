@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Patient {
 
     @Id
@@ -36,6 +35,10 @@ public class Patient {
 
     private String visiblePour; // Indique qui peut voir ce patient, par exemple "Admin", "Médecin", etc.
 
+
+    public Patient() {
+
+    }
     // Constructeur avec tous les champs
     public Patient(Long id, String nom, String prenom, LocalDate dateNaissance, String lieuDeNaissance, String sexe, String adresse, String email, String telephone, String typePieceIdentite, String numPieceIdentite, String visiblePour) {
         this.id = id;

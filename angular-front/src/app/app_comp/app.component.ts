@@ -6,14 +6,12 @@ import { RouterModule } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [LaboratoireListComponent,
-    HttpClientModule,RouterModule,AjouterLaboratoireComponent,MenuComponent
-  ]
 })
 export class AppComponent {
   title = 'angular-front';
+  
 }

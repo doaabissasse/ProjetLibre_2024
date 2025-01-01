@@ -1,0 +1,58 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+  background-color: #d5deed;
+}
+
+.nav-link:hover {
+  background-color: rgba(201, 201, 201, 0.913);
+}
+
+.container {
+  max-width: 1200px;
+}
+
+h3 {
+  text-align: center;
+  color: #2a4963;
+}
+
+.dossier-card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.dossier-card .card-body {
+  text-align: center;
+}
+
+.dossier-card .btn {
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: #2a4963;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1e3450;
+}
+
+.btn-secondary {
+  display: block;
+  margin: auto;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2a4963;
+}
+
+.card-text {
+  color: #555;
+}

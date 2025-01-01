@@ -1,0 +1,69 @@
+<div class="form-container">
+  <h2>Modifier le laboratoire</h2>
+  <form (ngSubmit)="onSave()" #laboratoireForm="ngForm">
+    <div class="form-group">
+      <label for="nom">Nom :</label>
+      <input
+        type="text"
+        id="nom"
+        class="form-control"
+        [(ngModel)]="laboratoire.nom"
+        name="nom"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="nrc">NRC :</label>
+      <input
+        type="text"
+        id="nrc"
+        class="form-control"
+        [(ngModel)]="laboratoire.nrc"
+        name="nrc"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="logo">Logo :</label>
+      <input
+        type="text"
+        id="logo"
+        class="form-control"
+        [(ngModel)]="laboratoire.logo"
+        name="logo"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="active">Statut :</label>
+      <input
+        type="checkbox"
+        id="active"
+        [(ngModel)]="laboratoire.active"
+        name="active"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="dateActivation">Date d'activation :</label>
+      <input
+        type="date"
+        id="dateActivation"
+        class="form-control"
+        [(ngModel)]="laboratoire.dateActivation"
+        name="dateActivation"
+      />
+    </div>
+
+    <div class="form-group text-center mt-3">
+      <button type="submit" class="btn btn-primary" [disabled]="laboratoireForm.invalid">
+        Sauvegarder
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

@@ -6,9 +6,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
-  standalone: true,
-  imports: [LaboratoireListComponent,
-    HttpClientModule,RouterModule,AjouterLaboratoireComponent],
+  standalone: false,
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })

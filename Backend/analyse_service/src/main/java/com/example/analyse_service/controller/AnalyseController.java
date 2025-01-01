@@ -5,13 +5,16 @@ import com.example.analyse_service.entity.Analyse;
 import com.example.analyse_service.entity.TestAnalyse;
 import com.example.analyse_service.entity.epreuve;
 import com.example.analyse_service.service.AnalyseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/analyses")
 public class AnalyseController {
 
@@ -30,10 +33,10 @@ public class AnalyseController {
     }
 
     @PostMapping
-    public ResponseEntity<Analyse> createAnalyse(@RequestBody Analyse analyse) {
-        Analyse createdAnalyse = analyseService.createAnalyse(analyse);
-        return ResponseEntity.ok(createdAnalyse);
+    public Analyse createAnalyse(@RequestBody Analyse analyse) {
+        return analyseService.save(analyse);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Analyse> updateAnalyse(@PathVariable Long id, @RequestBody Analyse updatedAnalyse) {

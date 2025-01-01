@@ -16,7 +16,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())  // Désactive la protection CSRF
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/laboratoires/**").permitAll()
-                        .requestMatchers("/allcontactes/**").permitAll() // Autorise tout le monde à accéder à ces routes
+                        .requestMatchers("/adresses/**").permitAll()
                         .anyRequest().authenticated()  // Toutes les autres routes nécessitent une authentification
                 );
         return http.build();

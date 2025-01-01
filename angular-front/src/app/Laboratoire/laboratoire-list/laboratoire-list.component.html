@@ -1,30 +1,75 @@
+<nav class="navbar navbar-expand-lg  shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <!-- Logo -->
+      <img src="assets/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/accueil" routerLinkActive="active">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajouter un Laboratoire</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="laboratoire-list container mt-4">
     <h3>Liste des Laboratoires</h3>
-    <table class="table table-striped table-hover">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">Logo</th>
-                <th scope="col">Nom</th>
-                <th scope="col">NRC</th>
-                <th scope="col">Date d'Activation</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let laboratoire of laboratoires">
-                <td><img [src]="laboratoire.logo" alt="{{ laboratoire.nom }} Logo" class="logo" /></td>
-                <td>{{ laboratoire.nom }}</td> 
-                <td>{{ laboratoire.nrc }}</td>
-                <td>{{ laboratoire.dateActivation | date:'dd/MM/yyyy' }}</td>
-                <td>
-                    <button class="btn  btn-sm" (click)="modifier(laboratoire)">
-                        <i class="fas fa-edit"></i> 
+    <div class="form-group search-bar">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="nomRecherche"
+        placeholder="Rechercher par nom"
+        (ngModelChange)="onSearchChange($event)"
+      />
+    </div>
+      <table class="table table-striped table-hover">
+          <thead class="thead-light">
+              <tr>
+                  <th scope="col">Logo</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">NRC</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Date d'Activation</th>
+                  <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let laboratoire of filteredLaboratoires">
+                  <td><img [src]="laboratoire.logo" alt="{{ laboratoire.nom }} Logo" class="logo" /></td>
+                  <td>{{ laboratoire.nom }}</td>
+                  <td>{{ laboratoire.nrc }}</td>
+                  <td>{{ laboratoire.active ? 'Active' : 'Inactive' }}</td>
+                  <td>{{ laboratoire.dateActivation | date:'dd/MM/yyyy' }}</td>
+                  <td>
+                    <button class="btn btn-sm" (click)="modifier(laboratoire)">
+                      <i class="fas fa-edit"></i>
                     </button>
                     <button class="btn btn-sm" (click)="supprimer(laboratoire)">
-                        <i class="fas fa-trash"></i> 
+                      <i class="fas fa-trash"></i>
                     </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                    <button class="btn btn-sm btn-primary" (click)="afficherContacts(laboratoire.id)">
+                      plus details
+                    </button>
+                    <button class="btn btn-sm btn-info" (click)="afficherAnalyses(laboratoire.id)">
+                      Analyses
+                    </button>
+                    <button class="btn btn-sm btn-primary" (click)="afficherUtilisateurs(laboratoire.id)">
+                      Voir les utilisateurs
+                    </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+

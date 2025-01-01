@@ -15,7 +15,10 @@ export class ServiceLaboratoireService {
     return this.httpClient.get<Laboratoire[]>(this.apiUrl);
   }
 
-
+  getContactsByLaboratoireId(id: number): Observable<any[]> { // Remplacez `any[]` par le type de contact réel
+    return this.httpClient.get<any[]>(`${this.apiUrl}/contactes/liste/
+      ${id}`);
+  }
   ajouterLaboratoire(laboratoire : Laboratoire): Observable<Object>{
     return this.httpClient.post(this.apiUrl,laboratoire);
   }
@@ -24,4 +27,24 @@ export class ServiceLaboratoireService {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.delete<void>(url);
   }
+
+  rechercherLaboratoires(nom: string): Observable<Laboratoire[]> {
+    const url = `${this.apiUrl}/search?nom=${nom}`;
+    return this.httpClient.get<Laboratoire[]>(url);
+  }
+
+  updateLaboratoire(laboratoire: Laboratoire): Observable<Laboratoire> {
+    return this.httpClient.put<Laboratoire>(`${this.apiUrl}/${laboratoire.id}`, laboratoire);
+  }
+  
+  getLaboratoireById(id: number): Observable<Laboratoire> {
+    return this.httpClient.get<Laboratoire>(`${this.apiUrl}/${id}`);
+  }
+
+  getAnalysesByLaboratoire(idLabo: number): Observable<any> {
+    const url = `${this.apiUrl}/${idLabo}/analyses`;
+    return this.httpClient.get<any>(url);
+  }
+  
+  
 }

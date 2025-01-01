@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/add-user.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="logo">Espace Admin</div>
+
+
+
+  <!-- Retirer cette fermeture de div ici -->
+  <!-- <div></div> --> <!-- Cette ligne est en trop -->
+
+  <nav>
+    <ul>
+      <li><a routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a></li>
+      <li><a routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajout Laboratoire</a></li>
+
+      <li><a href="/MesUtilisateurs">Gestion Utilisateurs</a></li>
+      <li><a href="#">Messages</a></li>
+      <li class="profile-menu">
+        <a routerLink="/user-profile">Mon Profil</a>
+        <ul class="dropdown">
+          <li><a href="/user-profile">Mes informations</a></li>
+          <li><a href="#">Se Déconnecter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div class="form-container">
+  <div class="form-header">
+    <i class="fas fa-user-circle user-icon"></i>
+    <h2>Créer un Nouvel Utilisateur</h2>
+  </div>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <!-- Nom Complet -->
+    <div class="form-group">
+      <label for="nomComplet">Nom Complet</label>
+      <input
+        type="text"
+        id="nomComplet"
+        name="nomComplet"
+        [(ngModel)]="newUser.nomComplet"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="newUser.email"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <!-- Téléphone -->
+    <div class="form-group">
+      <label for="numTel">Numéro de Téléphone</label>
+      <input
+        type="text"
+        id="numTel"
+        name="numTel"
+        [(ngModel)]="newUser.numTel"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Profession -->
+    <div class="form-group">
+      <label for="profession">Profession</label>
+      <input
+        type="text"
+        id="profession"
+        name="profession"
+        [(ngModel)]="newUser.profession"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Signature -->
+    <div class="form-group">
+      <label for="signature">Signature</label>
+      <input
+        type="text"
+        id="signature"
+        name="signature"
+        [(ngModel)]="newUser.signature"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Laboratoire -->
+    <div class="form-group">
+      <label for="fkIdLaboratoire">ID Laboratoire</label>
+      <input
+        type="number"
+        id="fkIdLaboratoire"
+        name="fkIdLaboratoire"
+        [(ngModel)]="newUser.fkIdLaboratoire"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Mot de Passe -->
+    <div class="form-group">
+      <label for="password">Mot de Passe</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="newUser.password"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <!-- Boutons -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="!registerForm.valid" class="btn-submit">
+        Ajouter
+      </button>
+      <button type="button" (click)="onCancel()" class="btn-cancel">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* Container de la page */
+.dossier-details-container {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f4f7f6;
+  border-radius: 8px;
+}
+
+/* Titre de la page */
+.page-title {
+  font-size: 2em;
+  color: #2a4963;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Section pour chaque catégorie (Utilisateur, Patient, Dossier) */
+.section {
+  margin-bottom: 20px;
+}
+
+/* Titre de chaque section */
+.section-title {
+  font-size: 1.5em;
+  color: #2a4963;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #2a4963;
+  padding-bottom: 5px;
+}
+
+/* Carte pour afficher les détails */
+.details-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.details-card p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.details-card strong {
+  color: #2a4963;
+}
+
+/* Style du bouton de téléchargement PDF */
+.btn-download {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #2a4963;
+  color: white;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+  background-color: #1c3656;
+}

@@ -1,9 +1,6 @@
 package com.example.labo_service.controlleur;
 
-import com.example.labo_service.Entite.Analyse;
-import com.example.labo_service.Entite.FullLaboratoireResponse;
-import com.example.labo_service.Entite.FullLaboratoirewithUSER;
-import com.example.labo_service.Entite.Laboratoire;
+import com.example.labo_service.Entite.*;
 import com.example.labo_service.service.LaboratoireService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +39,10 @@ public class  LaboratoireController {
     }
 
 
+    @GetMapping("/contactes/liste/{labo_id}")
+    public List<contacte> listContactes(@PathVariable("labo_id") long idLaboratoire) {
+        return laboratoireService.findContactesByLaboratoireId(idLaboratoire);
+    }
 
     //afficher tous les contactes de labo avec id_labo
     @GetMapping("/contactes/{labo_id}")
@@ -49,6 +50,12 @@ public class  LaboratoireController {
         return laboratoireService.findLabowithContactes(idLaboratoire);
     }
 
+    @GetMapping("/{labo_id}/adresses")
+    public List<Adresse> getAdressesByLaboratoire(@PathVariable("labo_id") long idLaboratoire) {
+        return laboratoireService.findAdressesByLaboratoireId(idLaboratoire);
+    }
+
+    //afficher tous les users de labo avec id_labo
     //afficher tous les users de labo avec id_labo
     @GetMapping("/users/{labo_id}")
     public FullLaboratoirewithUSER listLaboratoireUsers(@PathVariable("labo_id") long idLaboratoire) {
@@ -70,6 +77,11 @@ public class  LaboratoireController {
     @GetMapping("/search")
     public List<Laboratoire> searchLaboratoiresByNom(@RequestParam String nom) {
         return laboratoireService.findByNom(nom);
+    }
+
+    @GetMapping("/count")
+    public long countLaboratoires() {
+        return laboratoireService.countLaboratoires();
     }
 
 }
