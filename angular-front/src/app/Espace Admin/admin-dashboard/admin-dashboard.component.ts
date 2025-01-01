@@ -65,7 +65,7 @@ export class AdminDashboardComponent implements AfterViewInit {
             labels: ['Laboratoires', 'Utilisateurs', 'Patients'],
             datasets: [{
               label: 'Statistiques',
-              data: [this.laboratoiresCount, this.usersCount, this.patientsClientCount],
+              data: [this.laboratoiresCount, this.usersCount - 1, this.patientsClientCount],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
