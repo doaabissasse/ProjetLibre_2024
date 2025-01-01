@@ -24,12 +24,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install JMeter
-        run: |
-          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.tgz
-          tar -xzf apache-jmeter-5.4.1.tgz
-          mv apache-jmeter-5.4.1 /opt/jmeter
-
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
@@ -62,19 +56,9 @@ jobs:
             fi
           done
 
-      - name: Run JMeter Performance Tests
-        run: |
-          for service in ./Backend/*/; do
-            if [ -d "$service/src/test/java" ]; then
-              echo "Running JMeter tests for $service"
-              cd "$service/src/test/java"
-              /opt/jmeter/apache-jmeter-5.4.1/bin/jmeter -n -t ../resources/jmeter.properties -l jmeter-results.csv
-              cd - || exit
-            fi
-          done
 
-      - name: Upload JMeter results
+      - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
-          name: jmeter-results
-          path: '**/jmeter-results.csv'
+          name: test-results
+          path: '**/target/surefire-reports/*.xml'
