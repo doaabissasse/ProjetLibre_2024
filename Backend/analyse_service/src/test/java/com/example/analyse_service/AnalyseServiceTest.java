@@ -64,7 +64,7 @@ class AnalyseServiceTest {
 
         when(analyseRepository.save(mockAnalyse)).thenReturn(savedAnalyse);
 
-        Analyse analyse = analyseService.createAnalyse(mockAnalyse);
+        Analyse analyse = analyseService.save(mockAnalyse);
 
         assertNotNull(analyse);
         assertEquals(1L, analyse.getId());
