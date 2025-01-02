@@ -40,7 +40,10 @@ jobs:
 
       - name: Install Angular dependencies
         working-directory: ./angular-front
-        run: npm install
+        shell: pwsh
+        run: |
+          Remove-Item -Recurse -Force ./node_modules
+          npm install
 
       - name: Build Angular application
         working-directory: ./angular-front
