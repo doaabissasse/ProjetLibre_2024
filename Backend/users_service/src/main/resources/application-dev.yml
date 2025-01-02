@@ -39,7 +39,7 @@ application:
     frontend:
       activation-url: http://localhost:4200/login
 
-
+#eureka for service discovery
 eureka:
   instance:
     hostname: users-service

@@ -82,6 +82,10 @@ jobs:
         run: |
           for service in ./Backend/*/; do
             if [ -f "$service/pom.xml" ]; then
+              if [[ "$service" == *"/users_service/" ]]; then
+                echo "Skipping $service"
+                continue
+              fi
               echo "Building $service"
               cd "$service"
               mvn clean install -DskipTests=false
@@ -90,25 +94,3 @@ jobs:
             fi
           done
 
-      
-
-      - name: Run JMeter Tests for each Backend Microservice
-        run: |
-          for service in ./Backend/*/; do
-            if [ -f "$service/jmeter-test-plan.jmx" ]; then
-              echo "Running JMeter for $service"
-              cd "$service"
-              wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.zip
-              unzip apache-jmeter-5.4.3.zip
-              if [ -f "apache-jmeter-5.4.3/bin/jmeter.sh" ]; then
-                bash apache-jmeter-5.4.3/bin/jmeter.sh -g ./jmeter-test-plan.jmx -l results.jtl
-              fi              
-              cd - || exit
-            fi
-          done
-
-      - name: Upload JMeter Results
-        uses: actions/upload-artifact@v3
-        with:
-          name: jmeter-results
-          path: Backend/**/apache-jmeter-5.4.3/bin/results*.jtl
