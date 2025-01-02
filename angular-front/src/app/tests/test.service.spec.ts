@@ -27,7 +27,7 @@ describe('TestService', () => {
   });
 
   describe('ajouterTestAnalyse', () => {
-    it('should send a POST request with correct data', () => {
+    it('should send a POST request w correct data', () => {
       const testAnalyse: TestAnalyse = {
         id: 1,
         idAnalyse: 123,
