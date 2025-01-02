@@ -50,7 +50,7 @@ describe('TestService', () => {
     });
   });
 
-  describe('supprimerTestAnalyse', () => {
+  describe('supprimertestanalyse', () => {
     it('should send a DELETE request with the correct ID', () => {
       const id = 1;
 
