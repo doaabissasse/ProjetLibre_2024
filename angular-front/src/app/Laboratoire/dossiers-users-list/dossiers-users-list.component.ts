@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {Dossier} from '../Entite_labo/dossier.model';
-import {DossierService} from '../services/dossier.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Dossier } from '../Entite_labo/dossier.model';
+import { DossierService } from '../services/dossier.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dossiers-users-list',
-  standalone: false,
-
+  standalone :false,
   templateUrl: './dossiers-users-list.component.html',
-  styleUrl: './dossiers-users-list.component.css'
+  styleUrls: ['./dossiers-users-list.component.css']
 })
 export class DossiersListComponent implements OnInit {
   dossiers: Dossier[] = [];
   userId!: number;
+  laboratoireId!: number; // Définir la propriété laboratoireId
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +21,9 @@ export class DossiersListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Récupérer l'ID de l'utilisateur et du laboratoire depuis l'URL
     this.userId = Number(this.route.snapshot.paramMap.get('userId'));
+    this.laboratoireId = Number(this.route.snapshot.paramMap.get('laboratoireId')); // Récupérer laboratoireId
     this.fetchDossiers();
   }
 
@@ -40,9 +42,17 @@ export class DossiersListComponent implements OnInit {
     this.router.navigate(['/laboratoires']);
   }
 
-  viewDossier(id: number,idUser: number,idPatient: number): void {
+  viewDossier(id: number, idUser: number, idPatient: number): void {
     this.router.navigate(['/dossier-details', id, idUser, idPatient]);
   }
 
-
+  retourusers() {
+    const laboratoireId = this.route.snapshot.paramMap.get('laboratoireId'); // Récupérer l'ID de l'URL actuelle
+    if (laboratoireId) {
+      this.router.navigate([`/utilisateurs/${laboratoireId}`]);
+    } else {
+      console.error('ID du laboratoire introuvable pour la navigation.');
+    }
   }
+
+}

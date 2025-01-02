@@ -12,13 +12,12 @@ public class Dossier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+
     private Long idPatient;     // ID of the patient associated with the dossier
 
-    @Column(nullable = false)
+
     private Long idUtilisateur; // ID of the user (e.g., the one who created/modified the dossier)
 
-    @Column(nullable = false)
     private LocalDate date;     // Date of creation or last update
 
     // Constructors

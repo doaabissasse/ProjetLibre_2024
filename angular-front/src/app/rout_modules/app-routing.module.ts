@@ -18,6 +18,11 @@ import {TestsComponent} from '../tests/tests/tests.component';
 import {UserListComponent} from '../Laboratoire/user-list/user-list.component';
 import {DossiersListComponent} from '../Laboratoire/dossiers-users-list/dossiers-users-list.component';
 import {DossierDetailsComponent} from '../Laboratoire/dossier-details/dossier-details.component';
+import {ProfileComponent} from '../EspaceUser/profile/user-profile.component';
+import { ContacteComponent } from '../EspaceUser/contacte/contacte.component';
+import {AnalyseComponent  } from '../EspaceUser/analyse/analyse.component';
+import {TestEpreuvesComponent } from '../EspaceUser/test-epreuves/test-epreuves.component';
+import {DossierComponent } from '../EspaceUser/dossier/dossier.component';
 
 
 const routes: Routes = [
@@ -39,6 +44,11 @@ const routes: Routes = [
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'dossiers/:userId', component: DossiersListComponent },
   { path: 'dossier-details/:id/:idUser/:idPatient', component: DossierDetailsComponent },
+  { path: 'contactes/:id', component: ContacteComponent },
+  { path: 'analyse/:id', component: AnalyseComponent },
+  { path: 'test-epreuve/:id', component: TestEpreuvesComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'dossier/:id', component: DossierComponent },
 
   { path: '', redirectTo: 'accueil-laboratoire', pathMatch: 'full' },  // Redirection par défaut
     { path: '**', redirectTo: 'accueil-laboratoire', pathMatch: 'full' }, // Wildcard route pour chemins non trouvés

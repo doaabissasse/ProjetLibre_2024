@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../Acceuil General/services/user.service";
+import {ServiceLaboratoireService} from "../../Laboratoire/service_labo/service-laboratoire.service";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -8,15 +9,25 @@ import {UserService} from "../../Acceuil General/services/user.service";
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent implements OnInit {
-  user: any; // Contiendra les informations de l'utilisateur
+  user: any;
+  laboratoire: any;
 
-  constructor() {}
+  constructor(private laboratoireService: ServiceLaboratoireService) {}
 
   ngOnInit(): void {
-    // Récupérer les informations de l'utilisateur depuis le localStorage
     const userData = localStorage.getItem('user');
+    console.log('Détails du analyse récupérés:', userData);
     if (userData) {
       this.user = JSON.parse(userData);
+      console.log('Détails du analyse récupérés:', this.user);
+      if (this.user.fkIdLaboratoire) {
+        console.log('Détails du analyse récupérés:', this.user.fkIdLaboratoire);
+        this.laboratoireService.getLaboratoireById(this.user.fkIdLaboratoire).subscribe({
+          next: (data) => (this.laboratoire = data),
+          error: (err) => console.error('Erreur lors de la récupération du laboratoire:', err),
+        });
+      }
     }
   }
+
 }

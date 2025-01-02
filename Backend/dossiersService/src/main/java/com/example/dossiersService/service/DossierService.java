@@ -25,7 +25,6 @@ public class DossierService {
     }
 
     public Dossier createDossier(Dossier dossier) {
-        dossier.setDate(LocalDate.now()); // Set current date by default
         return dossierRepository.save(dossier);
     }
 

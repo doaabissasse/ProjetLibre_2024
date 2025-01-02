@@ -1,0 +1,45 @@
+<app-menu-user></app-menu-user>
+<div class="contacts-container">
+    <h2>Contacts du Laboratoire</h2>
+  
+   <!-- Liste des contacts -->
+   <div *ngIf="contacts.length > 0" class="contact-table">
+
+    <table class="table table-striped table-sm"> <!-- Ajout de 'table-sm' pour une table plus compacte -->
+      <thead>
+        <tr>
+          <th>Téléphone</th>
+          <th>Fax</th>
+          <th>Email</th>
+          <th>Adresse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.tel }}</td>
+          <td>{{ contact.fax }}</td>
+          <td>{{ contact.email }}</td>
+          <td>
+            <div *ngIf="contact.adresse; else loading">
+              {{ contact.adresse.numVoie }} {{ contact.adresse.nomVoie }},
+              {{ contact.adresse.codePostal }} {{ contact.adresse.ville }},
+              {{ contact.adresse.commune }}
+            </div>
+            <ng-template #loading>
+              <mat-spinner diameter="20"></mat-spinner> <!-- Spinner réduit -->
+            </ng-template>
+            <button mat-button (click)="afficherAdresse(contact.id)" *ngIf="!contact.adresse" class="btn-sm">
+              Afficher l'adresse
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="contacts.length === 0" class="no-contacts">
+    <p>Aucun contact disponible.</p>
+  </div>
+</div>
+
+  

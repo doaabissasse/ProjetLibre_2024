@@ -27,6 +27,7 @@ public class DossierController {
         return ResponseEntity.ok(createdDossier);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Dossier> getDossierById(@PathVariable Long id) {
         Optional<Dossier> dossier = dossierService.getDossierById(id);
@@ -56,9 +57,8 @@ public class DossierController {
         return dossierService.getDossiersByIdUtilisateur(idUtilisateur);
     }
 
-    @GetMapping("/{id}/examens")
-    public ResponseEntity<List<ExamenDTO>> getExamensByDossierId(@PathVariable Long id) {
-        List<ExamenDTO> examens = dossierService.getExamensByDossierId(id);
-        return ResponseEntity.ok(examens);
+    @GetMapping("/{idDossier}/examens")
+    public List<ExamenDTO> getExamensByDossierId(@PathVariable Long idDossier) {
+        return dossierService.getExamensByDossierId(idDossier);
     }
 }

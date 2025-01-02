@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<app-menu-user></app-menu-user>
+<div class="profile-container">
+    <h2>Mon Profil</h2>
+    <div class="profile-card">
+      <p><strong>Nom :</strong> {{ user?.nomComplet || 'Non disponible' }}</p>
+      <p><strong>Email :</strong> {{ user?.email || 'Non disponible' }}</p>
+      <p><strong>Rôle :</strong> {{ user?.roles[0]?.name || 'Non disponible' }}</p>
+      <p><strong>Téléphone :</strong> {{ user?.numTel || 'Non disponible' }}</p>
+      <p><strong>Profession :</strong> {{ user?.profession || 'Non disponible' }}</p>
+      <p><strong>signature :</strong> {{ user?.signature || 'Non disponible' }}</p>
+    </div>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+.contacts-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+ 
+  button.mat-button i {
+    margin-right: 8px;
+  }
+  
+  .contacts-container .add-contact-button {
+    margin-bottom: 20px;
+  }
+  
+  .contact-table {
+    margin-top: 20px;
+  }
+  
+  .contact-table th,
+  .contact-table td {
+    text-align: left;
+  }
+  .contact-table th {
+    background-color: #6db57a;
+    color: white;
+  }
+  
+  .contacts-container .table-sm {
+    font-size: 14px; /* Police réduite */
+  }
+
+  
+  .mat-spinner {
+    margin: 0 auto;
+  }
+  
+  button.btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  
+  .contact-table th, .contact-table td {
+    padding: 8px 12px; /* Réduction de l'espacement */
+  }
+  

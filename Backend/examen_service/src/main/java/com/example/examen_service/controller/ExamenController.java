@@ -59,7 +59,7 @@ public class ExamenController {
         return examenService.getExamensByIdTestAnalyse(idTestAnalyse);
     }
 
-    @GetMapping("/by-dossier/{idDossier}")
+    @GetMapping("/dossier/{idDossier}")
     public List<Examen> getExamensByIdDossier(@PathVariable Long idDossier) {
         return examenService.getExamensByIdDossier(idDossier);
     }

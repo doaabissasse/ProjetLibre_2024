@@ -1,0 +1,71 @@
+.adresses-container {
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+
+
+  
+  .analyses-table h3 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table th, .table td {
+    text-align: left;
+    padding: 12px 15px;
+  }
+  
+  .table th {
+    background-color: #6db57a;;
+    color: white;
+    border: none;
+    font-weight: bold;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tr:hover {
+    background-color: #d7e9f7;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Gestion de la description du dossier */
+  .table td {
+    max-width: 300px; /* Limiter la largeur de la description */
+    word-wrap: break-word; /* Gérer le texte trop long */
+  }
+  
+  .no-analyses {
+    color: #555;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -40,4 +40,9 @@ export class UserListComponent implements OnInit{
   AfficherDossierParUser(UserId: number): void {
     this.router.navigate(['/dossiers', UserId]);
   }
+
+  retourLaboratoires() {
+    this.router.navigate(['/laboratoires']);  // Naviguer vers la liste des laboratoires
+  }
+
 }

@@ -47,6 +47,15 @@ import {AjouterEpreuveDialogComponent} from '../epreuves/ajouter-epreuve-dialog/
 import {UserListComponent} from '../Laboratoire/user-list/user-list.component';
 import {DossiersListComponent} from '../Laboratoire/dossiers-users-list/dossiers-users-list.component';
 import {DossierDetailsComponent} from '../Laboratoire/dossier-details/dossier-details.component';
+import {ProfileComponent} from '../EspaceUser/profile/user-profile.component';
+import { ContacteComponent } from '../EspaceUser/contacte/contacte.component';
+import { MenuUSERComponent } from '../menu-user/menu-user.component';
+import {AnalyseComponent  } from '../EspaceUser/analyse/analyse.component';
+import {TestEpreuvesComponent } from '../EspaceUser/test-epreuves/test-epreuves.component';
+import {DossierComponent } from '../EspaceUser/dossier/dossier.component';
+import {AjoutDossierComponent } from '../EspaceUser/ajout-dossier/ajout-dossier.component';
+
+
 
 @NgModule({
   declarations: [
@@ -77,6 +86,13 @@ import {DossierDetailsComponent} from '../Laboratoire/dossier-details/dossier-de
     UserListComponent,
     DossiersListComponent,
     DossierDetailsComponent,
+    MenuUSERComponent,
+    ProfileComponent,
+    ContacteComponent,
+    AnalyseComponent,
+    TestEpreuvesComponent,
+    DossierComponent,
+    AjoutDossierComponent,
   ],
   imports: [
     BrowserModule,

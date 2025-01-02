@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Ajouter un Dossier</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="addDossier()">
+    <mat-form-field>
+      <mat-label>ID du Patient</mat-label>
+      <input matInput [(ngModel)]="dossier.idPatient" name="idPatient" type="number" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput [(ngModel)]="dossier.date" name="date" type="date" name="dateActivation" required />
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Annuler</button>
+      <button mat-button (click)="addDossier()">Ajouter</button>
+    </div>
+  </form>
+</mat-dialog-content>
+

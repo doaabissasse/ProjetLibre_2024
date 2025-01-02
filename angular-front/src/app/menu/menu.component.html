@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  shadow">
+<nav class="navbar navbar-expand-lg shadow">
   <div class="container">
     <a class="navbar-brand" href="#">
       <!-- Logo -->
@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/accueil" routerLinkActive="active">Accueil</a>
+          <a class="nav-link active" routerLink="/admin-dashboard" routerLinkActive="active">dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a>
@@ -18,31 +18,38 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajouter un Laboratoire</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/MesUtilisateurs" routerLinkActive="active">Gestion Utilisateurs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user-profile" routerLinkActive="active">Mon Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Se Déconnecter</a>
+        </li>
+
       </ul>
     </div>
   </div>
 </nav>
-<nav class="navbar navbar-expand-lg  shadow">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <!-- Logo -->
-      <img src="assets/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-top">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/accueil" routerLinkActive="active">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajouter un Laboratoire</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
+<!-- Script pour gérer l'affichage du sous-menu au clic -->
+<script>
+  function toggleDropdown(event) {
+    const menu = event.currentTarget;
+    menu.classList.toggle('show');  // Ajoute ou retire la classe "show" pour afficher ou cacher le sous-menu
+  }
+
+  // Ferme le menu si on clique en dehors
+  document.addEventListener('click', function (e) {
+    const dropdowns = document.querySelectorAll('.profile-menu');
+    dropdowns.forEach(function (dropdown) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+  });
+</script>

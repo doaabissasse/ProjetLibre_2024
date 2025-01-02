@@ -1,0 +1,43 @@
+<app-menu-user></app-menu-user>
+<div class="dossiers-container">
+  <h3>Dossiers générés par : {{ user.nomComplet }}</h3>
+
+  <button mat-raised-button (click)="openAddDossierDialog()">Ajouter un Dossier</button>
+
+  <div *ngIf="dossiers.length > 0" class="dossier-table-wrapper">
+    <table class="dossier-table table-sm">
+      <thead>
+        <tr>
+          <th>id </th>
+           <th>id Patient</th>
+          <th>Nom Patient</th>
+          <th>Prénom Patient</th>
+          <th>email Patient</th>
+          <th>telephone Patient</th>
+          <th>Date de création</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dossier of dossiers">
+          <td>{{ dossier.id }}</td>
+          <td>{{ dossier.idPatient }}</td>
+          <td>{{ patients[dossier.idPatient].nom || 'Chargement...' }}</td> <!-- Replaced ?. with . -->
+          <td>{{ patients[dossier.idPatient].prenom || 'Chargement...' }}</td> <!-- Replaced ?. with . -->
+          <td>{{ patients[dossier.idPatient].email }}</td> <!-- Replaced ?. with . -->
+          <td>{{ patients[dossier.idPatient].telephone }}</td> <!-- Replaced ?. with . -->
+          <td>{{ dossier.date }}</td>
+          <td>
+            <button mat-icon-button color="warn" (click)="deleteDossier(dossier.id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="dossiers.length === 0" class="no-data">
+    <p>Aucun dossier trouvé pour cet utilisateur.</p>
+  </div>
+</div>

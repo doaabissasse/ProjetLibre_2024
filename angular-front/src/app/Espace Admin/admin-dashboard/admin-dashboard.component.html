@@ -10,25 +10,7 @@
 </head>
 
 <body>
-<!-- Header -->
-<header>
-  <div class="logo">Admin Dashboard</div>
-  <nav>
-    <ul>
-      <li><a routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a></li>
-      <li><a routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajout Laboratoire</a></li>
-      <li><a href="/MesUtilisateurs">Gestion Utilisateurs</a></li>
-      <li><a href="#">Messages</a></li>
-      <li class="profile-menu">
-        <a routerLink="/user-profile">Mon Profil</a>
-        <ul class="dropdown">
-          <li><a href="/user-profile">Paramètres</a></li>
-          <li><a href="#">Se Déconnecter</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
+  <app-menu></app-menu>
 
 <!-- Main Content -->
 <main>
@@ -53,15 +35,6 @@
     <h2>Statistiques Générales</h2>
     <!-- Élément canvas pour le graphique -->
     <canvas #myChart width="150" height="150"></canvas>
-  </section>
-
-  <!-- Section Premium -->
-  <section class="premium">
-    <div class="premium-box">
-      <h3>Obtenez un compte premium !</h3>
-      <p>Profitez des fonctionnalités avancées pour mieux gérer vos données.</p>
-      <button>Passer en Premium</button>
-    </div>
   </section>
 </main>
 

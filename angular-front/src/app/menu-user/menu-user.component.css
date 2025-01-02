@@ -1,0 +1,41 @@
+.navbar {
+  margin: 0;
+  background-color: #efefef; /* Nouvelle couleur de fond */
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre subtile */
+}
+
+.nav-link {
+  color: #6db57a; /* Couleur du texte */
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px; /* Coins arrondis */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animation sur hover */
+}
+
+.nav-link:hover {
+  background-color: #8b8b8b; /* Couleur au survol */
+  color: #6db57a; /* Changement de couleur du texte au survol */
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-brand img {
+  height: 80px; /* Taille du logo */
+  width: auto;
+}
+
+.navbar-nav {
+  align-items: center; /* Centrer les éléments verticalement */
+}
+
+.container {
+  max-width: 1200px; /* Largeur maximale du conteneur */
+}

@@ -8,26 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Header -->
-<header>
-  <div class="logo">Espace Admin</div>
-
-  <nav>
-    <ul>
-      <li><a routerLink="/laboratoires" routerLinkActive="active">Laboratoires</a></li>
-      <li><a routerLink="/ajouter-laboratoire" routerLinkActive="active">Ajout Laboratoire</a></li>
-      <li><a href="/MesUtilisateurs">Gestion Utilisateurs</a></li>
-      <li><a href="#">Messages</a></li>
-      <li class="profile-menu">
-        <a routerLink="/user-profile">Mon Profil</a>
-        <ul class="dropdown">
-          <li><a href="/user-profile">Mes informations</a></li>
-          <li><a href="#">Se Déconnecter</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
+  <app-menu></app-menu>
 
 
 <h2>Gestion des Utilisateurs</h2>

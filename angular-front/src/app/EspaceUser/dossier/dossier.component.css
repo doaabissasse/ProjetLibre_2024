@@ -1,0 +1,58 @@
+/* Conteneur principal */
+.dossiers-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Fond clair */
+  }
+  
+  /* Boutons d'action */
+  button.mat-button i {
+    margin-right: 8px;
+  }
+  
+  /* Espacement pour le bouton d'ajout ou d'action similaire */
+  .dossiers-container .add-dossier-button {
+    margin-bottom: 20px;
+  }
+  
+  /* Table styling */
+  .dossier-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .dossier-table th,
+  .dossier-table td {
+    text-align: left;
+    padding: 8px 12px; /* Espacement réduit */
+  }
+  
+  .dossier-table th {
+    background-color: #6db57a; /* Vert pour les en-têtes */
+    color: white; /* Texte blanc */
+  }
+  
+  .dossier-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternance de lignes */
+  }
+  
+  .dossier-table td {
+    color: #495057; /* Texte gris foncé */
+  }
+  
+  /* Style pour spinner si utilisé */
+  .mat-spinner {
+    margin: 0 auto;
+  }
+  
+  /* Boutons de petite taille */
+  button.btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  
+  /* Table compacte */
+  .dossier-table.table-sm {
+    font-size: 14px; /* Police réduite */
+  }
+  

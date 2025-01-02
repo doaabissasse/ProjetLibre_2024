@@ -1,81 +1,97 @@
+/* Global styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-}
-
-header {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header .logo img {
-  height: 50px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-}
-
-nav ul li {
-  margin-left: 20px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
+  background-color: #f9f9f9;
 }
 
 main {
-  padding: 20px;
+  padding: 2rem;
 }
 
-.welcome-section h2 {
+/* Header section */
+.header-section {
+  background-color: #6db57a;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-description {
+  font-size: 1.2rem;
+  color: #e9ffe4;
+}
+
+/* Laboratory info section */
+.labo-info-section {
+  background-color: #f0f8ff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.labo-info-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
   color: #333;
-  font-size: 22px;
+}
+
+.labo-details {
   display: flex;
   align-items: center;
 }
 
-.welcome-section h2 i {
-  margin-left: 10px;
-  color: #007bff;
+.labo-logo {
+  max-width: 150px;
+  height: auto;
+  margin-right: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.user-info-section {
-  margin-top: 20px;
+.labo-text p {
+  margin: 0.5rem 0;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
+.labo-text strong {
+  color: #6db57a;
 }
 
-table th, table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+/* Page info section */
+.page-info-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-table th {
-  background-color: #007bff;
-  color: white;
+.page-info-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #6db57a;
+}
+
+.page-info-section p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.page-info-section ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.page-info-section li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
