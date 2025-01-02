@@ -22,7 +22,7 @@ describe('TestService', () => {
     httpMock.verify(); // Verify no pending requests remain
   });
 
-  it('should be created', () => {
+  it('should created', () => {
     expect(service).toBeTruthy();
   });
 
