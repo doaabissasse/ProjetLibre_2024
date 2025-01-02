@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: '18'
 
+#install
       - name: Install Angular dependencies
         working-directory: ./angular-front
         shell: pwsh
