@@ -8,7 +8,7 @@ import { Examen } from './examen.model';
 })
 export class ExamenService {
 
-  private apiUrl = 'http://localhost:8091/api/examens';  // L'URL de votre API backend
+  apiUrl = 'http://localhost:8091/api/examens';  // L'URL de votre API backend
 
   constructor(private http: HttpClient) { }
 
