@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './accueil.component.css'
 })
 export class AccueilComponent {
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
 
   goToDetails() {
     this.router.navigate(['/laboratoires']); // Navigation vers DétailsLaboratoire

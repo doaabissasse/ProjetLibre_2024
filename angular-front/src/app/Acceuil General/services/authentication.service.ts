@@ -8,7 +8,7 @@ import { RegistrationRequest } from '../models/RegistrationRequest ';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private apiUrl = 'http://localhost:8088/api/v1/auth'; // Remplacez par l'URL de votre API
+  apiUrl = 'http://localhost:8088/api/v1/auth'; // Remplacez par l'URL de votre API
 
   constructor(private http: HttpClient) {}
 

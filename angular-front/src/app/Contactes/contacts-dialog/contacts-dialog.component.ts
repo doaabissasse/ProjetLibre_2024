@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceLaboratoireService } from '../../Laboratoire/service_labo/service-laboratoire.service';
-import { Laboratoire } from '../../Laboratoire/Entite_labo/laboratoire'; 
+import { Laboratoire } from '../../Laboratoire/Entite_labo/laboratoire';
 import { MatDialog } from '@angular/material/dialog';
 import { AjouterContactDialogComponent } from '../../Contactes/ajouter-contact-dialog/ajouter-contact-dialog.component'
 import { ContactService } from '../contacte_sevice/contact.service';
@@ -49,7 +49,7 @@ export class ContactsDialogComponent implements OnInit {
     );
   }
 
-  private getContacts() {
+  getContacts() {
     this.laboratoireService.getContactsByLaboratoireId(this.laboratoireId).subscribe(
       data => {
         this.contacts = data;
@@ -63,18 +63,18 @@ export class ContactsDialogComponent implements OnInit {
 
   afficherAdresse(contactId: number) {
     console.log('Appel de afficherAdresse avec Contact ID:', contactId);  // Vérification de l'ID du contact passé
-  
+
     // Vérification si l'ID est valide
     if (!contactId) {
       console.error('L\'ID du contact est invalide ou manquant');
       return;
     }
-  
+
     // Appel au service pour récupérer l'adresse du contact
     this.contactService.getAdresseContact(contactId).subscribe(
       (adresse) => {
         console.log('Réponse reçue pour l\'adresse:', adresse);  // Log de l'adresse récupérée
-  
+
         const contact = this.contacts.find(c => c.id === contactId);
         if (contact) {
           console.log('Contact trouvé:', contact);  // Log du contact trouvé dans le tableau
@@ -96,7 +96,7 @@ export class ContactsDialogComponent implements OnInit {
       }
     );
   }
-  
+
   // Méthode pour revenir à la liste des laboratoires
   retourLaboratoires() {
     this.router.navigate(['/laboratoires']);  // Naviguer vers la liste des laboratoires
@@ -111,7 +111,7 @@ export class ContactsDialogComponent implements OnInit {
         panelClass: 'custom-dialog-container', // Ajouter une classe personnalisée si nécessaire
         data: { idLaboratoire: this.laboratoire.id } // Passe l'ID du laboratoire
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.getContacts(); // Recharge les contacts après l'ajout
@@ -127,7 +127,7 @@ export class ContactsDialogComponent implements OnInit {
       width: '400px',
       data: { message: 'Êtes-vous sûr de vouloir supprimer ce contact ?' }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.contactService.supprimerContact(contactId).subscribe(
