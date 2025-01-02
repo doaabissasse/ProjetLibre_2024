@@ -3,7 +3,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ContactService } from './contact.service';
 import { Contacte } from '../Contacte';
 import { Adresse } from '../../Adresses/Adresse';
-import { of } from 'rxjs';
 
 describe('ContactService', () => {
   let service: ContactService;
