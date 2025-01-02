@@ -22,12 +22,12 @@ describe('TestService', () => {
     httpMock.verify(); // Verify no pending requests remain
   });
 
-  it('should be created', () => {
+  it('should created', () => {
     expect(service).toBeTruthy();
   });
 
   describe('ajouterTestAnalyse', () => {
-    it('should send a POST request with correct data', () => {
+    it('should send a POST request w correct data', () => {
       const testAnalyse: TestAnalyse = {
         id: 1,
         idAnalyse: 123,
@@ -50,7 +50,7 @@ describe('TestService', () => {
     });
   });
 
-  describe('supprimerTestAnalyse', () => {
+  describe('supprimertestanalyse', () => {
     it('should send a DELETE request with the correct ID', () => {
       const id = 1;
 
