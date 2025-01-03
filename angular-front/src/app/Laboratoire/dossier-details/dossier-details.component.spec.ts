@@ -8,6 +8,8 @@ import { UserService } from '../../Acceuil General/services/user.service';
 import { PatientService } from '../services/patient.service';
 
 import jsPDF from 'jspdf';
+import {HttpClientModule} from '@angular/common/http';
+import {ExamenService} from '../../EspaceUser/examen/examen.service';
 
 describe('DossierDetailsComponent', () => {
   let component: DossierDetailsComponent;
@@ -42,13 +44,18 @@ describe('DossierDetailsComponent', () => {
     }).compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DossierDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientModule], // Import HttpClientModule here
+      declarations: [DossierDetailsComponent],
+      providers: [ExamenService], // Provide your services here
+    }).compileComponents();
   });
 
+
   it('should create the DossierDetailsComponent', () => {
+    const fixture = TestBed.createComponent(DossierDetailsComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 
