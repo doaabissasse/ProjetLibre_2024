@@ -66,43 +66,39 @@ jobs:
           name: angular-test-coverage
           path: angular-front/coverage/**
 
-      - name: Serve Angular application
-        working-directory: ./angular-front
-        run: |
-          npm install -g http-server
-          nohup http-server ./dist/angular-front -p 4200 &
+      - name: Build and test Config Service
+        working-directory: ./config_server
+        run: mvn clean install -DskipTests=false
 
-#      - name: Build and test Config Service
-#        working-directory: ./config_server
-#        run: mvn clean install -DskipTests=false
-#
-#      - name: Build and test Discovery Service
-#        working-directory: ./discovery
-#        run: mvn clean install -DskipTests=false
-#
-#      - name: Build and test Gateway Service
-#        working-directory: ./gateway
-#        run: mvn clean install -DskipTests=false
-#
-#      - name: Build and test each Backend Service
-#        run: |
-#          for service in ./Backend/*/; do
-#            if [ -f "$service/pom.xml" ]; then
-#              if [[ "$service" == *"/users_service/" ]]; then
-#                echo "Skipping $service"
-#                continue
-#              fi
-#              echo "Building $service"
-#              cd "$service"
-#              mvn clean install -DskipTests=false
-#              mvn test
-#              cd - || exit
-#            fi
-#          done
-      - name: Run Selenium Tests
+      - name: Build and test Discovery Service
+        working-directory: ./discovery
+        run: mvn clean install -DskipTests=false
+
+      - name: Build and test Gateway Service
+        working-directory: ./gateway
+        run: mvn clean install -DskipTests=false
+
+      - name: Build and test each Backend Service
         run: |
-          echo "Running Selenium Tests for labo_service"
-          cd ./Backend/labo_service
-          mvn test -Dtest=SeleniumTest
+          for service in ./Backend/*/; do
+            if [ -f "$service/pom.xml" ]; then
+              if [[ "$service" == *"/users_service/" ]]; then
+                echo "Skipping $service"
+                continue
+              fi
+              echo "Building $service"
+              cd "$service"
+              if [[ "$service" == *"/labo_service/" ]]; then
+                echo "Excluding SeleniumTest in $service"
+                mvn clean install -DskipTests=false -Dtest=!SeleniumTest
+                mvn test -Dtest=!SeleniumTest
+              else
+                mvn clean install -DskipTests=false
+                mvn test
+              fi
+              cd - || exit
+            fi
+          done
+      
 
 
