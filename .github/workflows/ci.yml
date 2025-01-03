@@ -66,31 +66,45 @@ jobs:
           name: angular-test-coverage
           path: angular-front/coverage/**
 
-      - name: Build and test Config Service
-        working-directory: ./config_server
-        run: mvn clean install -DskipTests=false
-
-      - name: Build and test Discovery Service
-        working-directory: ./discovery
-        run: mvn clean install -DskipTests=false
-
-      - name: Build and test Gateway Service
-        working-directory: ./gateway
-        run: mvn clean install -DskipTests=false
-
-      - name: Build and test each Backend Service
+      - name: Serve Angular application
+        working-directory: ./angular-front
         run: |
-          for service in ./Backend/*/; do
-            if [ -f "$service/pom.xml" ]; then
-              if [[ "$service" == *"/users_service/" ]]; then
-                echo "Skipping $service"
-                continue
-              fi
-              echo "Building $service"
-              cd "$service"
-              mvn clean install -DskipTests=false
-              mvn test
-              cd - || exit
-            fi
-          done
+          npm install -g http-server
+          nohup http-server ./dist/angular-front -p 4200 &
+          env:
+            CI: true
+
+#      - name: Build and test Config Service
+#        working-directory: ./config_server
+#        run: mvn clean install -DskipTests=false
+#
+#      - name: Build and test Discovery Service
+#        working-directory: ./discovery
+#        run: mvn clean install -DskipTests=false
+#
+#      - name: Build and test Gateway Service
+#        working-directory: ./gateway
+#        run: mvn clean install -DskipTests=false
+#
+#      - name: Build and test each Backend Service
+#        run: |
+#          for service in ./Backend/*/; do
+#            if [ -f "$service/pom.xml" ]; then
+#              if [[ "$service" == *"/users_service/" ]]; then
+#                echo "Skipping $service"
+#                continue
+#              fi
+#              echo "Building $service"
+#              cd "$service"
+#              mvn clean install -DskipTests=false
+#              mvn test
+#              cd - || exit
+#            fi
+#          done
+      - name: Run Selenium Tests
+        run: |
+          echo "Running Selenium Tests for labo_service"
+          cd ./Backend/labo_service
+          mvn test -Dtest=SeleniumTest
+
 

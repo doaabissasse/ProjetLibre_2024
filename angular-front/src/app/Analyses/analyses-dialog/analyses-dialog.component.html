@@ -1,6 +1,6 @@
 <div class="adresses-container">
   <h3>Liste des analyses</h3>
-  
+
   <!-- Bouton de retour -->
   <button mat-button color="primary" (click)="retourLaboratoires()" class="mt-4">
     <i class="fas fa-arrow-left"></i> Retour aux laboratoires
@@ -23,7 +23,7 @@
   </div>
 
   <!-- Button to add a new analysis -->
-<button mat-button color="primary" (click)="openAddAnalyseDialog()" class="mt-4">
+<button id="addanalyse" mat-button color="primary" (click)="openAddAnalyseDialog()" class="mt-4">
   <i class="fas fa-plus"></i> Ajouter une analyse
 </button>
 
@@ -46,7 +46,7 @@
             <i class="fas fa-eye"></i>  tests & epreuve
           </button>
           <button mat-button color="warn" (click)="supprimerAnalyse(analyse.id)">
-            <i class="fas fa-trash-alt"></i> 
+            <i class="fas fa-trash-alt"></i>
           </button>
         </td>
       </tr>

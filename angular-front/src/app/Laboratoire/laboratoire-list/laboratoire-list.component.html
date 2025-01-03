@@ -29,16 +29,16 @@
                   <td>{{ laboratoire.active ? 'Active' : 'Inactive' }}</td>
                   <td>{{ laboratoire.dateActivation | date:'dd/MM/yyyy' }}</td>
                   <td>
-                    <button class="btn btn-sm" (click)="modifier(laboratoire)">
+                    <button id="modifier" class="btn btn-sm" (click)="modifier(laboratoire)">
                       <i class="fas fa-edit"></i>
                     </button>
                     <button class="btn btn-sm" (click)="supprimer(laboratoire)">
                       <i class="fas fa-trash"></i>
                     </button>
-                    <button class="btn btn-sm btn-primary" (click)="afficherContacts(laboratoire.id)">
+                    <button id="showcontacts" class="btn btn-sm btn-primary" (click)="afficherContacts(laboratoire.id)">
                       plus details
                     </button>
-                    <button class="btn btn-sm btn-info" (click)="afficherAnalyses(laboratoire.id)">
+                    <button id="showanalyses" class="btn btn-sm btn-info" (click)="afficherAnalyses(laboratoire.id)">
                       Analyses
                     </button>
                     <button class="btn btn-sm btn-primary" (click)="afficherUtilisateurs(laboratoire.id)">
