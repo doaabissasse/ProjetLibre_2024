@@ -71,8 +71,6 @@ jobs:
         run: |
           npm install -g http-server
           nohup http-server ./dist/angular-front -p 4200 &
-          env:
-            CI: true
 
 #      - name: Build and test Config Service
 #        working-directory: ./config_server

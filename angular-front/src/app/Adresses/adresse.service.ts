@@ -10,7 +10,7 @@ export class AdresseService {
   private baseUrl = 'http://localhost:8093/adresses';
 
   constructor(private http: HttpClient) {}
-  
+
   // Récupérer toutes les adresses existantes
   getAdresses(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}`);
@@ -20,3 +20,4 @@ export class AdresseService {
     return this.http.post<Adresse>(`${this.baseUrl}`, adresse);
   }
 }
+//mdoif
