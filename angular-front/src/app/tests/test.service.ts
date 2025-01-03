@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TestAnalyse } from './TestAnalyse';
+import {Epreuve} from '../epreuves/Epreuve';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,9 @@ export class TestService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
   }
+
+  getTest(): Observable<TestAnalyse[]> {
+    return this.http.get<TestAnalyse[]>(this.apiUrl);
+  }
+
 }

@@ -4,6 +4,8 @@ import com.example.dossiersService.entity.Dossier;
 import com.example.dossiersService.entity.ExamenDTO;
 import com.example.dossiersService.service.DossierService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +24,17 @@ public class DossierController {
     }
 
     @PostMapping
-    public ResponseEntity<Dossier> createDossier(@RequestBody Dossier dossier) {
-        Dossier createdDossier = dossierService.createDossier(dossier);
-        return ResponseEntity.ok(createdDossier);
-    }
 
+    public ResponseEntity<Dossier> createDossier(@RequestBody Dossier dossier) {
+        try {
+            Dossier createdDossier = dossierService.createDossier(dossier);
+            return ResponseEntity.ok(createdDossier);
+        } catch (OptimisticLockingFailureException e) {
+            // Gérer le conflit, par exemple, en informant l'utilisateur
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(null); // Vous pouvez également renvoyer un message d'erreur
+        }
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Dossier> getDossierById(@PathVariable Long id) {

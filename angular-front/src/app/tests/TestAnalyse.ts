@@ -1,5 +1,5 @@
 export interface TestAnalyse {
-    id: number;                    // L'ID unique du test
+    id?: number;                    // L'ID unique du test
     idAnalyse: number;             // L'ID de l'analyse associée
     nomTest: string;               // Nom du test
     sousEpreuve: string;           // Sous-épreuve du test

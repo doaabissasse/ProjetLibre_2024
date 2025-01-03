@@ -1,20 +1,47 @@
 <h2 mat-dialog-title>Ajouter un Dossier</h2>
 <mat-dialog-content>
   <form (ngSubmit)="addDossier()">
+    <h3>Ajouter un Patient</h3>
     <mat-form-field>
-      <mat-label>ID du Patient</mat-label>
-      <input matInput [(ngModel)]="dossier.idPatient" name="idPatient" type="number" required />
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="patient.nom" name="nom" required />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Date</mat-label>
-      <input matInput [(ngModel)]="dossier.date" name="date" type="date" name="dateActivation" required />
+      <mat-label>Prénom</mat-label>
+      <input matInput [(ngModel)]="patient.prenom" name="prenom" required />
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date de Naissance</mat-label>
+      <input matInput [(ngModel)]="patient.dateNaissance" name="dateNaissance" type="date" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="patient.email" name="email" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Lieu de Naissance</mat-label>
+      <input matInput [(ngModel)]="patient.lieuDeNaissance" name="dateNaissance" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Numero de Telephone</mat-label>
+      <input matInput [(ngModel)]="patient.telephone" name="telephone"  required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Adresse </mat-label>
+      <input matInput [(ngModel)]="patient.adresse" name="adresse"  required />
+    </mat-form-field>
+
+
 
     <div mat-dialog-actions>
       <button mat-button (click)="onCancel()">Annuler</button>
-      <button mat-button (click)="addDossier()">Ajouter</button>
+      <button mat-button type="submit">Ajouter</button>
     </div>
   </form>
 </mat-dialog-content>
-

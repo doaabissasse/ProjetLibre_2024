@@ -1,10 +1,10 @@
 export class Examen {
-    id: number;
+    id?: number;
     idDossier: number;
     idEpreuve: number;
     idTestAnalyse: number;
     resultat: string;
-  
+
     constructor(id: number, idDossier: number, idEpreuve: number, idTestAnalyse: number, resultat: string) {
       this.id = id;
       this.idDossier = idDossier;
@@ -13,4 +13,4 @@ export class Examen {
       this.resultat = resultat;
     }
   }
-  
+

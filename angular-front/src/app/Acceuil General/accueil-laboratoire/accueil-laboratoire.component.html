@@ -20,7 +20,7 @@
     <li><a href="#services" onclick="toggleMenu();"><strong>Nos Services</strong></a></li>
     <li><a href="#contact" onclick="toggleMenu();"><strong>Contact</strong></a></li>
     <!-- Lien de connexion -->
-    <button routerLink="/login" routerLinkActive="active" >Se connecter</button>
+    <button class="btn-login" routerLink="/login" routerLinkActive="active" >Se connecter</button>
 
   </ul>
 </header>
@@ -76,8 +76,8 @@
       </div>
     </div>
   </div>
-</section>
 
+</section>
 <section class="contact" id="contact">
   <div class="titre noir">
     <h2 class="titre-texte">Contactez MedLab</h2>
@@ -85,16 +85,16 @@
   <div class="contactform">
     <h3>Envoyez-nous un message</h3>
     <div class="inputboite">
-      <input type="text" placeholder="Votre Nom" />
+      <input type="text" placeholder="Votre Nom" [(ngModel)]="name" />
     </div>
     <div class="inputboite">
-      <input type="email" placeholder="Votre Email" />
+      <input type="email" placeholder="Votre Email" [(ngModel)]="email" />
     </div>
     <div class="inputboite">
-      <textarea placeholder="Votre Message"></textarea>
+      <textarea placeholder="Votre Message" [(ngModel)]="message"></textarea>
     </div>
     <div class="inputboite">
-      <input type="submit" value="Envoyer" />
+      <input type="submit" value="Envoyer" (click)="sendMessage()" />
     </div>
   </div>
 </section>

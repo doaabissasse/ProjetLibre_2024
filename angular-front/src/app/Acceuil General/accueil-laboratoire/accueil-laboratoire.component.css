@@ -68,6 +68,7 @@ header {
 .navbar {
   display: flex;
   position: relative;
+  justify-content: space-between;
 }
 
 .navbar li {
@@ -82,15 +83,24 @@ header {
 
 .btn-login {
   padding: 10px 20px;
-  background: rgb(195, 55, 55);
-  margin-top: -10px;
-  text-transform: uppercase;
+  background-color: rgb(195, 55, 55);
   color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 50px;
 }
 
 .btn-login:hover {
-  background: rgb(160, 45, 45);
-  transition: ease-out;
+  background-color: rgb(160, 45, 45);
+  transform: scale(1.05);
+}
+
+.btn-login:active {
+  transform: scale(0.95);
 }
 
 header .navbar li a:hover {

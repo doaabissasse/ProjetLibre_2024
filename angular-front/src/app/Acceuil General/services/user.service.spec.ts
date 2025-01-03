@@ -90,7 +90,7 @@ describe('UserService', () => {
     const dummyUsers = [{ id: 1, name: 'User in Lab' }];
 
     service.getUsersByLaboratoire(101).subscribe(users => {
-      expect(users).toEqual(dummyUsers);
+      return expect(users).toEqual(dummyUsers);
     });
 
     const req = httpMock.expectOne(`${apiUrl}/utilisateurs/laboratoire/101`);

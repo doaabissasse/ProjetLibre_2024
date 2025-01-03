@@ -29,5 +29,16 @@
     </div>
   </div>
 
+  <div class="section">
+    <h2 class="section-title">Examens</h2>
+    <div *ngFor="let examen of examens; let i = index" class="details-card">
+      <p><strong>Examen {{ i + 1 }}:</strong></p>
+      <p><strong>Résultat :</strong> {{ examen.resultat }}</p>
+      <p *ngIf="epreuves[i]"><strong>Épreuve :</strong> {{ epreuves[i].nom }}</p>
+      <p *ngIf="testsAnalyse[i]"><strong>Test d'Analyse :</strong> {{ testsAnalyse[i].nomTest }}</p>
+      <p *ngIf="testsAnalyse[i]"><strong>Intervalle de Référence :</strong> {{ testsAnalyse[i].intervalMinDeReference }} - {{ testsAnalyse[i].intervalMaxDeReference }} {{ testsAnalyse[i].uniteDeReference }}</p>
+    </div>
+  </div>
+
   <button class="btn-download" (click)="generatePDF()">Télécharger PDF</button>
 </div>

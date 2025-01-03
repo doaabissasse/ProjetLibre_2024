@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Ajouter un nouvel Examen</h2>
+<mat-dialog-content>
+  <form #examenForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Épreuve</mat-label>
+      <mat-select [(ngModel)]="examen.idEpreuve" name="idEpreuve" required>
+        <mat-option *ngFor="let epreuve of epreuves" [value]="epreuve.id">
+          {{ epreuve.nom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Test Analyse</mat-label>
+      <mat-select [(ngModel)]="examen.idTestAnalyse" name="idTestAnalyse" required>
+        <mat-option *ngFor="let test of testsAnalyse" [value]="test.id">
+          {{ test.nomTest }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Résultat</mat-label>
+      <input matInput [(ngModel)]="examen.resultat" name="resultat" required />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button color="primary" (click)="saveExamen()" [disabled]="!examenForm.valid">Enregistrer</button>
+</mat-dialog-actions>
