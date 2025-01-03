@@ -1,0 +1,6 @@
+projectKey=analyse-service
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=analyse-service
+ceTaskId=f9742c80-76fc-4374-b52e-7ef1bd8243f3
+ceTaskUrl=http://localhost:9000/api/ce/task?id=f9742c80-76fc-4374-b52e-7ef1bd8243f3

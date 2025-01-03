@@ -1,0 +1,6 @@
+projectKey=test-analyse-service
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=test-analyse-service
+ceTaskId=f9949fc3-45ed-449a-ab81-9e3b28cf3539
+ceTaskUrl=http://localhost:9000/api/ce/task?id=f9949fc3-45ed-449a-ab81-9e3b28cf3539

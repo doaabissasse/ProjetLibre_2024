@@ -1,0 +1,6 @@
+projectKey=examen-service
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=examen-service
+ceTaskId=04eea1ef-93d0-4d17-a53d-f7d05da383bb
+ceTaskUrl=http://localhost:9000/api/ce/task?id=04eea1ef-93d0-4d17-a53d-f7d05da383bb
