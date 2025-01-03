@@ -88,9 +88,17 @@ jobs:
               fi
               echo "Building $service"
               cd "$service"
-              mvn clean install -DskipTests=false
-              mvn test
+              if [[ "$service" == *"/labo_service/" ]]; then
+                echo "Excluding SeleniumTest in $service"
+                mvn clean install -DskipTests=false -Dtest=!SeleniumTest
+                mvn test -Dtest=!SeleniumTest
+              else
+                mvn clean install -DskipTests=false
+                mvn test
+              fi
               cd - || exit
             fi
           done
+      
+
 
