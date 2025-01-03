@@ -42,11 +42,11 @@ export class ExamenService {
     return this.http.get<Examen[]>(`${this.apiUrl}/by-test-analyse/${idTestAnalyse}`);
   }
 
+
   // Obtenir des examens par dossier
   getExamensByIdDossier(idDossier: number): Observable<Examen[]> {
-    return this.http.get<Examen[]>(`${this.apiUrl}/by-dossier/${idDossier}`);
+    return this.http.get<Examen[]>(`${this.apiUrl}/dossier/${idDossier}`);
   }
-
   // Obtenir des examens par épreuve
   getExamensByIdEpreuve(idEpreuve: number): Observable<Examen[]> {
     return this.http.get<Examen[]>(`${this.apiUrl}/by-epreuve/${idEpreuve}`);

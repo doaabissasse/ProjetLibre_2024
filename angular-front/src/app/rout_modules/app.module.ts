@@ -54,6 +54,7 @@ import {AnalyseComponent  } from '../EspaceUser/analyse/analyse.component';
 import {TestEpreuvesComponent } from '../EspaceUser/test-epreuves/test-epreuves.component';
 import {DossierComponent } from '../EspaceUser/dossier/dossier.component';
 import {AjoutDossierComponent } from '../EspaceUser/ajout-dossier/ajout-dossier.component';
+import {AddExamenDialogComponent} from '../EspaceUser/add-examen-dialog/add-examen-dialog.component';
 
 
 
@@ -93,6 +94,7 @@ import {AjoutDossierComponent } from '../EspaceUser/ajout-dossier/ajout-dossier.
     TestEpreuvesComponent,
     DossierComponent,
     AjoutDossierComponent,
+    AddExamenDialogComponent,
   ],
   imports: [
     BrowserModule,

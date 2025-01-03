@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DossierService } from '../../Laboratoire/services/dossier.service';
 import { PatientService } from '../../Laboratoire/services/patient.service'; // Import du service PatientService
@@ -7,6 +7,7 @@ import { Dossier } from '../../Laboratoire/Entite_labo/dossier.model';
 import { Patient } from '../../Laboratoire/Entite_labo/Patient.model';
 import {AjoutDossierComponent} from '../../EspaceUser/ajout-dossier/ajout-dossier.component';
 import { ConfirmationDialogComponent } from '../../Adresses/confirmation-dialog/confirmation-dialog.component';
+import {AddExamenDialogComponent} from '../add-examen-dialog/add-examen-dialog.component';
 
 @Component({
   selector: 'app-dossier',
@@ -23,7 +24,8 @@ export class DossierComponent implements OnInit {
     private route: ActivatedRoute,
     private dossierService: DossierService,
     private dialog: MatDialog,
-    private patientService: PatientService // Injection du service PatientService
+    private patientService: PatientService,// Injection du service PatientService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,13 @@ export class DossierComponent implements OnInit {
     } else {
       console.error("Aucune donnée utilisateur trouvée dans le localStorage.");
     }
+  }
+
+  openAddExamenDialog(dossierId: number): void {
+    const dialogRef = this.dialog.open(AddExamenDialogComponent, {
+      width: '400px',
+      data: { dossierId },// Passe l'ID du dossier à la boîte de dialogue
+    });
   }
 
   // Méthode pour récupérer les dossiers
@@ -91,6 +100,8 @@ export class DossierComponent implements OnInit {
     }
   });
 
+
+
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
       // L'utilisateur a confirmé, on supprime le dossier
@@ -107,5 +118,10 @@ export class DossierComponent implements OnInit {
     }
   });
 }
+
+
+  viewDossier(id: number | undefined, idUser: number, idPatient: number): void {
+    this.router.navigate(['/dossier-details', id, idUser, idPatient]);
+  }
 }
 

@@ -9,13 +9,22 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   styleUrls: ['./accueil-laboratoire.component.css']
 })
 export class AccueilLaboratoireComponent {
+  id: undefined;
+  name: string = '';
+  email: string = '';
+  message: string = '';
+
   isLoginModalVisible = false; // Contrôle l'affichage de la modale
 
-  openLoginModal() {
+    openLoginModal() {
     this.isLoginModalVisible = true;
   }
 
   closeLoginModal() {
     this.isLoginModalVisible = false;
   }
-}
+
+  sendMessage(){
+
+  }
+  }

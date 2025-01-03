@@ -18,6 +18,8 @@ public class Examen {
 
     private String resultat;
 
+    @Version
+    private Long version;
     public Examen() {
         super();
     }

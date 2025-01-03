@@ -15,6 +15,8 @@ public class Dossier {
 
     private Long idPatient;     // ID of the patient associated with the dossier
 
+    @Version
+    private Long version;
 
     private Long idUtilisateur; // ID of the user (e.g., the one who created/modified the dossier)
 

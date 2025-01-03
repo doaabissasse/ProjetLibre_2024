@@ -31,6 +31,9 @@
             <button mat-icon-button color="warn" (click)="deleteDossier(dossier.id)">
               <i class="fas fa-trash"></i>
             </button>
+
+            <button mat-raised-button color="primary" (click)="openAddExamenDialog(dossier.id)">Ajouter un Examen</button>
+            <button class="btn btn-primary btn-sm" (click)="viewDossier(dossier.id,dossier.idUtilisateur,dossier.idPatient)">Voir Plus</button>
           </td>
         </tr>
       </tbody>

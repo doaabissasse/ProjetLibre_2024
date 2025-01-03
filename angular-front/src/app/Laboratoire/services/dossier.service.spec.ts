@@ -41,6 +41,7 @@ describe('DossierService', () => {
 
       service.getDossiersByUserId(userId).subscribe(dossiers => {
         expect(dossiers.length).toBe(2);
+        // @ts-ignore
         expect(dossiers).toEqual(mockDossiers);
       });
 

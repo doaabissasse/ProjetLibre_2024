@@ -42,7 +42,7 @@ export class DossiersListComponent implements OnInit {
     this.router.navigate(['/laboratoires']);
   }
 
-  viewDossier(id: number, idUser: number, idPatient: number): void {
+  viewDossier(id: number | undefined, idUser: number, idPatient: number): void {
     this.router.navigate(['/dossier-details', id, idUser, idPatient]);
   }
 

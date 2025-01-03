@@ -101,7 +101,7 @@ describe('ExamenService', () => {
       expect(res).toEqual(examenData);
     });
 
-    const req = httpMock.expectOne(`${service.apiUrl}/by-dossier/1`);
+    const req = httpMock.expectOne(`${service.apiUrl}/dossier/1`);
     expect(req.request.method).toBe('GET');
     req.flush(examenData);
   });

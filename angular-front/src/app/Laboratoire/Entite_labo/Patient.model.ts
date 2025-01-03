@@ -1,6 +1,6 @@
 // models/patient.model.ts
 export interface Patient {
-  id: number;
+  id?: number;
   nom: string;
   prenom: string;
   dateNaissance: string; // Format: 'YYYY-MM-DD'

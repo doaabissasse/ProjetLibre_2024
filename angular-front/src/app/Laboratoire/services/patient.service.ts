@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Patient} from '../Entite_labo/Patient.model';
 
@@ -19,5 +19,15 @@ export class PatientService {
 
   getPatientCount(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/count`);
+  }
+
+
+  addPatient(patient: Patient): Observable<Patient> {
+    console.log(`[POST] Ajouter un patient:`, patient);
+    return this.http.post<Patient>(this.apiUrl, patient, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    });
   }
 }
