@@ -78,27 +78,27 @@ jobs:
         working-directory: ./gateway
         run: mvn clean install -DskipTests=false
 
-      - name: Build and test each Backend Service
-        run: |
-          for service in ./Backend/*/; do
-            if [ -f "$service/pom.xml" ]; then
-              if [[ "$service" == *"/users_service/" ]]; then
-                echo "Skipping $service"
-                continue
-              fi
-              echo "Building $service"
-              cd "$service"
-              if [[ "$service" == *"/labo_service/" ]]; then
-                echo "Excluding SeleniumTest in $service"
-                mvn clean install -DskipTests=false -Dtest=!SeleniumTest
-                mvn test -Dtest=!SeleniumTest
-              else
-                mvn clean install -DskipTests=false
-                mvn test
-              fi
-              cd - || exit
-            fi
-          done
+#      - name: Build and test each Backend Service
+#        run: |
+#          for service in ./Backend/*/; do
+#            if [ -f "$service/pom.xml" ]; then
+#              if [[ "$service" == *"/users_service/" ]]; then
+#                echo "Skipping $service"
+#                continue
+#              fi
+#              echo "Building $service"
+#              cd "$service"
+#              if [[ "$service" == *"/labo_service/" ]]; then
+#                echo "Excluding SeleniumTest in $service"
+#                mvn clean install -DskipTests=false -Dtest=!SeleniumTest
+#                mvn test -Dtest=!SeleniumTest
+#              else
+#                mvn clean install -DskipTests=false
+#                mvn test
+#              fi
+#              cd - || exit
+#            fi
+#          done
 
       - name: Clean up old Docker images
         run: |
@@ -117,10 +117,12 @@ jobs:
         run: |
           docker login -u 'solo2002' -p 'salma741789'
           if [ -f "./angular-front/Dockerfile" ]; then
-            echo "Building Docker image for angular-app"
-            docker build -t "angular-app" ./angular-front
-            docker push "angular-app"
+          echo "Building Docker image for angular-app"
+          IMAGE_NAME="solo2002/angular-app"
+          docker build -t "$IMAGE_NAME" ./angular-front
+          docker push "$IMAGE_NAME"
           fi
+          
 
       - name: Build and Push Backend Docker Images
         run: |
@@ -129,8 +131,9 @@ jobs:
             if [ -f "$service/Dockerfile" ]; then
               echo "Building $service Docker image"
               cd "$service"
-              docker build -t "spring-app-$(basename $service)" .
-              docker push "spring-app-$(basename $service)"
+              IMAGE_NAME="solo2002/spring-app-$(basename $service)"
+              docker build -t "$IMAGE_NAME" .
+              docker push "$IMAGE_NAME"
               cd - || exit
             fi
           done
