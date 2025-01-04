@@ -100,6 +100,11 @@ jobs:
             fi
           done
 
+      - name: Set up Docker Compose
+        uses: docker/setup-buildx-action@v2
+        with:
+          version: latest
+
       - name: Clean up old Docker images
         run: |
           docker login -u 'solo2002' -p 'salma741789'
