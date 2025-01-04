@@ -78,27 +78,27 @@ jobs:
         working-directory: ./gateway
         run: mvn clean install -DskipTests=false
 
-#      - name: Build and test each Backend Service
-#        run: |
-#          for service in ./Backend/*/; do
-#            if [ -f "$service/pom.xml" ]; then
-#              if [[ "$service" == *"/users_service/" ]]; then
-#                echo "Skipping $service"
-#                continue
-#              fi
-#              echo "Building $service"
-#              cd "$service"
-#              if [[ "$service" == *"/labo_service/" ]]; then
-#                echo "Excluding SeleniumTest in $service"
-#                mvn clean install -DskipTests=false -Dtest=!SeleniumTest
-#                mvn test -Dtest=!SeleniumTest
-#              else
-#                mvn clean install -DskipTests=false
-#                mvn test
-#              fi
-#              cd - || exit
-#            fi
-#          done
+      - name: Build and test each Backend Service
+        run: |
+          for service in ./Backend/*/; do
+            if [ -f "$service/pom.xml" ]; then
+              if [[ "$service" == *"/users_service/" ]]; then
+                echo "Skipping $service"
+                continue
+              fi
+              echo "Building $service"
+              cd "$service"
+              if [[ "$service" == *"/labo_service/" ]]; then
+                echo "Excluding SeleniumTest in $service"
+                mvn clean install -DskipTests=false -Dtest=!SeleniumTest
+                mvn test -Dtest=!SeleniumTest
+              else
+                mvn clean install -DskipTests=false
+                mvn test
+              fi
+              cd - || exit
+            fi
+          done
 
       - name: Clean up old Docker images
         run: |
@@ -131,7 +131,8 @@ jobs:
             if [ -f "$service/Dockerfile" ]; then
               echo "Building $service Docker image"
               cd "$service"
-              IMAGE_NAME="solo2002/spring-app-$(basename $service)"
+              SERVICE_NAME=$(basename "$service" | tr '[:upper:]' '[:lower:]')
+              IMAGE_NAME="solo2002/spring-app-$SERVICE_NAME"
               docker build -t "$IMAGE_NAME" .
               docker push "$IMAGE_NAME"
               cd - || exit
