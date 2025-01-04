@@ -105,6 +105,9 @@ jobs:
         with:
           version: latest
 
+      - name: Check Docker Compose location
+        run: which docker-compose
+
       - name: Clean up old Docker images
         run: |
           docker login -u 'solo2002' -p 'salma741789'
