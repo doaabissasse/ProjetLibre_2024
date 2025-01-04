@@ -48,8 +48,6 @@ public class SeleniumTest {
         submitButton.click();
 
         sleep(2000);
-
-
         // Log information for verification
         System.out.println("Nom: " + nomField.getAttribute("value"));
         System.out.println("NRC: " + nrcField.getAttribute("value"));
@@ -89,27 +87,19 @@ public class SeleniumTest {
     public void testEditLaboratoire() {
         String url = "http://localhost:4200/laboratoires"; // Navigate to the laboratoire list page
         driver.get(url);
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));  // Increase timeout if needed
-
         sleep(2000);
-
         // Find the edit button for a laboratoire entry (assuming first entry for example)
         WebElement editButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("modifier")));
         editButton.click();
-
-
         // Wait for the dialog to open
         WebElement dialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".form-container")));
-
-
         // Fill the form
         WebElement nomInput = dialog.findElement(By.id("nom"));
         WebElement nrcInput = dialog.findElement(By.id("nrc"));
         WebElement logoInput = dialog.findElement(By.id("logo"));
         WebElement activeCheckbox = dialog.findElement(By.id("active"));
         WebElement dateActivationInput = dialog.findElement(By.id("dateActivation"));
-
         // Update the form with test data
         nomInput.clear();
         nomInput.sendKeys("Updated Nom");
@@ -120,19 +110,13 @@ public class SeleniumTest {
         activeCheckbox.click();
         dateActivationInput.clear();
         dateActivationInput.sendKeys("20-01-01");
-
         sleep(2000);
-
         // Submit the form
         WebElement saveButton = dialog.findElement(By.cssSelector("button[type='submit']"));
         saveButton.click();
-
-        // Wait for the success message
-
         // Verify the edited data appears in the table
         WebElement nomInTable = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(), 'Updated Nom')]")));
         WebElement nrcInTable = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(), 'Updated NRC')]")));
-
     }
 
     @Test
@@ -162,11 +146,9 @@ public class SeleniumTest {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));  // Increase timeout if needed
 
-
         // Click on "Show Analyses" button
         WebElement showAnalysesButton = driver.findElement(By.id("showanalyses"));
         showAnalysesButton.click();
-
 
         // Wait for the table to load and check if it is displayed
         Thread.sleep(2000); // Adjust to explicit wait in real scenarios
@@ -183,14 +165,11 @@ public class SeleniumTest {
         // Fill out the form
         WebElement nameInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("nom")));
         WebElement descriptionInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("description")));
-
         nameInput.sendKeys("Test Analyse");
         descriptionInput.sendKeys("This is a test description.");
-
         // Click the "Add" button
         WebElement addButton = driver.findElement(By.id("add"));
         addButton.click();
-
 
     }
 

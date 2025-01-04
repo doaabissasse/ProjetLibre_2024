@@ -1,81 +1,201 @@
+version: "3.9"
+
 services:
-  #db:
-   # image: mysql:5.7
-    #container_name: mysql-server
-    #environment:
-    #  MYSQL_ROOT_PASSWORD: rootpassword  # Assurez-vous de définir un mot de passe
-     # MYSQL_DATABASE: gestion_labo
-      #MYSQL_ROOT_HOST: '%'
-    #ports:
-     # - "3306:3306"
-    #volumes:
-     # - db_data:/var/lib/mysql
-
-  #phpmyadmin:
-   # image: phpmyadmin/phpmyadmin
-   # container_name: phpmyadmin
-    #environment:
-     # PMA_HOST: db
-     # PMA_PORT: 3306
-      #MYSQL_ROOT_PASSWORD:
-      #PMA_ARBITRARY: 1
-    #ports:
-    #  - "8082:80"
-    #depends_on:
-     # - db
-  mail-drev:
-    container_name: mail-dev-bsn
-    image: maildev/maildev
+  db:
+    image: mysql:5.7
+    container_name: mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Define a secure password
+      MYSQL_DATABASE: gestion_labo
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - 1080:1080
-      - 1025:1025
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: rootpassword
+      PMA_ARBITRARY: 1
+    ports:
+      - "8082:80"
+    depends_on:
+      - db
+
+  mail-dev:
+    image: maildev/maildev
+    container_name: mail-dev-bsn
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+  spring-app-labo:
+    build:
+      context: ./Backend/labo_service
+      dockerfile: Dockerfile
+    container_name: spring-app-labo
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-adresse:
+    build:
+      context: ./Backend/adresses_service
+      dockerfile: Dockerfile
+    container_name: spring-app-adresse
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-analyse:
+    build:
+      context: ./Backend/analyse_service
+      dockerfile: Dockerfile
+    container_name: spring-app-analyse
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-contacte:
+    build:
+      context: ./Backend/contactes_service
+      dockerfile: Dockerfile
+    container_name: spring-app-contacte
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-dossier:
+    build:
+      context: ./Backend/dossiersService
+      dockerfile: Dockerfile
+    container_name: spring-app-dossier
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-epreuve:
+    build:
+      context: ./Backend/epreuve_service
+      dockerfile: Dockerfile
+    container_name: spring-app-epreuve
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-examen:
+    build:
+      context: ./Backend/examen_service
+      dockerfile: Dockerfile
+    container_name: spring-app-examen
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-patient:
+    build:
+      context: ./Backend/patient_service
+      dockerfile: Dockerfile
+    container_name: spring-app-patient
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
+
+  spring-app-test-analyse:
+    build:
+      context: ./Backend/test_analyse_service
+      dockerfile: Dockerfile
+    container_name: spring-app-test-analyse
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    restart: on-failure
 
 
+  spring-app-utilisateurs:
+     build:
+       context: ./Backend/users_service
+       dockerfile: Dockerfile
+     container_name: spring-app-utilisateurs
+     environment:
+       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
+       SPRING_DATASOURCE_USERNAME: root
+       SPRING_DATASOURCE_PASSWORD: rootpassword  # Matches MYSQL_ROOT_PASSWORD
+     ports:
+       - "8085:8085"
+     depends_on:
+       - db
+     restart: on-failure
 
-    #spring-app-labo:
-    # build:
-    # context: ./Backend/labo_service
-    #  dockerfile: Dockerfile
-    #container_name: spring-app-labo
-    #environment:
-    #SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
-    #SPRING_DATASOURCE_USERNAME: root
-    #SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
-    #ports:
-    # - "8083:8083"
-    #depends_on:
-    # - db
-    #restart: on-failure
+  angular-app:
+    build:
+      context: ./angular-front
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./angular-front:/app
+      - /app/node_modules
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
 
-
-      #spring-app-utilisateurs:
-      #   build:
-      #    context: ./Backend/users_service
-      #   dockerfile: Dockerfile
-      #container_name: spring-app-utilisateurs
-      #environment:
-      #  SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestion_labo
-      # SPRING_DATASOURCE_USERNAME: root
-      #SPRING_DATASOURCE_PASSWORD: rootpassword  # Doit correspondre à MYSQL_ROOT_PASSWORD
-      #ports:
-      # - "8085:8085"
-      #depends_on:
-      # - db
-      #restart: on-failure
-
-      #angular-app:
-      # build:
-      #  context: ./angular-front
-      # dockerfile: Dockerfile
-      # container_name: frontend
-      #ports:
-      # - "4200:4200"
-      #volumes:
-      # - ./angular-front:/app
-      # - /app/node_modules
-      #environment:
-    # - CHOKIDAR_USEPOLLING=true
-
-# Volumes pour persistance des données MySQL
 volumes:
   db_data:
