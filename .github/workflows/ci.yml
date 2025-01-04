@@ -80,7 +80,6 @@ jobs:
 
       - name: Build and test each Backend Service
         run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           for service in ./Backend/*/; do
             if [ -f "$service/pom.xml" ]; then
               if [[ "$service" == *"/users_service/" ]]; then
@@ -97,8 +96,6 @@ jobs:
                 mvn clean install -DskipTests=false
                 mvn test
               fi
-              docker-compose build
-              docker-compose push
               cd - || exit
             fi
           done
